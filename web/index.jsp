@@ -14,21 +14,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
     </head>
     <body>
-        <header>            
-            <div>
-                <img class="logo" src="img/logo.png" alt="alt"/>
-            </div>
-            <form action="action">
-                <img class="search" src="img/search.png" alt="alt"/>
-                <input type="text" />
-                <label><%= new Date() %></label>
-            </form>
-            
-            <nav>
-                <button class="btn">INICIO</button>
-                <button class="btn">REGISTRO</button>
-                <button class="help">?</button>                
-            </nav>
-        </header>            
-</body>
+        <%
+        //Router--------------------------------------
+            String url = "view/main.jsp";
+            response.sendRedirect(url);
+        %>  
+    </body>
 </html>
