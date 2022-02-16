@@ -2,17 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package model;
+package models;
 
 /**
  *
  * @author javip
  */
-public class Users {
+public class User {
     private String userid;
     private String username;
     
-    public Users(String userid, String username) {
+    public User(String userid, String username) {
         this.userid = userid;
         this.username = username;
     }

@@ -1,2 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/betsweb"/>
+<Context path="/betsweb">
+<!--    <Resource name="jdbc/bets" auth="Container" type="javax.sqpl.DataSource"
+        maxActive="15" maxIdle="3" maxWait="5000"
+        username="root" password=""
+        driverClassName="com.mysql.jdbc.Driver"
+        url="jdbc:mysql://localhost:3306/bets" />-->
+</Context>

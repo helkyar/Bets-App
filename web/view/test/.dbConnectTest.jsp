@@ -7,8 +7,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
 <%@ page import="java.sql.*" %>
-<%@ page import="model.Users" %>
-<%@ page import="model.DBConnection" %>
+<%@ page import="models.Users" %>
+<%@ page import="models.DBConnection" %>
 
 <%
     String upd = "INSERT INTO users (username) VALUES ('Pedro')";
@@ -17,14 +17,14 @@
 <%
     ArrayList<Users> users = new ArrayList<>();
     
-    Connection connection = new DBConnection().cnx();
-    Statement stmt = connection.createStatement();
-    ResultSet rs = stmt.executeQuery(slc);
+//    Connection connection = new DBConnection().cnx();
+//    Statement stmt = connection.createStatement();
+//    ResultSet rs = stmt.executeQuery(slc);
 //    stmt.executeUpdate(upd);
     
-    while(rs.next()){
-        users.add(new Users(rs.getString(1), rs.getString(2)));
-    }
+//    while(rs.next()){
+//        users.add(new Users(rs.getString(1), rs.getString(2)));
+//    }
     
     rs.close();
     connection.close();

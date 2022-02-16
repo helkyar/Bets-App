@@ -5,13 +5,16 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% String path = request.getContextPath(); %>
+
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="icon" href="<%= path %>/img/logo.png">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         
-        <link rel="stylesheet" type="text/css" href="../css/normalizer.css" media="screen" />
-        <link rel="stylesheet" type="text/css" href="../css/sessionpages.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="<%= path %>/css/normalizer.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="<%= path %>/css/sessionpages.css" media="screen" />
         <title>Bárbara bets</title>
     </head>
     <body>
