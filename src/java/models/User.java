@@ -9,18 +9,25 @@ package models;
  * @author javip
  */
 public class User {
-    private String userid;
-    private String username;
     
+     private class Connect extends DBConnection{
+        
+    }
+     
     public User(String userid, String username) {
         this.userid = userid;
         this.username = username;
     }
     
+// GETTERS & SETTERS __________________________________________________________
     public String getUserid() {return userid;}
     public String getUsername() {return username;}
 
     public void setUserid(String userid) {this.userid = userid;}
     public void setUsername(String username) {this.username = username;}
-
+    
+// VARIABLES __________________________________________________________________
+    private String userid;
+    private String username;
+    
 }
