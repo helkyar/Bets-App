@@ -70,7 +70,7 @@ public class BetSetter extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-//        processRequest(request, response);
+        
         List<Team> teams;
         try {
             teams = teamsmodel.getTeams();            
@@ -92,8 +92,13 @@ public class BetSetter extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+    throws ServletException, IOException {
+        String comand = request.getParameter("login");
+        System.out.println(comand);            
+        request.setAttribute("pene", comand);
+        RequestDispatcher dptch = request.getRequestDispatcher("/view/main.jsp");
+        dptch.forward(request, response);
+        response.sendRedirect("/view/main.jsp");
     }
 
     /**

@@ -20,13 +20,13 @@
     <body>
         <h1>Login page (shares css with Register-page?)</h1>
 
-        <form action="/action_page.php" method="post">
+        <form action="/betsweb/BetSetter" method="POST">
             <dir class ="imgcontenedorlogin">
                 <img src="">
                 <img src="<%= path %>/img/logo.png" alt="Avatar" class="avatarlogin">                
             </dir>
             <label for="email"><b>Email</b></label>
-            <input type="" placeholder="Intruoduce la contraseña" name="psw" required>
+            <input type="" placeholder="Intruoduce el nombre" name="login" required>
             <label for="psw"><b>Password</b></label>
             <input type="Contraseña" placeholder="Intruoduce la contraseña" name="psw" required>
            
