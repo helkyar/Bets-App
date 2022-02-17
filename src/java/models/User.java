@@ -4,6 +4,8 @@
  */
 package models;
 
+import dbconnection.DBConnection;
+
 /**
  *
  * @author javip

@@ -4,55 +4,76 @@
  */
 package models;
 
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.sql.DataSource;
 
 /**
  *
  * @author admin
  */
 public class Team {
-        
-    private class Connect extends DBConnection{
-        Connect(){
-        //call to parent to access database
-            super();
-        //update teams with database
-            teams = new ArrayList<>();
-            initTeams();
-        }
-        
-        private void initTeams(){ 
-            String query = "SELECT teamname FROM teams";
-            try{
-                st = conn.createStatement();
-                rs = st.executeQuery(query);
-                               
-                while(rs.next()) {System.out.println(rs.getString(1));}
-                
-            } catch (SQLException e){}
-            catch(Exception e){}    
-            finally{try{conn.close();}catch(Exception e){}}
-        }
+            
+    public Team(int teamId, String teamName, String tendency, int visitWon,
+    int visitLost, int visitGames, int localWon, int localLost, int localGames){
+        this.teamId = teamId;
+        this.teamName = teamName;
+        this.tendency = tendency;
+        this.visitWon = visitWon;
+        this.visitLost = visitLost;
+        this.visitGames = visitGames;
+        this.localWon = localWon;
+        this.localLost = localLost;
+        this.localGames = localGames;
+        this.data = new String[]{teamName, String.valueOf(visitWon), 
+            String.valueOf(visitLost), String.valueOf(visitGames), 
+            String.valueOf(localWon), String.valueOf(localLost),
+            String.valueOf(localGames)};
     }
     
-    public Team() {
-        new Connect();
+    @Override
+    public String toString() {
+        return "Team{" + "teamId=" + teamId + ", teamName=" + teamName + ", "
+            + "tendency=" + tendency + ", visitWon=" + visitWon + ", "
+            + "visitLost=" + visitLost + ", visitGames=" + visitGames + ", "
+            + "localWon=" + localWon + ", localLost=" + localLost + ", "
+            + "localGames=" + localGames + '}';
     }
-
-    public List<Team> getTeams() {
-        return teams;
-    }
+    
+    
+    
 //GETTERS & SETTERS ___________________________________________________________
+    public int getTeamId() {return teamId;}
+    public String getTeamName() {return teamName;}
+    public String getTendency() {return tendency;}    
+    public int getVisitWon() {return visitWon;}
+    public int getVisitLost() {return visitLost;}
+    public int getVisitGames() {return visitGames;}
+    public int getLocalWon() {return localWon;}
+    public int getLocalGames() {return localGames;}
+    public int getLocalLost() {return localLost;}
+    public String[] getData(){return data;} //variables stored in array
+    
+    public void setTeamId(int teamId) {this.teamId = teamId;}
+    public void setTeamName(String teamName) {this.teamName = teamName;}
+    public void setTendency(String tendency) {this.tendency = tendency;}    
+    public void setVisitWon(int visitWon) {this.visitWon = visitWon;}
+    public void setVisitLost(int visitLost) {this.visitLost = visitLost;}
+    public void setLocalWon(int localWon) {this.localWon = localWon;}
+    public void setVisitGames(int visitGames) {this.visitGames = visitGames;}
+    public void setLocalLost(int localLost) {this.localLost = localLost;}
+    public void setLocalGames(int localGames) {this.localGames = localGames;}
 
 // VARIABLES __________________________________________________________________     
-    private List<Team> teams;
-    //should be private once instantiated getters ans setters
-    public int visWn = 16;
-    public int visLs = 22;
-    public int locWn = 17;
-    public int locLs = 13;
+    private String[] data;
+    
+    private int teamId;
+    private String teamName;
+    private String tendency;
+    private int visitWon;
+    private int visitLost;
+    private int visitGames;
+    private int localWon;
+    private int localLost;
+    private int localGames;
 }

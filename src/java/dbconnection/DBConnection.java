@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package models;
+package dbconnection;
 
 import java.sql.*;
 import java.util.logging.Level;
@@ -13,9 +13,11 @@ import java.util.logging.Logger;
  */
 public class DBConnection {
     public DBConnection(){        
-        try{ Class.forName(driver);}catch(Exception e){}        
-        try {conn = DriverManager.getConnection(url, user, pwd);
-        } catch (SQLException ex) {}
+        try{ Class.forName(driver);}
+        catch(ClassNotFoundException e){e.printStackTrace();} 
+        
+        try {conn = DriverManager.getConnection(url, user, pwd);}
+        catch (SQLException e){e.printStackTrace();}
     }
     
 // VARIABLES __________________________________________________________________
@@ -24,9 +26,9 @@ public class DBConnection {
     private String user = "root";
     private String pwd = "";    
     
-    public static PreparedStatement ps = null;
-    public static Connection conn = null;
-    public static Statement st = null;
-    public static ResultSet rs = null;
+    protected static PreparedStatement ps = null;
+    protected static Connection conn = null;
+    protected static Statement st = null;
+    protected static ResultSet rs = null;
     
 }
