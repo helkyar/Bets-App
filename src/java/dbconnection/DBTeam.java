@@ -13,19 +13,28 @@ import models.Team;
  * Conection to database and asignation of values of the model variables
  * @author javier
  */
-public class TeamConnect extends DBConnection{
+public class DBTeam extends DBConnection{
 
-    public TeamConnect(){        
+    public DBTeam(){        
         super();//call to parent to access database and set connection
 
         teams = new ArrayList<>();
-
-        try{initTeams();} 
-        catch (SQLException e){e.printStackTrace();}
-        catch(Exception e){e.printStackTrace();}    
-        finally{try{conn.close();}catch(Exception e){e.printStackTrace();}}
+        execute(DB.INITTABLE);
     }
 
+// CONTROL POINT ______________________________________________________________
+    public int execute (int action){
+        try{
+            switch(action){
+                case 1: initTeams(); break;
+            }
+            return 0;
+        } catch (SQLException e){e.printStackTrace();}
+        catch(Exception e){e.printStackTrace();}    
+        finally{try{conn.close();return 0;}catch(Exception e){return -1;}}
+    }
+    
+// QUERYS _____________________________________________________________________
     private void initTeams() throws SQLException, Exception{ 
         String query = "SELECT `team_id`, `teamname`, `tendency`, "
             + "`visit_won`, `visit_lost`, `visit_games`, "
@@ -49,6 +58,6 @@ public class TeamConnect extends DBConnection{
     public List<Team> getTeams() {return teams;}
     
 // VARIABLES _________________________________________________________________
-    ArrayList<Team> teams;
+    private ArrayList<Team> teams;
 
 }

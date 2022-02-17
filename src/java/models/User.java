@@ -4,32 +4,44 @@
  */
 package models;
 
-import dbconnection.DBConnection;
-
 /**
  *
  * @author javip
  */
 public class User {
-    
-     private class Connect extends DBConnection{
-        
-    }
-     
-    public User(String userid, String username) {
-        this.userid = userid;
-        this.username = username;
-    }
-    
-// GETTERS & SETTERS __________________________________________________________
-    public String getUserid() {return userid;}
-    public String getUsername() {return username;}
 
-    public void setUserid(String userid) {this.userid = userid;}
+    public User(int userid, String username, String password, int betsId) {
+        this.userId = userid;
+        this.username = username;
+        this.password = password;
+        this.betsId = betsId;
+        this.data = new String[]{String.valueOf(userId), username, password,
+            String.valueOf(betsId)};
+    }  
+
+    @Override
+    public String toString() {
+        return "User{" + "userId=" + userId + ", username=" + username + 
+            ", password=" + password + ", betsId=" + betsId + '}';
+    }    
+    
+// GETTERS & SETTERS __________________________________________________________    
+    public String[] getData() {return data;}
+    public int getUserId() {return userId;}
+    public String getUsername() {return username;}
+    public String getPassword() {return password;}
+    public int getBetsId() {return betsId;}
+
+    public void setUserid(int userId) {this.userId = userId;}
     public void setUsername(String username) {this.username = username;}
+    public void setPassword(String password) {this.password = password;}
+    public void setBetsId(int betsId) {this.betsId = betsId;}
     
 // VARIABLES __________________________________________________________________
-    private String userid;
-    private String username;
+    private String[] data;
     
+    private int userId;
+    private String username;
+    private String password;
+    private int betsId;
 }

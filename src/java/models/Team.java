@@ -4,10 +4,6 @@
  */
 package models;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  *
  * @author admin
@@ -38,9 +34,7 @@ public class Team {
             + "visitLost=" + visitLost + ", visitGames=" + visitGames + ", "
             + "localWon=" + localWon + ", localLost=" + localLost + ", "
             + "localGames=" + localGames + '}';
-    }
-    
-    
+    }   
     
 //GETTERS & SETTERS ___________________________________________________________
     public int getTeamId() {return teamId;}

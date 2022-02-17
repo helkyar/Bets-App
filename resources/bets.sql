@@ -33,8 +33,11 @@ CREATE TABLE `bets` (
   `bet_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `game_id` int(11) NOT NULL,
-  `amount` int(11) NOT NULL,
-  `bet_result` varchar(7) NOT NULL DEFAULT '?_?'
+  `bet_pay` int(11) NOT NULL,    
+  `bet_type` int(11) NOT NULL,
+  `bet_amount` int(11) NOT NULL,
+  `result_local` int(11) NOT NULL,
+  `result_visit` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -452,7 +455,9 @@ CREATE TABLE `teams` (
   `visit_lost` int(11) DEFAULT NULL,
   `tendency` varchar(2) DEFAULT '',
   `local_won` int(11) DEFAULT NULL,
-  `local_lost` int(11) DEFAULT NULL
+  `local_lost` int(11) DEFAULT NULL,
+  `visit_game` int(11) DEFAULT NULL,
+  `local_game` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package models;
+package dbconnection;
 
 /**
  *
- * @author admin
+ * @author javier
  */
-public class Wager {
-    
+public class DB {
+    public static final int INITTABLE = 1;
 }

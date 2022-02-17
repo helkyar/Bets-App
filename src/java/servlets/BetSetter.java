@@ -4,7 +4,7 @@
  */
 package servlets;
 
-import dbconnection.TeamConnect;
+import dbconnection.DBTeam;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -22,7 +22,7 @@ import models.*;
  * @author admin
  */
 public class BetSetter extends HttpServlet {
-    private TeamConnect teamsmodel;
+    private DBTeam teamsmodel;
 //    
 //    @Resource(name="jdbc/bets")
 //    private DataSource dbpool;
@@ -30,7 +30,7 @@ public class BetSetter extends HttpServlet {
     public void init()throws ServletException{
         super.init();
         try{
-            teamsmodel = new TeamConnect();
+            teamsmodel = new DBTeam();
         } catch (Exception e){throw new ServletException(e);}
     }
     /**
