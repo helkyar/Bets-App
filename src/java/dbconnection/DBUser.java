@@ -22,22 +22,19 @@ public class DBUser {
         super();//call to parent to access database and set connection
 
         users = new ArrayList<>();
-        execute(DB.INITTABLE);
+
+        try{initUsers();} 
+        catch (SQLException e){e.printStackTrace();}
+        catch(Exception e){e.printStackTrace();}    
+        finally{try{conn.close();}catch(Exception e){e.printStackTrace();}}
     }
 
-// CONTROL POINT ______________________________________________________________
-    public int execute (int action){
-        try{
-            switch(action){
-                case 1: initUsers(); break;
-            }
-            return 0;
-        } catch (SQLException e){e.printStackTrace();}
-        catch(Exception e){e.printStackTrace();}    
-        finally{try{conn.close();return 0;}catch(Exception e){return -1;}}
-    }
-    
-// QUERYS _____________________________________________________________________
+    /**
+    * Stores all table data inside ArrayList variable. Each model instance
+    * correlates to a table row.
+    * @throws SQLException
+    * @throws Exception 
+    */
     private void initUsers() throws SQLException, Exception{ 
         String query = "SELECT ´user_id´, ´username´, ´password´, ´bets_id´"
                 + " FROM users";

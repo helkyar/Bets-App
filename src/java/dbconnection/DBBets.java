@@ -10,7 +10,7 @@ import static dbconnection.DBConnection.st;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import models.Bets;
+import models.Bet;
 
 /**
  *
@@ -21,22 +21,19 @@ public class DBBets {
         super();//call to parent to access database and set connection
 
         wagers = new ArrayList<>();
-        execute(DB.INITTABLE);
+        
+        try{initWagers();}
+        catch (SQLException e){e.printStackTrace();}
+        catch(Exception e){e.printStackTrace();}    
+        finally{try{conn.close();}catch(Exception e){e.printStackTrace();}}
     }
 
-// CONTROL POINT ______________________________________________________________
-    public int execute (int action){
-        try{
-            switch(action){
-                case 1: initWagers(); break;
-            }
-            return 0;
-        } catch (SQLException e){e.printStackTrace();}
-        catch(Exception e){e.printStackTrace();}    
-        finally{try{conn.close();return 0;}catch(Exception e){return -1;}}
-    }
-    
-// QUERYS _____________________________________________________________________
+    /**
+     * Stores all table data inside ArrayList variable. Each model instance
+     * correlates to a table row.
+     * @throws SQLException
+     * @throws Exception 
+     */
     private void initWagers()  throws SQLException, Exception{ 
         String query = "SELECT `bet_id`, `user_id`, `game_id`, `bet_pay`, "
             + "`bet_type`, `bet_amount`, `result_local`, `result_visit` "
@@ -46,7 +43,7 @@ public class DBBets {
         rs = st.executeQuery(query);
 
         while(rs.next()) {
-            wagers.add(new Bets(rs.getInt(1), rs.getInt(2), rs.getInt(3),
+            wagers.add(new Bet(rs.getInt(1), rs.getInt(2), rs.getInt(3),
                 rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getInt(7),
                 rs.getInt(8)));
         }
@@ -58,8 +55,8 @@ public class DBBets {
     * (one instance of Wager class per row).
     * @return wagers ArrayList with all the wagers in the database
     */
-    public List<Bets> getTeams() {return wagers;}
+    public List<Bet> getTeams() {return wagers;}
     
 // VARIABLES _________________________________________________________________
-    private ArrayList<Bets> wagers;
+    private ArrayList<Bet> wagers;
 }

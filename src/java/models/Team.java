@@ -9,7 +9,9 @@ package models;
  * @author admin
  */
 public class Team {
-            
+          
+    public Team(){}
+    
     public Team(int teamId, String teamName, String tendency, int visitWon,
     int visitLost, int visitGames, int localWon, int localLost, int localGames){
         this.teamId = teamId;

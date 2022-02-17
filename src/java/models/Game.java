@@ -10,6 +10,8 @@ package models;
  */
 public class Game {
 
+    public Game(){}
+    
     public Game(int gameId, String local, String visitor, String date, int visitorResult, int localResult, int scraperId) {
         this.gameId = gameId;
         this.local = local;

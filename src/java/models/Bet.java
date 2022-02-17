@@ -8,9 +8,11 @@ package models;
  *
  * @author admin
  */
-public class Bets {
+public class Bet {
 
-    public Bets(int betId, int userId, int gameId, int betPay, int betType, int betAmount, int resultLocal, int resultVisit) {
+    public Bet(){}
+    
+    public Bet(int betId, int userId, int gameId, int betPay, int betType, int betAmount, int resultLocal, int resultVisit) {
         this.betId = betId;
         this.userId = userId;
         this.gameId = gameId;

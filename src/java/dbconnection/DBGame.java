@@ -21,23 +21,20 @@ public class DBGame {
         super();//call to parent to access database and set connection
 
         games = new ArrayList<>();
-        execute(DB.INITTABLE);
+
+        try{initGame();} 
+        catch (SQLException e){e.printStackTrace();}
+        catch(Exception e){e.printStackTrace();}    
+        finally{try{conn.close();}catch(Exception e){e.printStackTrace();}}
     }
 
-// CONTROL POINT ______________________________________________________________
-    public int execute (int action){
-        try{
-            switch(action){
-                case 1: initGames(); break;
-            }
-            return 0;
-        } catch (SQLException e){e.printStackTrace();}
-        catch(Exception e){e.printStackTrace();}    
-        finally{try{conn.close();return 0;}catch(Exception e){return -1;}}
-    }
-    
-// QUERYS _____________________________________________________________________
-    private void initGames() throws SQLException, Exception{ 
+    /**
+     * Stores all table data inside ArrayList variable. Each model instance
+     * correlates to a table row.
+     * @throws SQLException
+     * @throws Exception 
+     */
+    private void initGame() throws SQLException, Exception{ 
         String query = "SELECT `game_id`, `local`, `visitor`, `date`, "
             + "`visitor_result`, `local_result`, `scraper_id` FROM games";
 

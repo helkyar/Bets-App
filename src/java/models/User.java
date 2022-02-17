@@ -9,7 +9,9 @@ package models;
  * @author javip
  */
 public class User {
-
+    
+    public User(){}
+    
     public User(int userid, String username, String password, int betsId) {
         this.userId = userid;
         this.username = username;
