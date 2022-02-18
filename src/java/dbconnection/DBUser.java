@@ -4,19 +4,18 @@
  */
 package dbconnection;
 
-import static dbconnection.DBConnection.conn;
-import static dbconnection.DBConnection.rs;
-import static dbconnection.DBConnection.st;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import models.User;
 
 /**
  *
  * @author javier
  */
-public class DBUser {
+public class DBUser  extends Connect{
     
     public DBUser(){        
         super();//call to parent to access database and set connection
@@ -36,17 +35,56 @@ public class DBUser {
     * @throws Exception 
     */
     private void initUsers() throws SQLException, Exception{ 
-        String query = "SELECT ´user_id´, ´username´, ´password´, ´bets_id´"
-                + " FROM users";
+        String query = "SELECT `user_id`, `username`, `password`, `money`, "
+            + "`bets_id` FROM users";
 
         st = conn.createStatement();
         rs = st.executeQuery(query);
 
         while(rs.next()) {
             users.add(new User(rs.getInt(1), rs.getString(2), rs.getString(3),
-            rs.getInt(4)));
+                rs.getInt(4), rs.getInt(5)));
         }
     }
+    
+    public User loginUser(String username, String password) {
+        User user = new User(-1);
+        String query = "SELECT `user_id`, `money`  FROM users WHERE "
+            + "username = '"+username+"' AND password = '"+password+"'";
+            
+        connect();
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery(query);
+            
+            if (rs.next()) {
+                user.setUsername(username);
+                user.setUserid(rs.getInt(1));
+                user.setMoney(rs.getInt(2));
+                return user;
+            }
+            return user;
+            
+        } catch (SQLException e){e.printStackTrace(); return user;}
+        catch(Exception e){e.printStackTrace(); return user;}    
+        finally{try{conn.close();} catch(Exception e){return user;}}
+    }
+
+    public int registerUser(String username, String password) {
+        String query = "INSERT INTO users (`username`, `password`, `money`)"
+            + " VALUES ('"+username+"','"+password+"','1000')";
+        
+        connect();
+        try{
+            ps = conn.prepareStatement(query);      
+            ps.executeUpdate();
+            return 1;
+            
+        } catch (SQLException e){e.printStackTrace(); return -1;}
+        catch(Exception e){e.printStackTrace(); return -1;}    
+        finally{try{conn.close();} catch(Exception e){return -1;}}
+    }
+    
     // GETTERS & SETTERS _________________________________________________________
     /**
     * This variable holds the value of each row of the table User 
@@ -54,7 +92,8 @@ public class DBUser {
     * @return users ArrayList with all the users in the database
     */
     public List<User> getUsers() {return users;}
-    
+  
 // VARIABLES _________________________________________________________________
     private ArrayList<User> users;
+
 }

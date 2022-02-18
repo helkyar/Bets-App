@@ -4,9 +4,25 @@
         <servlet-name>BetSetter</servlet-name>
         <servlet-class>servlets.BetSetter</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Session</servlet-name>
+        <servlet-class>servlets.Session</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BetGetter</servlet-name>
+        <servlet-class>servlets.BetGetter</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>BetSetter</servlet-name>
         <url-pattern>/BetSetter</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Session</servlet-name>
+        <url-pattern>/Session</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BetGetter</servlet-name>
+        <url-pattern>/BetGetter</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

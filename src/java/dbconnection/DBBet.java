@@ -4,9 +4,6 @@
  */
 package dbconnection;
 
-import static dbconnection.DBConnection.conn;
-import static dbconnection.DBConnection.rs;
-import static dbconnection.DBConnection.st;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,8 +13,8 @@ import models.Bet;
  *
  * @author javier
  */
-public class DBBets {
-        public DBBets(){        
+public class DBBet extends Connect{
+        public DBBet(){        
         super();//call to parent to access database and set connection
 
         wagers = new ArrayList<>();
@@ -55,7 +52,7 @@ public class DBBets {
     * (one instance of Wager class per row).
     * @return wagers ArrayList with all the wagers in the database
     */
-    public List<Bet> getTeams() {return wagers;}
+    public List<Bet> getBets() {return wagers;}
     
 // VARIABLES _________________________________________________________________
     private ArrayList<Bet> wagers;

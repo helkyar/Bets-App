@@ -38,7 +38,8 @@ public class Team {
             + "localGames=" + localGames + '}';
     }   
     
-//GETTERS & SETTERS ___________________________________________________________
+//GETTERS & SETTERS ___________________________________________________________    
+    public String[] getData(){return data;} //variables stored in array
     public int getTeamId() {return teamId;}
     public String getTeamName() {return teamName;}
     public String getTendency() {return tendency;}    
@@ -48,7 +49,6 @@ public class Team {
     public int getLocalWon() {return localWon;}
     public int getLocalGames() {return localGames;}
     public int getLocalLost() {return localLost;}
-    public String[] getData(){return data;} //variables stored in array
     
     public void setTeamId(int teamId) {this.teamId = teamId;}
     public void setTeamName(String teamName) {this.teamName = teamName;}

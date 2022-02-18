@@ -7,6 +7,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% String path = request.getContextPath(); %>
 
+<!-- get info from servlet -->
+<!-- start session if ok -->
+<!-- set msg error if notok -->
+<%%>
+
 <!DOCTYPE html>
 <html>
     <head>

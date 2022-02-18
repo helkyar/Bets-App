@@ -4,9 +4,6 @@
  */
 package dbconnection;
 
-import static dbconnection.DBConnection.conn;
-import static dbconnection.DBConnection.rs;
-import static dbconnection.DBConnection.st;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +13,7 @@ import models.Game;
  *
  * @author javier
  */
-public class DBGame {
+public class DBGame  extends Connect{
         public DBGame(){        
         super();//call to parent to access database and set connection
 
@@ -52,7 +49,7 @@ public class DBGame {
     * (one instance of Game class per row).
     * @return games ArrayList with all the games in the database
     */
-    public List<Game> getGame() {return games;}
+    public List<Game> getGames() {return games;}
     
 // VARIABLES _________________________________________________________________
     private ArrayList<Game> games;

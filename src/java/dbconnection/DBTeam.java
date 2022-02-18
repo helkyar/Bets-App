@@ -13,7 +13,7 @@ import models.Team;
  * Conection to database and asignation of values of the model variables
  * @author javier
  */
-public class DBTeam extends DBConnection{
+public class DBTeam extends Connect{
 
     public DBTeam(){        
         super();//call to parent to access database and set connection
@@ -34,8 +34,8 @@ public class DBTeam extends DBConnection{
      */
     private void initTeams() throws SQLException, Exception{ 
         String query = "SELECT `team_id`, `teamname`, `tendency`, "
-            + "`visit_won`, `visit_lost`, `visit_games`, "
-            + "`local_won`, `visit_lost`, `local_games´ FROM teams";
+            + "`visit_won`, `visit_lost`, `visit_game`, "
+            + "`local_won`, `visit_lost`, `local_game` FROM teams";
 
         st = conn.createStatement();
         rs = st.executeQuery(query);

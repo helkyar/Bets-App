@@ -36,6 +36,7 @@ CREATE TABLE `bets` (
   `bet_pay` int(11) NOT NULL,    
   `bet_type` int(11) NOT NULL,
   `bet_amount` int(11) NOT NULL,
+  `resolved` int(1) NOT NULL,
   `result_local` int(11) NOT NULL,
   `result_visit` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -496,6 +497,7 @@ CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(300) NOT NULL,
+  `money` int(11) NOT NULL, 
   `bets_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

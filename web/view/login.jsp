@@ -4,8 +4,21 @@
     Author     : Sandra
 --%>
 
+<%@page import="models.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% String path = request.getContextPath(); %>
+
+<!-- get info from servlet -->
+<!-- start session if ok -->
+<!-- set msg error if notok -->
+<%
+    session.removeAttribute("TOKEN");
+    User user = (User) request.getAttribute("SESSION");
+    if(user!=null){
+        session.setAttribute("TOKEN", user);
+        response.sendRedirect("/betsweb/view/main.jsp");
+    }
+%>
 
 <!DOCTYPE html>
 <html>
@@ -20,15 +33,16 @@
     <body>
         <h1>Login page (shares css with Register-page?)</h1>
 
-        <form action="/betsweb/BetSetter" method="POST">
+        <form action="/betsweb/Session" method="POST">
             <dir class ="imgcontenedorlogin">
                 <img src="">
                 <img src="<%= path %>/img/logo.png" alt="Avatar" class="avatarlogin">                
             </dir>
             <label for="email"><b>Email</b></label>
-            <input type="" placeholder="Intruoduce el nombre" name="login" required>
+            <input type="" placeholder="Intruoduce el nombre" name="username" required>
             <label for="psw"><b>Password</b></label>
-            <input type="Contraseña" placeholder="Intruoduce la contraseña" name="psw" required>
+            <input type="Contraseña" placeholder="Intruoduce la contraseña" name="password" required>            
+            <input type="hidden" name="action" value="log" required>
            
             <button type="submit">Inicia sesion</button>
             <label>

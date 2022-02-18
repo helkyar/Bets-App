@@ -4,17 +4,14 @@
  */
 package servlets;
 
-import dbconnection.DBTeam;
+import dbconnection.*;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
-import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
 import models.*;
 
 /**
@@ -23,7 +20,8 @@ import models.*;
  */
 public class BetSetter extends HttpServlet {
     private DBTeam teamsmodel;
-//    
+    private DBBet betsmodel;
+    private DBGame gamesmodel;
 //    @Resource(name="jdbc/bets")
 //    private DataSource dbpool;
     
@@ -31,35 +29,11 @@ public class BetSetter extends HttpServlet {
         super.init();
         try{
             teamsmodel = new DBTeam();
+            betsmodel = new DBBet();
+            gamesmodel = new DBGame();
         } catch (Exception e){throw new ServletException(e);}
     }
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet BetSetter</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet BetSetter at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -73,33 +47,25 @@ public class BetSetter extends HttpServlet {
     throws ServletException, IOException {
         
         List<Team> teams;
+        List<Game> games;
+        List<Bet> bets;
+        
+        
+//<!-- check bet date and send or not -->
+        
         try {
-            teams = teamsmodel.getTeams();            
+            teams = teamsmodel.getTeams(); 
+            bets = betsmodel.getBets();
+            games = gamesmodel.getGames();
+            
             request.setAttribute("TEAMS", teams);
+            request.setAttribute("BETS", bets);
+            request.setAttribute("GAMES", games);
             
             RequestDispatcher dptch = request.getRequestDispatcher("/view/main.jsp");
             dptch.forward(request, response);
             
         } catch (Exception e) {e.printStackTrace();}
-    }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        String comand = request.getParameter("login");
-        System.out.println(comand);            
-        request.setAttribute("pene", comand);
-        RequestDispatcher dptch = request.getRequestDispatcher("/view/main.jsp");
-        dptch.forward(request, response);
-        response.sendRedirect("/view/main.jsp");
     }
 
     /**

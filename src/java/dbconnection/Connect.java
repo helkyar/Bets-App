@@ -11,8 +11,16 @@ import java.util.logging.Logger;
  *
  * @author javip
  */
-public class DBConnection {
-    public DBConnection(){        
+public class Connect {
+    public Connect(){        
+        try{ Class.forName(driver);}
+        catch(ClassNotFoundException e){e.printStackTrace();} 
+        
+        try {conn = DriverManager.getConnection(url, user, pwd);}
+        catch (SQLException e){e.printStackTrace();}
+    }
+    
+    public void connect(){
         try{ Class.forName(driver);}
         catch(ClassNotFoundException e){e.printStackTrace();} 
         

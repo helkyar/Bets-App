@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-color: black;
+    }
+    .pay-method{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    a {
+        border: 1px gray solid;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 5rem;
+        margin: 1rem;
+        width: 15%;
+        height: 4rem;
+    }
+    img{
+        width: 10rem;
+        margin: -2.2rem 0;    
+    }
+    .visa{width: 8rem;}
+    .maestro{width: 5rem;}
+</style>
+<body>
+    <div class="pay-method">
+        <a href="view/visa.html"><img class="paypal" src="paypal.png" alt=""></a>
+        <a href="view/visa.html"><img class="visa" src="visa.png" alt=""></a>
+        <a class="a-maestro" href="view/visa.html"><img class="maestro" src="maestro.png" alt=""></a>
+    </div>
+    <style>
+        body{
+            overflow: hidden;
+        }
+        .bet{
+            color: aqua;
+            width: 12rem;
+            margin-left: auto;
+            margin-right: 1rem;
+            border: 1px gray solid;
+            transition: all 0.5s ease-out;
+        }
+        h5{
+            margin: 0 auto;
+        }
+        .bet div{
+            width: 12rem;
+            color: azure;
+            display: flex;
+            justify-content: space-between;
+            margin: 0.2rem;
+        }
+        .bet input{
+            width: 5rem;
+        }
+    </style>
+    <div class="bet">
+        <h5>Betis vs Osasuna</h5>
+        <div>
+        numero
+        <input type="number">
+        </div>
+        <div>
+            <button>+5</button>
+            <button>+10</button>
+            <button>+50</button>
+            <button>v</button>
+        </div>
+    </div>
+    <button class="hide">hide</button>
+    <script src="transform.js"></script>
+</body>
+</html>
