@@ -7,6 +7,8 @@ package dbconnection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import models.Bet;
 
 /**
@@ -88,5 +90,61 @@ public class DBBet extends Connect{
         } catch (SQLException e){e.printStackTrace(); return -1;}
         catch(Exception e){e.printStackTrace(); return -1;}    
         finally{try{conn.close();} catch(Exception e){return -1;}}
+    }
+
+    public void resolvePassedBets() {
+        String query = "SELECT bets.bets_id, games.visitor_result, "
+          + "games.local_result, bets.bet_pay, bets.bet_amount, "
+          + "bets.bet_type, bets.result_local, bets.result_visit, bets.user_id"
+          + " FROM games "
+          + "INNER JOIN bets ON bets.game_id = games.game_id "
+          + "WHERE date = 'NULL' AND games.game_id IN "
+          + "(SELECT bets.game_id FROM `bets` WHERE bets.resolved = '0')";
+        int id=0, visitRes=0, localRes=0, pay=0, amount=0, type=0, 
+            betLocal=0, betVisit=0, userId=0;
+        
+        try{
+            st = conn.createStatement();
+            rs = st.executeQuery(query);
+
+            while(rs.next()) {
+                id = rs.getInt(1);
+                visitRes = rs.getInt(2);
+                localRes = rs.getInt(3);
+                pay = rs.getInt(4);
+                amount = rs.getInt(5);
+                type = rs.getInt(6);
+                betLocal = rs.getInt(7);
+                betVisit = rs.getInt(8);
+                userId = rs.getInt(9);
+            }
+        
+        } catch (SQLException ex) {} 
+        catch(Exception e){e.printStackTrace();}    
+        finally{try{conn.close();} catch(Exception e){}}
+        
+        boolean yujuu = false;
+        switch(type){
+            case 1: yujuu = visitRes < localRes; break;
+            case 2: yujuu = visitRes == localRes; break;
+            case 3: yujuu =  visitRes > localRes; break;
+            case 4: yujuu = visitRes+localRes < betVisit+betLocal; break;
+            case 5: yujuu = visitRes+localRes > betVisit+betLocal; break;
+            case 6: yujuu = visitRes==betVisit && localRes==betLocal; break;
+        }
+
+        if(yujuu){new DBUser("").setUserAmount(userId, pay*amount);}
+
+        String resolve = "UPDATE bets SET resolved= '1' WHERE bet_id='"+id+"'";
+
+        connect();
+        try{
+            ps = conn.prepareStatement(resolve);      
+            ps.executeUpdate();
+
+        } catch (SQLException e){e.printStackTrace();}
+        catch(Exception e){e.printStackTrace();}    
+        finally{try{conn.close();} catch(Exception e){}}
+
     }
 }

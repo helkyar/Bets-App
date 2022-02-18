@@ -12,6 +12,9 @@ body{
     padding:0;
 }
 header{
+    position: fixed;
+    top: 0;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     padding-right: 3rem;

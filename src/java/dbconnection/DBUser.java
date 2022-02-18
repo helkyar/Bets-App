@@ -17,6 +17,8 @@ import models.User;
  */
 public class DBUser  extends Connect{
     
+    public DBUser(String s){}
+    
     public DBUser(){        
         super();//call to parent to access database and set connection
 
@@ -83,6 +85,28 @@ public class DBUser  extends Connect{
         } catch (SQLException e){e.printStackTrace(); return -1;}
         catch(Exception e){e.printStackTrace(); return -1;}    
         finally{try{conn.close();} catch(Exception e){return -1;}}
+    }
+    
+    public void setUserAmount(int id, int amount) {
+        String money = "SELECT money FROM users WHERE  user_id='"+id+"'";
+        //Pass user_id
+
+        connect();
+        try{
+            st = conn.createStatement();
+            rs = st.executeQuery(money);
+            
+            if (rs.next()) {amount += rs.getInt(1);}
+            
+            String resolve = "UPDATE users SET money = '"+amount+"'+ "
+                + "WHERE user_id='"+id+"'";
+            
+            ps = conn.prepareStatement(resolve);      
+            ps.executeUpdate();
+
+        } catch (SQLException e){e.printStackTrace();}
+        catch(Exception e){e.printStackTrace();}    
+        finally{try{conn.close();} catch(Exception e){}}
     }
     
     // GETTERS & SETTERS _________________________________________________________

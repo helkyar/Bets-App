@@ -49,34 +49,8 @@ public class BetSetter extends HttpServlet {
         List<Team> teams;
         List<Game> games;
         List<Bet> bets;   
-    //ONCE A DAY
-//     get bets that are not reolved 
-    //;
-//and use it to search games wich date is null
-//SELECT games.visitor_result, games.local_result, bets.bet_pay, 
-  //bets.bet_amount, bets.bet_type, bets.result_local, bets.result_visit
-//FROM games INNER JOIN bets ON bets.game_id = games.game_id
-//WHERE date = 'NULL' AND games.game_id IN 
-  //(SELECT bets.game_id FROM `bets` WHERE bets.resolved = '0');
-
-    //#type of bet to determine if pay or not bets(#result_local, #result_visit, #bet_type) 
-    //vs #game_id(#visitor_result, #local_result)
-    //TYPE: (won local, won visitor, tables) (total goals) (exact result)
-    boolean yujuu;
-//    switch(){
-        //case 1: yujuu = games.visitor_result < games.local_result;
-        //case 2: yujuu = games.visitor_result == games.local_result;
-        //case 3: yujuu = games.visitor_result > games.local_result;
-        //case 4: yujuu = bets.results < games.results;
-        //case 5: yujuu = bets.results > games.results;
-        //case 6: yujuu = bets.results == games.results;
-//}
-//    
-//    
-        //if()pay -> #amount*#pay -> update #user_amount through #user_id
-        //not pay -> /
-    //Mark bet as resolved
-
+        //ONCE A DAY
+        betsmodel.resolvePassedBets();
 
     // check bet show and send or not 
         try {
