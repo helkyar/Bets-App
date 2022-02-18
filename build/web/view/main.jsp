@@ -9,19 +9,23 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 <% String path = request.getContextPath(); %>
 
 <!-- check if session exists -->
-<!-- filter by user in session -->
-<!-- get sado -->
-<!-- send bets -->
+<!-- filter bets by user in session -->
+<!-- check if resolved to render -->
+<!-- get money -->
+<!-- send bets with realtive url -->
+<!-- delete bets with realtive url -->
 <!-- render bets -->
 
 <%// Obtains teams from PriceSetter controller (servlet)
-    User user = (User) session.getAttribute("TOKEN");
-    if(user==null){
-        session.setAttribute("TOKEN", user);
-        response.sendRedirect("/betsweb/view/login.jsp");
-    }
-    List<Team> teams = (List<Team>) request.getAttribute("TEAMS");
+    List<Game> games = (List<Game>) request.getAttribute("GAMES");
+    session.setAttribute("GAMES", games);
     List<Bet> bets = (List<Bet>) request.getAttribute("BETS");
+    session.setAttribute("BETS", bets);    
+    List<Team> teams = (List<Team>) request.getAttribute("TEAMS");
+    session.setAttribute("TEAMS", teams); 
+        
+    User user = (User) session.getAttribute("TOKEN");
+    if(user==null){response.sendRedirect("/betsweb/view/login.jsp");}
 %>
 
 <jsp:include page="imports/header.jsp" />  

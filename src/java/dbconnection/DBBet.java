@@ -37,7 +37,7 @@ public class DBBet extends Connect{
     private void initWagers()  throws SQLException, Exception{ 
         String query = "SELECT `bet_id`, `user_id`, `game_id`, `bet_pay`, "
             + "`bet_type`, `bet_amount`, `result_local`, `result_visit` "
-            + "FROM bets";
+            + "FROM bets WHERE `show` = '1'";
 
         st = conn.createStatement();
         rs = st.executeQuery(query);
@@ -64,6 +64,20 @@ public class DBBet extends Connect{
         String query = "INSERT INTO users (`user_id`, `game_id`, `bet_pay`,"
             + " `bet_type`, `bet_amount`, `resolved`) VALUES "
             + "('"+user+"','"+game+"','"+pay+"','"+type+"','"+amount+"','0')";
+        
+        connect();
+        try{
+            ps = conn.prepareStatement(query);      
+            ps.executeUpdate();
+            return 1;
+            
+        } catch (SQLException e){e.printStackTrace(); return -1;}
+        catch(Exception e){e.printStackTrace(); return -1;}    
+        finally{try{conn.close();} catch(Exception e){return -1;}}
+    }
+
+    public int deleteBet(String betid) {
+        String query = "UPDATE bets SET show= '0' WHERE bet_id='"+betid+"'";
         
         connect();
         try{

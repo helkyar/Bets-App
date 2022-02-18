@@ -4,7 +4,8 @@
     Author     : Sandra
 --%>
 
-<%@page import="models.User"%>
+<%@page import="java.util.List"%>
+<%@page import="models.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% String path = request.getContextPath(); %>
 
@@ -12,10 +13,13 @@
 <!-- start session if ok -->
 <!-- set msg error if notok -->
 <%
-    session.removeAttribute("TOKEN");
+    session.removeAttribute("TOKEN");    
+    List<Team> teams = (List<Team>) session.getAttribute("TEAMS");
+    if(teams==null){response.sendRedirect("/betsweb/BetSetter");}
+    
     User user = (User) request.getAttribute("SESSION");
     if(user!=null){
-        session.setAttribute("TOKEN", user);
+        session.setAttribute("TOKEN", user);      
         response.sendRedirect("/betsweb/view/main.jsp");
     }
 %>
@@ -31,6 +35,10 @@
         <title>Bárbara bets</title>
     </head>
     <body>
+        <form action="/betsweb/BetGetter" method="POST">
+            <input type="hidden" name="action" value="updatedb" required>
+            <button type="submit">Inicia sesion</button>
+        </form>
         <h1>Login page (shares css with Register-page?)</h1>
 
         <form action="/betsweb/Session" method="POST">
@@ -42,7 +50,7 @@
             <input type="" placeholder="Intruoduce el nombre" name="username" required>
             <label for="psw"><b>Password</b></label>
             <input type="Contraseña" placeholder="Intruoduce la contraseña" name="password" required>            
-            <input type="hidden" name="action" value="log" required>
+            <input type="hidden" name="action" value="insert" required>
            
             <button type="submit">Inicia sesion</button>
             <label>

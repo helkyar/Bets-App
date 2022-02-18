@@ -38,50 +38,48 @@ public class BetGetter extends HttpServlet {
             switch(comand){
                 case "insert": storeBet(request, response); break;
                 case "delete": deleteBet(request, response); break;
+                case "updatedb": updateDataBase(); break;
             }
         
         }catch (Exception e){e.printStackTrace();}
 
     }
-       //get bets deleted in main or details and delete them
-//        -GET -> detail.jsp 
-//        --request to one game -> filters session object (?access url info)
-//        -POST -> betgetter.java
-//        --object bet to store in database.
-//        --get url sender to respond
-//        --store in database
-//        --refresh user and bets objects in session
 
     private void storeBet(HttpServletRequest request, HttpServletResponse response) 
     throws IOException, ServletException {
         //get bets posted in main or details page and insert them
         DBBet betsmodel = new DBBet("");
-        String url = request.getContextPath();
+        String url = request.getParameter("path");
         Bet bet = (Bet) request.getAttribute("STOREBET");
+        
         //Store to database
         int resp = betsmodel.insertBet(bet.getUserId(), bet.getGameId(), 
             bet.getBetType(), bet.getBetPay(), bet.getBetAmount());
         //Refresh page without sending new bets
         if(resp<0){response.sendRedirect(url);}
-        //Resend updated bets
-        List<Bet> bets = new DBBet().getBets();    
-        List<User> users = new DBUser().getUsers();  
         
-        request.setAttribute("BETS", bets);        
-        request.setAttribute("USERS", bets);
-        System.out.println(url);
+        //Resend updated bets and users (account money)   
+        request.setAttribute("BETS", new DBBet().getBets());        
+        request.setAttribute("USERS", new DBUser().getUsers());
         
         RequestDispatcher dptch = request.getRequestDispatcher(url);
         dptch.forward(request, response);
     }
 
     private void deleteBet(HttpServletRequest request, HttpServletResponse response) 
-    throws ServletException, IOException {        
+    throws ServletException, IOException {  
+//      request.setParameter("path", request.getRequestURI())
+//      name="path" value="request.getRequestURI()"
         String bet = request.getParameter("betid");        
-        String url = request.getContextPath();       
+        String url = request.getContextPath();    
         
-        List<Bet> bets = new DBBet().getBets(); 
-        request.setAttribute("BETS", bets);  
+        //Hide bet from user           
+        DBBet betsmodel = new DBBet("");
+        int resp = betsmodel.deleteBet(bet);
+        //Refresh page without sending new bets
+        if(resp<0){response.sendRedirect(url);}         
+        //send updated bets
+        request.setAttribute("BETS", new DBBet().getBets());  
         
         RequestDispatcher dptch = request.getRequestDispatcher(url);
         dptch.forward(request, response);
@@ -96,5 +94,9 @@ public class BetGetter extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private void updateDataBase() {
+        Scraper.executeDataBaseUpdate();
+    }
 
 }

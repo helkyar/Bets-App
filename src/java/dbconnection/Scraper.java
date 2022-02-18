@@ -40,7 +40,7 @@ public class Scraper {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void executeDataBaseUpdate() {
         /**
          * check by order tot track results and due payment (asign id:ref)
          * check if date still exists or there is a new one (!=int-int->update)
@@ -62,7 +62,8 @@ public class Scraper {
 //                    storeInDatabaseGames(id, loc, vis, res);
 //                    storeInDatabaseTeams(loc);
                     updateTeamsGoals(loc, vis, res);
-                    updateGameResults(id, res);
+                    updateDatabaseGames(id, loc, vis, res);
+//                    updateGameResults(id, res);
                     id++;
                 }           
             }            
@@ -76,7 +77,9 @@ public class Scraper {
 // =============================================================================
     private static void storeInDatabaseGames(int id, String loc, String vis, String res) {
         
-        final String query = "INSERT INTO `games` (`scraper_id`, `local`, `visitor`, `local_result`, `visitor_result`, `date`) VALUES (?, ?, ?, ?, ?, ?)";
+        final String query = "INSERT INTO `games` (`scraper_id`, `local`, "
+            + "`visitor`, `local_result`, `visitor_result`, `date`) VALUES "
+            + "(?, ?, ?, ?, ?, ?)";
 
         int localResult, visitorResult;
         String date;
@@ -136,7 +139,7 @@ public class Scraper {
         if(res.contains("-")){  
             int locg = Integer.parseInt(res.split("-")[0]);
             int visg = Integer.parseInt(res.split("-")[1]);
-            Integer[] results = {0,0,0,0};
+            Integer[] results = {0,0,0,0,0,0};
             if(!statistics.containsKey(loc)){statistics.put(loc, results);}
             else if(!statistics.containsKey(vis)){statistics.put(vis, results);}
             else {
@@ -146,6 +149,8 @@ public class Scraper {
                 locst[1] += visg; //local_lost
                 visst[2] += visg;//visitor_won
                 visst[3] += locg;//visitor_lost
+                locst[4]++;//local_game
+                visst[5]++;//visitor_game
                 statistics.put(loc, locst);               
                 statistics.put(vis, visst);               
             }         
@@ -159,8 +164,13 @@ public class Scraper {
                 int locl = statistics.get(team)[1];
                 int visw = statistics.get(team)[2];
                 int visl = statistics.get(team)[3];
+                int locg = statistics.get(team)[4];
+                int visg = statistics.get(team)[5];
                 
-                final String query = "UPDATE `teams` SET `local_won`='"+locw+"', `local_lost`='"+locl+"', `visit_won`='"+visw+"', `visit_lost`='"+visl+"' WHERE teamname='"+team+"'";
+                final String query = "UPDATE `teams` SET `local_won`='"+locw+"'"
+                    + ", `local_lost`='"+locl+"', `visit_won`='"+visw+"', "
+                    + "`visit_lost`='"+visl+"', `local_game`='"+locg+"', "
+                    + "`visit_game`='"+visg+"' WHERE teamname='"+team+"'";
                 
                 conn = DriverManager.getConnection(url, user, pass);
                 ps = conn.prepareStatement(query);      
@@ -176,7 +186,10 @@ public class Scraper {
         try {
                 
             if(res.contains("-")){
-                final String query = "UPDATE `games` SET `local_result`='"+res.split("-")[0]+"', `visitor_result`='"+res.split("-")[1]+"' WHERE scraper_id='"+id+"'";
+                final String query = "UPDATE `games` SET "
+                    + "`local_result`='"+res.split("-")[0]+"', "
+                    + "`visitor_result`='"+res.split("-")[1]+"' "
+                    + "WHERE scraper_id='"+id+"'";
 
                 conn = DriverManager.getConnection(url, user, pass);
                 ps = conn.prepareStatement(query);      
@@ -186,4 +199,41 @@ public class Scraper {
         } catch (SQLException ex) {ex.printStackTrace();}      
         finally { try {conn.close();} catch (SQLException ex) {ex.printStackTrace();}}
     }
+        private static void updateDatabaseGames(int id, String loc, String vis, String res) {
+        
+        final String query = "UPDATE `games` SET `local`=?, `visitor`=?, "
+                + "`local_result`=?, `visitor_result`=?, `date`=? "
+                + "WHERE `scraper_id`='"+id+"'";
+
+        int localResult, visitorResult;
+        String date;
+        if(res.contains("-")){
+            String[] sepres = res.split("-");
+            localResult = Integer.parseInt(sepres[0]);
+            visitorResult = Integer.parseInt(sepres[0]);
+            date = null;
+        } else {
+            localResult = -1;
+            visitorResult = -1;
+            date = res.split(" ")[0];
+            System.out.println(date);
+        }
+            
+        try {
+            Class.forName(driver);
+        } catch (ClassNotFoundException ex) {System.out.println("Driver lost");}     
+        
+        try {
+            conn = DriverManager.getConnection(url, user, pass);
+            ps = conn.prepareStatement(query);
+            ps.setString(1, loc);
+            ps.setString(2, vis);
+            ps.setInt(3, localResult);
+            ps.setInt(4, visitorResult);
+            ps.setString(5, date);
+            ps.executeUpdate();                
+                         
+        } catch (SQLException ex) {ex.printStackTrace();}      
+        finally { try {conn.close();} catch (SQLException ex) {ex.printStackTrace();}}         
+    }   
 }

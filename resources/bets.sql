@@ -37,6 +37,7 @@ CREATE TABLE `bets` (
   `bet_type` int(11) NOT NULL,
   `bet_amount` int(11) NOT NULL,
   `resolved` int(1) NOT NULL,
+  `show` int(1) NOT NULL DEFAULT '1', 
   `result_local` int(11) NOT NULL,
   `result_visit` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
