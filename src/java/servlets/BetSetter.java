@@ -48,10 +48,9 @@ public class BetSetter extends HttpServlet {
         
         List<Team> teams;
         List<Game> games;
-        List<Bet> bets;
-        
-        
+        List<Bet> bets;       
 //<!-- check bet date and send or not -->
+//search not consumed bets and consume them if due
         
         try {
             teams = teamsmodel.getTeams(); 

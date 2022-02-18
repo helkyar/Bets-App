@@ -4,8 +4,12 @@
  */
 package servlets;
 
+import dbconnection.*;
+import models.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -28,8 +32,59 @@ public class BetGetter extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+          try{
+            
+            String comand = request.getParameter("action");
+            switch(comand){
+                case "insert": storeBet(request, response); break;
+                case "delete": deleteBet(request, response); break;
+            }
+        
+        }catch (Exception e){e.printStackTrace();}
+
+    }
+       //get bets deleted in main or details and delete them
+//        -GET -> detail.jsp 
+//        --request to one game -> filters session object (?access url info)
+//        -POST -> betgetter.java
+//        --object bet to store in database.
+//        --get url sender to respond
+//        --store in database
+//        --refresh user and bets objects in session
+
+    private void storeBet(HttpServletRequest request, HttpServletResponse response) 
+    throws IOException, ServletException {
         //get bets posted in main or details page and insert them
-        //get bets deleted in main or details and delete them
+        DBBet betsmodel = new DBBet("");
+        String url = request.getContextPath();
+        Bet bet = (Bet) request.getAttribute("STOREBET");
+        //Store to database
+        int resp = betsmodel.insertBet(bet.getUserId(), bet.getGameId(), 
+            bet.getBetType(), bet.getBetPay(), bet.getBetAmount());
+        //Refresh page without sending new bets
+        if(resp<0){response.sendRedirect(url);}
+        //Resend updated bets
+        List<Bet> bets = new DBBet().getBets();    
+        List<User> users = new DBUser().getUsers();  
+        
+        request.setAttribute("BETS", bets);        
+        request.setAttribute("USERS", bets);
+        System.out.println(url);
+        
+        RequestDispatcher dptch = request.getRequestDispatcher(url);
+        dptch.forward(request, response);
+    }
+
+    private void deleteBet(HttpServletRequest request, HttpServletResponse response) 
+    throws ServletException, IOException {        
+        String bet = request.getParameter("betid");        
+        String url = request.getContextPath();       
+        
+        List<Bet> bets = new DBBet().getBets(); 
+        request.setAttribute("BETS", bets);  
+        
+        RequestDispatcher dptch = request.getRequestDispatcher(url);
+        dptch.forward(request, response);
     }
 
     /**

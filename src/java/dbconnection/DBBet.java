@@ -14,7 +14,10 @@ import models.Bet;
  * @author javier
  */
 public class DBBet extends Connect{
-        public DBBet(){        
+        
+    public DBBet(String s){}
+    
+    public DBBet(){        
         super();//call to parent to access database and set connection
 
         wagers = new ArrayList<>();
@@ -56,4 +59,20 @@ public class DBBet extends Connect{
     
 // VARIABLES _________________________________________________________________
     private ArrayList<Bet> wagers;
+
+    public int insertBet(int user, int game, int type, int pay, int amount) {
+        String query = "INSERT INTO users (`user_id`, `game_id`, `bet_pay`,"
+            + " `bet_type`, `bet_amount`, `resolved`) VALUES "
+            + "('"+user+"','"+game+"','"+pay+"','"+type+"','"+amount+"','0')";
+        
+        connect();
+        try{
+            ps = conn.prepareStatement(query);      
+            ps.executeUpdate();
+            return 1;
+            
+        } catch (SQLException e){e.printStackTrace(); return -1;}
+        catch(Exception e){e.printStackTrace(); return -1;}    
+        finally{try{conn.close();} catch(Exception e){return -1;}}
+    }
 }
