@@ -36,7 +36,7 @@ CREATE TABLE `bets` (
   `bet_pay` int(11) NOT NULL,    
   `bet_type` int(11) NOT NULL,
   `bet_amount` int(11) NOT NULL,
-  `resolved` int(1) NOT NULL,
+  `resolved` int(1) NOT NULL DEFAULT '0',
   `show` int(1) NOT NULL DEFAULT '1', 
   `result_local` int(11) NOT NULL,
   `result_visit` int(11) NOT NULL

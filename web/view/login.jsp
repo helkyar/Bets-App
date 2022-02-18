@@ -50,7 +50,7 @@
             <input type="" placeholder="Intruoduce el nombre" name="username" required>
             <label for="psw"><b>Password</b></label>
             <input type="Contraseña" placeholder="Intruoduce la contraseña" name="password" required>            
-            <input type="hidden" name="action" value="insert" required>
+            <input type="hidden" name="action" value="log" required>
            
             <button type="submit">Inicia sesion</button>
             <label>
