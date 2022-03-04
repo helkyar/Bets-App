@@ -108,6 +108,7 @@ marquee{
 .btninicio{
 /*  position: fixed;
     top: 65%;*/
+margin: 3rem 0 0 5rem;
  padding-left: 50%;
   padding-bottom:17.5%;
   transform: translate(-50%, -50%);

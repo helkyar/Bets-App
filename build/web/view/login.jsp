@@ -62,7 +62,7 @@
                 <div class="fondo-foto">   
     <article class="unocontactar"> 
            
-      <form class="caja">
+        <form class="caja" action="/betsweb/Session" method="POST">
        <h4 class="titulo">INICIAR SESIÓN</h4>
             <ul>
             <li>
@@ -73,16 +73,12 @@
     <label class="label">Contraseña:</label><br>
                 <input class="btn-input" type="Contraseña" placeholder="Introduce la contraseña" name="password" required>
             </li>
+                 <input type="hidden" name="action" value="log" required>
             <br><br>
-             <div class="btnaceptar">
-  <a href="#"><span>Cancelar</span></a>
-</div>
-                <div class="btninicio">
-  <a href="#"><span>Aceptar</span></a>
-</div>
-       
-             
-               
+            <div class="btninicio">
+                <label for="submit"><a><span>Aceptar</span></a></label>
+                <input id="submit" type="submit" value="Aceptar" hidden/>
+            </div>    
 
             </ul>
           

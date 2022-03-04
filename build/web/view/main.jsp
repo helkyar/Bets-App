@@ -28,7 +28,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
     }
     
     User user = (User) session.getAttribute("TOKEN");
-//    if(user==null){response.sendRedirect("/betsweb/view/login.jsp");}
+    if(user==null){response.sendRedirect("/betsweb/view/login.jsp");}
 
     games = (List<Game>) session.getAttribute("GAMES");    
     bets = (List<Bet>) session.getAttribute("BETS");    
