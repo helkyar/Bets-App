@@ -6,7 +6,6 @@
 
 <%@page import="java.util.Date"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% String path = request.getContextPath(); %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,48 +18,35 @@
 
 
         <style>
+            *{
+                font-family: 'Roboto', sans-serif;
+
+            }
+            /* Logo del menu*/
             .logo {
-    width: 12rem;
-    /* margin: 1rem 2rem 0 2rem; */
-}
-            .row {
-                position:absolute;
+                width: 12rem;
+                /* margin: 1rem 2rem 0 2rem; */
+            }
+            /* Logo del menu*/         
+            .ContactUsButton {
+                cursor: pointer;
+                border-radius: 5px;
+                -moz-border-radius: 5px;
+                -webkit-border-radius: 5px;
+                color: #000;
+                background-color: white;
+                border-color: black;
+                width: 200px !important;
+                padding: 10px;
+                font-size: 20px;
+                border-width: thin;
+                position: relative;
+                background-color: #fff0e6;
+                box-shadow: 0px 2px 2px #993d00;
+                -webkit-box-shadow: 0px 2px 2px #993d00;
+                -moz-box-shadow: 0px 2px 2px #993d00;
+            }
 
-                width:200px;
-                background-color: #1F3B34;
-                color: white;
-                text-align: center;
-                padding: 0.5%;
-            }
-.ContactUsButton {
-    cursor: pointer;
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    color: #000;
-    background-color: white;
-    border-color: black;
-    width: 200px !important;
-    padding: 10px;
-    font-size: 20px;
-    border-width: thin;
-    position: relative;
-    background-color: #fff0e6;
-    box-shadow: 0px 2px 2px #993d00;
-    -webkit-box-shadow: 0px 2px 2px #993d00;
-    -moz-box-shadow: 0px 2px 2px #993d00;
-}
-            .row2 {
-                margin-left: 230px;
-                margin-right:20px;
-                margin-top:10px;
-
-            }
-            header div {
-                background-color: #FFBC00;
-                height: 100%;
-                width: 14.5%;
-            }
             .ContactUs {
                 padding: 20px 0;
                 margin-left: auto;
@@ -108,7 +94,7 @@
 
             .Categories {
                 margin: auto;
-               padding-left: 250px;
+                padding-left: 250px;
                 max-width: 996px;
             }
             .search {
@@ -160,6 +146,7 @@
                 height: 40px;
                 width: 36px;
             }
+            /* seccion de Preguntas frecuentes */
             .FAQBox {
                 min-width: 500px;
                 max-width: 800px;
@@ -190,27 +177,28 @@
                 min-height: 50px;
                 text-align: center;
 
-    background-repeat: no-repeat;
-    background-size: 35px;
-    background-position-y: 50%;
-    background-position-x: 95%;
-    border-radius: 4px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    margin-bottom: 10px;
+                background-repeat: no-repeat;
+                background-size: 35px;
+                background-position-y: 50%;
+                background-position-x: 95%;
+                border-radius: 4px;
+                -webkit-border-radius: 4px;
+                -moz-border-radius: 4px;
+                margin-bottom: 10px;
             }
             .FAQQuestion p {
                 font-weight: normal !important;
-         
+
                 margin-top: 5%;
                 font-size: 13px;
                 min-height: 34px;
             }
             a {
-  outline: none;
-  text-decoration: none;
-  color: black;
-}
+                outline: none;
+                text-decoration: none;
+                color: black;
+            }
+
             ul {
                 display: block;
                 list-style-type: disc;
@@ -224,92 +212,127 @@
                 float: left;
                 animation: fadein 2s;
                 background-color: #2d2d2d;
-                color: white;
+
                 padding: 15px 10px;
             }
+            /* seccion de Preguntas frecuentes */
+            /* botones nav*/
             .menu-btn-principal{
-        
-        background-color: #1F3B34;
-        color: white;
-        border: 2px solid white;
-        
-        padding: 10px;
-        margin: 5px;
-        transition-duration: 0.4s;
 
-    }
+                background-color: #1F3B34;
+                color: white;
+                border: 2px solid white;
+                border-radius: 20%;
+                width: 100px;
+                heigh: 100px;
 
-    .menu-btn-principal:hover {
-        box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.24), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
-        background-color: gray;
-   
-        color: black;
-    }
+
+                padding: 10px;
+                margin: 5px;
+                transition-duration: 0.4s;
+
+            }
+
+            .menu-btn-principal:hover {
+                box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.24), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
+                background-color: gray;
+
+                color: black;
+            }
+            .menu-btn-principal-ayuda{
+                background-color: #1F3B34;
+                color: white;
+                border: 2px solid white;
+                font-size: 1.5rem;
+                border-radius: 1% 50%;
+
+
+
+                padding: 10px;
+                margin: 5px;
+                transition-duration: 0.4s;
+            }
+            .menu-btn-principal-ayuda:hover{
+
+                box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.24), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
+                background-color: gray;
+
+                color: black;
+
+            }
+
+            header div {
+                background-color: #FFBC00;
+                height: 100%;
+                width: 14.5%;
+            }
+
+            /*fin de estilos del nav*/
+
+            .descripcion-apuestas{
+                margin-right: 15%;
+                margin-left: 25%;
+            }
 
         </style>
     </head>
     <body>
         <header>            
             <div>
-                <img class="logo" src="<%= path %>/img/logo-apuestas2.png" alt="alt"/>
+                <img class="logo" src="../img/LOGO_APUESTAS-05.png" alt="alt"/>
             </div>
             <form action="action">
 
-                <img class="search" src="<%= path %>/img/search.png" alt="alt"/>
-                <input type="text" />
-                    <label><%= new Date() %></label>
+
+                <label><%= new Date()%></label>
             </form>
 
             <nav>
 
-                <button class="menu-btn-principal"><center><img src="<%= path %>/img/user.png" alt="/" height="25" width="25"/><a  style="color:white" href="main.jsp">INICIO</a></center></button> 
-                <button class="menu-btn-principal"><center><img src="<%= path %>/img/user.png" alt="/" height="25" width="25"/><a  style="color:white" href="login.jsp">INICIAR</a></center></button> 
-                  <button class="menu-btn-principal"><center><img  src="<%= path %>/img/user_add_12818.png" alt="/" height="25" width="25"/><a style="color:white" href="register.jsp">REGISTRO</a></center></button>
-                                  <button class="menu-btn-principal"><center><img src="<%= path %>/img/help.png" alt="/" height="25" width="25"/><a style="color:white" href="Ayuda.jsp">AYUDA</a></center></button>    
+
+                <button class="menu-btn-principal"><center><a  style="color:white" href="main.jsp">INICIO</a></center></button> 
+                <button class="menu-btn-principal"><center><a  style="color:white" href="login.jsp">LOGIN</a></center></button> 
+                <button class="menu-btn-principal"><center><a style="color:white" href="register.jsp">REGISTRO</a></center></button>
+                <button class="menu-btn-principal"><center><a style="color:white" href="iniciar.jsp">Prueba</a></center></button>
 
             </nav>
         </header> 
-        <div class="">
-            <div class="row">
-                <h2>FAQ:</h2>
-                <br>
-                <h3>¿Cómo hacer apuestas deportivas?</h3>
-                <p>
-                    Es muy sencillo: entra en la página de apuestas Barbaras, regístrate y deposita aprovechando alguna de las múltiples ofertas de las paginas de apuestas y ya podrás apostar.
-                </p>
-                <h3>¿Cómo funcionan las apuestas deportivas?</h3>
-                <p>
-                    Cada participante en un evento deportivo tiene una cuota que se fija en función a la probabilidad estimada de que ello ocurra. Es decir, la cuota y por lo tanto el beneficio que se obtiene con una victoria del Real Madrid será menor si se enfrenta a un equipo de Segunda división que si juega la final de la Champions, ya que es más probable que ocurra.
-                </p>
-                <h3>¿Qué es el hándicap en las apuestas?</h3>
-                <p>
-                    El hándicap es una ventaja o desventaja que supuestamente tiene un participante o equipo frente a su oponente. En apuestas, se utiliza para igualar la cuota, dando una ventaja a un rival.
-                </p>
-
-            </div>
-            <div class="row2">
-                <h3>¿Qué es una apuesta múltiple?</h3>
-                <p>
-                    Es lo mismo que una apuesta combinada, la cuota de cada pronóstico se multiplica por las de las otras selecciones. 
-                </p>
-                <h3>¿Qué son las apuestas cruzadas?</h3>
-                <p> 
-                    Estas son apuestas en las que los apostantes definen la apuesta, y la casa de apuestas deportivas simplemente actúa como intermediario, garantizando el pago y cobrando una pequeña comisión por ello. 
-                </p>
-                <h3>¿Qué es el yield en las apuestas?</h3>
-                <p>
-                    Es el rendimiento general o beneficio medio con relación a la inversión, que tiene un apostador sobre el total de sus apuestas. 
-                </p>
-                <h3>¿Qué son las unidades en las apuestas?</h3>
-                <p>Es la cantidad que decidimos invertir en una apuesta, que suele equivaler a un 1% del dinero disponible para ello. No hay que confundirlo con el stake, que siempre se mantiene ent
-                    re el 1/10 y el 10/10, las unidades aumentan a medida que aumenta el bankroll.
-                </p>
-                <h3>¿Cómo hacer apuestas seguras?</h3>
-                <p>
-                    Las apuestas deportivas seguras estás basadas en el principio financiero de arbitraje, que consiste en coger el valor de ambas variables (en este caso cuotas) por encima de 2, de tal forma que gane quien gane, se obtiene beneficio. 
-                </p>
-            </div>
+        <div class="descripcion-apuestas"> 
+            <h2>FAQ:</h2>
+            <br>
+            <h3>¿Cómo hacer apuestas deportivas?</h3>
+            <p>
+                Es muy sencillo: entra en la página de apuestas Barbaras, regístrate y deposita aprovechando alguna de las múltiples ofertas de las paginas de apuestas y ya podrás apostar.
+            </p>
+            <h3>¿Cómo funcionan las apuestas deportivas?</h3>
+            <p>
+                Cada participante en un evento deportivo tiene una cuota que se fija en función a la probabilidad estimada de que ello ocurra. Es decir, la cuota y por lo tanto el beneficio que se obtiene con una victoria del Real Madrid será menor si se enfrenta a un equipo de Segunda división que si juega la final de la Champions, ya que es más probable que ocurra.
+            </p>
+            <h3>¿Qué es el hándicap en las apuestas?</h3>
+            <p>
+                El hándicap es una ventaja o desventaja que supuestamente tiene un participante o equipo frente a su oponente. En apuestas, se utiliza para igualar la cuota, dando una ventaja a un rival.
+            </p>
         </div>
+        <!--        <div >
+                    <div class="row">
+                        <h2>FAQ:</h2>
+                        <br>
+                        <h3>¿Cómo hacer apuestas deportivas?</h3>
+                        <p>
+                            Es muy sencillo: entra en la página de apuestas Barbaras, regístrate y deposita aprovechando alguna de las múltiples ofertas de las paginas de apuestas y ya podrás apostar.
+                        </p>
+                        <h3>¿Cómo funcionan las apuestas deportivas?</h3>
+                        <p>
+                            Cada participante en un evento deportivo tiene una cuota que se fija en función a la probabilidad estimada de que ello ocurra. Es decir, la cuota y por lo tanto el beneficio que se obtiene con una victoria del Real Madrid será menor si se enfrenta a un equipo de Segunda división que si juega la final de la Champions, ya que es más probable que ocurra.
+                        </p>
+                        <h3>¿Qué es el hándicap en las apuestas?</h3>
+                        <p>
+                            El hándicap es una ventaja o desventaja que supuestamente tiene un participante o equipo frente a su oponente. En apuestas, se utiliza para igualar la cuota, dando una ventaja a un rival.
+                        </p>
+        
+                    </div>
+                    
+                </div>-->
         <section>
             <div  id="b" >
                 <section class="Faqs">
@@ -319,7 +342,7 @@
                         <div class="CategoryBox CB223">				
                             <div class="CategoryBoxImageDiv">
                                 <a href="/app/answers/list/c/223/p/815">
-                                    <img class="CategoryBoxImage" src="<%= path %>/img/2340047-box-boxes-envelope-gift-he_85574.png">
+                                    <img class="CategoryBoxImage" src="../img/2340047-box-boxes-envelope-gift-he_85574.png">
                                 </a>
                             </div>
                             <a class="CategoryLink" href="/app/answers/list/c/223/p/815"> 
@@ -329,8 +352,8 @@
                             <br>
                             <a class="ShowAll" href="/">Cómo solicitar bonus individuales</a>
                             <br>
-<!--                            <a class="ShowAll" href="/">Cómo solicitar bonus individuales</a>
-                            <br>-->
+                            <!--                            <a class="ShowAll" href="/">Cómo solicitar bonus individuales</a>
+                                                        <br>-->
 
                             <a class="ShowAll" href="/app/answers/list/c/223/p/815">Ver todos</a>
                         </div>
@@ -338,7 +361,7 @@
                         <div class="CategoryBox CB226">				
                             <div class="CategoryBoxImageDiv">
                                 <a href="/app/answers/list/c/226/p/815">
-                                    <img class="CategoryBoxImage" src="<%= path %>/img/depositos.png">
+                                    <img class="CategoryBoxImage" src="../img/depositos.png">
                                 </a>
                             </div>
                             <a class="CategoryLink" href="/app/answers/list/c/226/p/815">
@@ -357,7 +380,7 @@
                         <div class="CategoryBox CB227">				
                             <div class="CategoryBoxImageDiv">
                                 <a href="/app/answers/list/c/227/p/815">
-                                    <img class="CategoryBoxImage" src="<%= path %>/img/juegos.png">
+                                    <img class="CategoryBoxImage" src="../img/juegos.png">
                                 </a>
                             </div>
                             <a class="CategoryLink" href="/app/answers/list/c/227/p/815">
@@ -379,7 +402,7 @@
                         <div class="CategoryBox CB235">				
                             <div class="CategoryBoxImageDiv">
                                 <a href="/app/answers/list/c/235/p/815">
-                                    <img class="CategoryBoxImage" src="<%= path %>/img/llave.png">
+                                    <img class="CategoryBoxImage" src="../img/llave.png">
                                 </a>
                             </div>
                             <a class="CategoryLink" href="/app/answers/list/c/235/p/815">
@@ -398,7 +421,7 @@
                         <div class="CategoryBox CB229">				
                             <div class="CategoryBoxImageDiv">
                                 <a href="/app/answers/list/c/229/p/815">
-                                    <img class="CategoryBoxImage" src="<%= path %>/img/usuario.png">
+                                    <img class="CategoryBoxImage" src="../img/usuario.png">
                                 </a>
                             </div>
                             <a class="CategoryLink" href="/app/answers/list/c/229/p/815">
@@ -420,7 +443,7 @@
                         <div class="CategoryBox CB246">				
                             <div class="CategoryBoxImageDiv">
                                 <a href="/app/answers/list/c/246/p/815">
-                                    <img class="CategoryBoxImage" src="<%= path %>/img/inscripcion.png">
+                                    <img class="CategoryBoxImage" src="../img/inscripcion.png">
                                 </a>
                             </div>
                             <a class="CategoryLink" href="/app/answers/list/c/246/p/815">
@@ -440,7 +463,7 @@
                         <div class="CategoryBox CB230">				
                             <div class="CategoryBoxImageDiv">
                                 <a href="/app/answers/list/c/230/p/815">
-                                    <img class="CategoryBoxImage" src="<%= path %>/img/mantenimiento.png">
+                                    <img class="CategoryBoxImage" src="../img/mantenimiento.png">
                                 </a>
                             </div>
                             <a class="CategoryLink" href="/app/answers/list/c/230/p/815">
@@ -460,7 +483,7 @@
                         <div class="CategoryBox CB225">				
                             <div class="CategoryBoxImageDiv">
                                 <a href="/app/answers/list/c/225/p/815">
-                                    <img class="CategoryBoxImage" src="<%= path %>/img/dinero.png">
+                                    <img class="CategoryBoxImage" src="../img/dinero.png">
                                 </a>
                             </div>
                             <a class="CategoryLink" href="/app/answers/list/c/225/p/815">
@@ -1175,12 +1198,9 @@
                         </div></div></div>
             </div>
         </section>
-        <section class="ContactUs">
-            <h3 class="ContactUsMessage">¿Todavía necesitas ayuda?</h3>
-            <button class="ContactUsButton" onclick="javascript:window.location = '/app/ask/p/815';">Contáctanos</button>
-        </section>
+
         <footer>
-        <p>Autor: Verónica, Javi, Noah, Mark, Patricia y Sandra<br>
+            <p>Autor: Verónica, Javi, Noah, Mark, Patricia y Sandra<br>
 
         </footer>                
 
