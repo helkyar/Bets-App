@@ -4,7 +4,7 @@
     Author     : Sandra
 --%>
 
-<%@page import="java.util.List"%>
+<%@page import="java.util.*"%>
 <%@page import="models.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% String path = request.getContextPath(); %>
@@ -31,39 +31,78 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         
         <link rel="stylesheet" type="text/css" href="<%= path %>/css/normalizer.css" media="screen" />
-        <link rel="stylesheet" type="text/css" href="<%= path %>/css/sessionpages.css" media="screen" />
-        <title>Bárbara bets</title>
+        <link rel="stylesheet" type="text/css" href="<%= path %>/css/util.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="<%= path %>/css/login.css" media="screen" />
+        <title>Bárbara bets</title>    
     </head>
-    <body>
-        <form action="/betsweb/BetGetter" method="POST">
-            <input type="hidden" name="action" value="updatedb" required>
-            <button type="submit">Inicia sesion</button>
-        </form>
-        <h1>Login page (shares css with Register-page?)</h1>
+     <body>
+       
+     <header>            
+            <div>
+                <img class="logo" src="<%= path %>/img/LOGO_APUESTAS-02.png".png" alt="alt"/>
+            </div>
+            <form action="action">
 
-        <form action="/betsweb/Session" method="POST">
-            <dir class ="imgcontenedorlogin">
-                <img src="">
-                <img src="<%= path %>/img/logo.png" alt="Avatar" class="avatarlogin">                
-            </dir>
-            <label for="email"><b>Email</b></label>
-            <input type="" placeholder="Intruoduce el nombre" name="username" required>
-            <label for="psw"><b>Password</b></label>
-            <input type="Contraseña" placeholder="Intruoduce la contraseña" name="password" required>            
-            <input type="hidden" name="action" value="log" required>
+                <img class="search" src="<%= path %>/img/search.png" alt="alt"/>
+                <input type="text" />
+                    <label><%= new Date() %></label>
+            </form>
+
+            <nav>
+
+               <button class="menu-btn-principal"><center><img src="<%= path %>/img/user.png" alt="/" height="25" width="25"/><a  style="color:white" href="main.jsp">INICIO</a></center></button> 
+               
+                <button class="menu-btn-principal"><center><img  src="<%= path %>/img/user_add_12818.png" alt="/" height="25" width="25"/><a style="color:white" href="register.jsp">REGISTRO</a></center></button>
+                      <button class="menu-btn-principal"><center><img src="<%= path %>/img/help.png" alt="/" height="25" width="25"/><a style="color:white" href="Ayuda.jsp">AYUDA</a></center></button>    
+
+            </nav>
+        </header> 
+     <marquee   style="margin-left: 36%" direction="right" behavior="alternate"  width="100%"><img width ="15%" height="15%" src="<%= path %>/img/log-bienvenido.png"></marquee>
+            <section> 
+                <div class="fondo-foto">   
+    <article class="unocontactar"> 
            
-            <button type="submit">Inicia sesion</button>
-            <label>
-                <input type="checkbox" checked="checked" name="remember"> Recordar
-            </label>
-        </div>
+      <form class="caja">
+       <h4 class="titulo">INICIAR SESIÓN</h4>
+            <ul>
+            <li>
+            <label class="label">E-mail:</label>  <br>
+                <input  class="btn-input" type="text" placeholder="e-mail" name="username" required>
+            </li>
+            <li>
+    <label class="label">Contraseña:</label><br>
+                <input class="btn-input" type="Contraseña" placeholder="Introduce la contraseña" name="password" required>
+            </li>
+            <br><br>
+             <div class="btnaceptar">
+  <a href="#"><span>Cancelar</span></a>
+</div>
+                <div class="btninicio">
+  <a href="#"><span>Aceptar</span></a>
+</div>
+       
+             
+               
 
-        <div class="container" style="background-color:#FFBC00">
-            <button type="button" class="cancelbtn">Cancel</button>
-            <span class="psw">Has olvidado la<a href="#">contraseña?</a></span>
-        </div>
+            </ul>
+          
+        </form> </article>
+                    
+    </div>
+                
+    </section>
+ <footer class="banner">
+                             <DIV class="FUTBOL">
+                      <h1 data-shadow='¡FUTBOL!'></h1>
+                  </DIV> 
+                      
+                      
+                  </footer>
+    
+              <footer>
+        <p>Autor: Verónica, Javi, Noah, Mark, Patricia y Sandra<br>
 
-
-    </form>
+        </footer>        
+        
 </body>
 </html>

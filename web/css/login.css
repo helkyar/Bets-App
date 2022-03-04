@@ -1,0 +1,266 @@
+
+body{
+    padding: 0px;
+    margin: 0px;
+    border:none;
+    width: 100%;
+}
+
+
+footer {
+    text-align: center;
+    padding: 3px;
+    background-color: #1F3B34;
+    color: white;
+}
+
+.label{
+    margin-left: 10rem;
+    color: black;
+    text-align: center;
+}
+.btn-input{
+      margin-left: 5rem;
+}
+#img{
+    padding-top: 5%;
+    padding-left: 45%; 
+}
+img{
+    display:block;
+
+}
+            
+.search {
+    position: relative;
+    width: 1.5rem;
+    top: 2rem;
+    margin-left: 1rem;
+}
+section article.unocontactar {
+  padding: 20px;
+
+}
+section article.unocontactar form{
+
+}
+section article.unocontactar form ul li {
+    padding: 20px
+}
+
+/**section */
+
+section {
+    position: relative;
+        }
+
+
+section article.uno{
+    height: 499px;
+
+        }
+
+section article.uno figure {
+    float: right;
+}
+section article.uno div{
+   float: left;
+    width: 500px;
+    text-align: center;
+    padding: 100px;
+}
+.caja{
+margin-right: 30rem;
+    margin-left: 28rem;
+    background: white;
+    border: yellow 5px dotted;
+       filter:alpha(opacity=95);
+
+-moz-opacity:.95;opacity:.95;
+}
+ ul {
+	font-family: sans-serif;
+	list-style: none;
+	
+}
+.fondo-foto {
+    /* background: conic-gradient(lightpink, white, powderblue); */
+    background: conic-gradient(#FFBC00, white, #1F3B34);
+}
+.titulo{
+    text-align: center;
+    font-family: sans-serif;
+    background: black;
+    color: white;
+       filter:alpha(opacity=80);
+
+-moz-opacity:.80;opacity:.80;
+padding: 0.5%;
+}
+.logo{
+        width: 5rem;
+    margin: 0.2rem 0.2rem 0.2rem;
+}
+marquee{
+    font-size: 3rem;
+    
+}
+.btninicio{
+/*  position: fixed;
+    top: 65%;*/
+ padding-left: 50%;
+  padding-bottom:17.5%;
+  transform: translate(-50%, -50%);
+
+}
+
+.btninicio a{
+  display: block;
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 18px;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: #333;
+  border: 2px solid #333;
+  letter-spacing: 2px;
+  text-align: center;
+  position: relative;
+  transition: all .35s;
+}
+
+.btninicio a span{
+  position: relative;
+  z-index: 2;
+}
+
+.btninicio a:after{
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: #67F48C ;
+  transition: all .35s;
+}
+
+.btninicio a:hover{
+  color: #fff;
+}
+
+.btninicio a:hover:after{
+  width: 100%;
+}
+.btnaceptar{
+/*  position: fixed;*/
+/*      top: 70%;*/
+  padding-left: 95%;
+  transform: translate(-50%, -50%);
+
+}
+
+.btnaceptar a{
+  display: block;
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 18px;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: #333;
+  border: 2px solid #333;
+  letter-spacing: 2px;
+  text-align: center;
+  position: relative;
+  transition: all .35s;
+}
+
+.btnaceptar a span{
+  position: relative;
+  z-index: 2;
+}
+
+.btnaceptar a:after{
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background:  #ff003b;
+  transition: all .35s;
+}
+
+.btnaceptar a:hover{
+  color: #fff;
+}
+
+.btnaceptar a:hover:after{
+  width: 100%;
+}
+  .FUTBOL{
+BACKGROUND-IMAGE: url(../img/BANNER3_-_1.jpg);
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    background-size: 100%;
+  }
+h1 {
+  display: inline-block;
+  color: white;
+  font-family: 'Righteous', serif;
+  font-size: 5rem; 
+  text-shadow: .03em .03em 0 hsla(230,40%,50%,1);
+  margin-left: 25%;
+  margin-bottom: 15%;
+
+  }
+  h1:after {
+    content: attr(data-shadow);
+    position: absolute;
+    top: 6.5rem; left: 10rem;
+    z-index: -1;
+    text-shadow: none;
+    background-image:
+      linear-gradient(
+        45deg,
+        transparent 45%,
+        hsla(48,20%,90%,1) 45%,
+        hsla(48,20%,90%,1) 55%,
+        transparent 0
+        );
+    background-size: .05em .05em;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  
+    animation: shad-anim 15s linear infinite;
+    
+    }
+        a {
+  outline: none;
+  text-decoration: none;
+  color: black;
+}
+  .logo {
+    width: 6.5rem;
+}
+.menu-btn-principal{
+        
+        background-color: #1F3B34;
+        color: white;
+        border: 2px solid white;
+        
+        padding: 10px;
+        margin: 5px;
+        transition-duration: 0.4s;
+
+    }
+
+    .menu-btn-principal:hover {
+        box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.24), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
+        background-color: gray;
+   
+        color: black;
+    }
