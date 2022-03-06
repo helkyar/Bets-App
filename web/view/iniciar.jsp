@@ -17,7 +17,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
             <div class="left">
                 <div class="content">
                    <section>
-                          <div  id="b" >
+                     <div  id="b" >
                       <table>
 
 <tr>
