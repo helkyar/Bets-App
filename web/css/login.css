@@ -1,12 +1,8 @@
 
-body{
-    padding: 0px;
-    margin: 0px;
-    border:none;
+.login-container{
     width: 100%;
+    
 }
-
-
 footer {
     text-align: center;
     padding: 3px;
@@ -15,12 +11,15 @@ footer {
 }
 
 .label{
-    margin-left: 10rem;
     color: black;
     text-align: center;
+    margin: 1rem;
 }
 .btn-input{
-      margin-left: 5rem;
+    border-radius: 999px;
+    width: 30%;
+    text-align: center;
+    height: 2rem;
 }
 #img{
     padding-top: 5%;
@@ -30,96 +29,46 @@ img{
     display:block;
 
 }
-            
-.search {
-    position: relative;
-    width: 1.5rem;
-    top: 2rem;
-    margin-left: 1rem;
-}
+           
 section article.unocontactar {
-  padding: 20px;
+  padding: 1.2rem;
 
 }
 section article.unocontactar form{
 
 }
-section article.unocontactar form ul li {
-    padding: 20px
-}
 
-/**section */
-
-section {
-    position: relative;
-        }
-
-
-section article.uno{
-    height: 499px;
-
-        }
-
-section article.uno figure {
-    float: right;
-}
-section article.uno div{
-   float: left;
-    width: 500px;
-    text-align: center;
-    padding: 100px;
-}
 .caja{
-margin-right: 30rem;
-    margin-left: 28rem;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
     background: white;
     border: yellow 5px dotted;
-       filter:alpha(opacity=95);
+    filter:alpha(opacity=95);
+    font-family: sans-serif;
+    -moz-opacity:.95;opacity:.95;
+}
 
--moz-opacity:.95;opacity:.95;
-}
- ul {
-	font-family: sans-serif;
-	list-style: none;
-	
-}
 .fondo-foto {
     /* background: conic-gradient(lightpink, white, powderblue); */
     background: conic-gradient(#FFBC00, white, #1F3B34);
 }
-.titulo{
-    text-align: center;
-    font-family: sans-serif;
-    background: black;
-    color: white;
-       filter:alpha(opacity=80);
 
--moz-opacity:.80;opacity:.80;
-padding: 0.5%;
-}
-.logo{
-        width: 5rem;
-    margin: 0.2rem 0.2rem 0.2rem;
-}
+
 marquee{
     font-size: 3rem;
     
 }
 .btninicio{
-/*  position: fixed;
-    top: 65%;*/
-margin: 3rem 0 0 5rem;
- padding-left: 50%;
-  padding-bottom:17.5%;
-  transform: translate(-50%, -50%);
-
+    width: 15rem;
+  margin: 3rem auto 5rem;
+  
+  border-radius: 999px;
 }
 
 .btninicio a{
   display: block;
-  width: 200px;
-  height: 40px;
-  line-height: 40px;
   font-size: 18px;
   font-family: sans-serif;
   text-decoration: none;
@@ -129,10 +78,11 @@ margin: 3rem 0 0 5rem;
   text-align: center;
   position: relative;
   transition: all .35s;
+  padding: 1rem;
+  border-radius: 999px;
 }
 
 .btninicio a span{
-  position: relative;
   z-index: 2;
 }
 
@@ -153,54 +103,10 @@ margin: 3rem 0 0 5rem;
 
 .btninicio a:hover:after{
   width: 100%;
-}
-.btnaceptar{
-/*  position: fixed;*/
-/*      top: 70%;*/
-  padding-left: 95%;
-  transform: translate(-50%, -50%);
-
+  
+  border-radius: 999px;
 }
 
-.btnaceptar a{
-  display: block;
-  width: 200px;
-  height: 40px;
-  line-height: 40px;
-  font-size: 18px;
-  font-family: sans-serif;
-  text-decoration: none;
-  color: #333;
-  border: 2px solid #333;
-  letter-spacing: 2px;
-  text-align: center;
-  position: relative;
-  transition: all .35s;
-}
-
-.btnaceptar a span{
-  position: relative;
-  z-index: 2;
-}
-
-.btnaceptar a:after{
-  position: absolute;
-  content: "";
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background:  #ff003b;
-  transition: all .35s;
-}
-
-.btnaceptar a:hover{
-  color: #fff;
-}
-
-.btnaceptar a:hover:after{
-  width: 100%;
-}
   .FUTBOL{
 BACKGROUND-IMAGE: url(../img/BANNER3_-_1.jpg);
     background-repeat: no-repeat;
@@ -243,25 +149,16 @@ h1 {
   outline: none;
   text-decoration: none;
   color: black;
-}
-  .logo {
-    width: 6.5rem;
-}
-.menu-btn-principal{
-        
-        background-color: #1F3B34;
-        color: white;
-        border: 2px solid white;
-        
-        padding: 10px;
-        margin: 5px;
-        transition-duration: 0.4s;
-
+}    
+    .log-btn{
+        cursor: pointer;
     }
-
-    .menu-btn-principal:hover {
-        box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.24), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
-        background-color: gray;
-   
-        color: black;
+    .login-start{
+            width: 50%;
+            margin-top:7rem;
+            margin-left: 25%;
+    }
+    .login-start img{
+        width: 15%; 
+        margin-left: 25%;
     }

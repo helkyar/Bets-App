@@ -472,12 +472,6 @@ BACKGROUND-IMAGE: url(<%= path %>/img/BANNER2_LARGO_3_sin_logo.jpg);
                       
                       
                   </footer>
-          
-   
-
-       
-            
-
   
 <footer>
   <p>Autor: Verónica, Javi, Noah, Mark, Patricia y Sandra<br>

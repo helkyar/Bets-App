@@ -39,38 +39,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         //vl < lw && vw > lw   visit wons
    
 %>
-
 <html>
     <head>
-        <title>Apuestas Bárbaras</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <link rel="stylesheet" type="text/css" href="<%= path %>/css/normalizer.css" media="screen" />
-        <link rel="stylesheet" type="text/css" href="<%= path %>/css/mainpage.css" media="screen" />
-        <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-        <script src="<%= path %>/js/main.js" defer></script>
-    </head> 
-    <body>
-        <header>            
-            <div>
-                <img class="logo" src="<%= path %>/img/LOGO_APUESTAS-03.png" alt="alt"/>
-            </div>
-            <form action="action">
-                
-               
-                <label><%= new Date() %></label>
-            </form>
-            
-            <nav>
-               
-                <button class="menu-btn-principal"><center><img src="<%= path %>/img/user.png" alt="/" height="25" width="25"/><a  style="color:white" href="login.jsp">INICIAR</a></center></button> 
-                
-                  <button class="menu-btn-principal"><center><img  src="<%= path %>/img/user_add_12818.png" alt="/" height="25" width="25"/><a style="color:white" href="register.jsp">REGISTRO</a></center></button>
-                <button class="menu-btn-principal"><center><img src="<%= path %>/img/user_add_12818.png" alt="/" height="25" width="25"/><a style="color:white" href="iniciar.jsp">Prueba</a></center></button>
-                  <button class="menu-btn-principal"><center><img src="<%= path %>/img/help.png" alt="/" height="25" width="25"/><a style="color:white" href="Ayuda.jsp">AYUDA</a></center></button>              
-            </nav>
-        </header> 
+    <jsp:include page="imports/header.jsp" /> 
+    <link rel="stylesheet" type="text/css" href="<%= path %>/css/mainpage.css" media="screen" />
             <div class="fondo-foto">
             <div class="foto">
                 

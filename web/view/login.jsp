@@ -26,79 +26,41 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="icon" href="<%= path %>/img/logo.png">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
-        <link rel="stylesheet" type="text/css" href="<%= path %>/css/normalizer.css" media="screen" />
-        <link rel="stylesheet" type="text/css" href="<%= path %>/css/util.css" media="screen" />
-        <link rel="stylesheet" type="text/css" href="<%= path %>/css/login.css" media="screen" />
-        <title>Bárbara bets</title>    
-    </head>
-     <body>
-       
-     <header>            
-            <div>
-                <img class="logo" src="<%= path %>/img/LOGO_APUESTAS-02.png".png" alt="alt"/>
-            </div>
-            <form action="action">
+    <head>       
+    <jsp:include page="imports/header.jsp" /> 
+    <link rel="stylesheet" type="text/css" href="<%= path %>/css/login.css" media="screen" />
+ 
+        <marquee class="login-start" direction="right">
+            <img src="<%= path %>/img/log-bienvenido.png">
+        </marquee>
+        <section class="login-section"> 
+            <div class="fondo-foto">  
+                <h1 class="titulo">INICIAR SESIÓN:</h1>
+                <article class="unocontactar"> 
 
-                <img class="search" src="<%= path %>/img/search.png" alt="alt"/>
-                <input type="text" />
-                    <label><%= new Date() %></label>
-            </form>
+                    <form class="caja" action="/betsweb/Session" method="POST">
+                        
+                        <label class="label">E-mail:</label> 
+                        <input  class="btn-input" type="text" placeholder="e-mail" name="username" required />
 
-            <nav>
+                        <label class="label">Contraseña:</label>
+                        <input class="btn-input" type="Contraseña" placeholder="Introduce la contraseña" name="password" required />
 
-               <button class="menu-btn-principal"><center><img src="<%= path %>/img/user.png" alt="/" height="25" width="25"/><a  style="color:white" href="main.jsp">INICIO</a></center></button> 
-               
-                <button class="menu-btn-principal"><center><img  src="<%= path %>/img/user_add_12818.png" alt="/" height="25" width="25"/><a style="color:white" href="register.jsp">REGISTRO</a></center></button>
-                      <button class="menu-btn-principal"><center><img src="<%= path %>/img/help.png" alt="/" height="25" width="25"/><a style="color:white" href="Ayuda.jsp">AYUDA</a></center></button>    
+                         <input type="hidden" name="action" value="log" required>
 
-            </nav>
-        </header> 
-     <marquee   style="margin-left: 36%" direction="right" behavior="alternate"  width="100%"><img width ="15%" height="15%" src="<%= path %>/img/log-bienvenido.png"></marquee>
-            <section> 
-                <div class="fondo-foto">   
-    <article class="unocontactar"> 
-           
-        <form class="caja" action="/betsweb/Session" method="POST">
-       <h4 class="titulo">INICIAR SESIÓN</h4>
-            <ul>
-            <li>
-            <label class="label">E-mail:</label>  <br>
-                <input  class="btn-input" type="text" placeholder="e-mail" name="username" required>
-            </li>
-            <li>
-    <label class="label">Contraseña:</label><br>
-                <input class="btn-input" type="Contraseña" placeholder="Introduce la contraseña" name="password" required>
-            </li>
-                 <input type="hidden" name="action" value="log" required>
-            <br><br>
-            <div class="btninicio">
-                <label for="submit"><a><span>Aceptar</span></a></label>
-                <input id="submit" type="submit" value="Aceptar" hidden/>
-            </div>    
+                        <div class="btninicio">
+                            <label class="log-btn" for="submit"><a><span>Aceptar</span></a></label>
+                            <input id="submit" type="submit" value="Aceptar" hidden/>
+                        </div>    
 
-            </ul>
-          
-        </form> </article>
-                    
-    </div>
-                
-    </section>
- <footer class="banner">
-                             <DIV class="FUTBOL">
-                      <h1 data-shadow='¡FUTBOL!'></h1>
-                  </DIV> 
-                      
-                      
-                  </footer>
-    
-              <footer>
-        <p>Autor: Verónica, Javi, Noah, Mark, Patricia y Sandra<br>
+                    </form> 
+                </article>                    
+            </div>          
+        </section>
+        <footer class="banner">
+            <DIV class="FUTBOL">
+                <h1 data-shadow='¡FUTBOL!'></h1>
+            </DIV>          
+        </footer>
 
-        </footer>        
-        
-</body>
-</html>
+<jsp:include page="imports/footer.html" /> 
