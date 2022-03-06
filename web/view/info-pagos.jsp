@@ -431,89 +431,78 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
 
             </div>
-
-        </div>
-    </div>
-
-    <div></div>
-
-    <h1><span style="color: #003300; text-align: center "> M&eacute;todos de Pago Aceptados</span></h1>
-    <div>
-        <p style="text-align:center">A continuaci&oacute;n encontrar&aacute;s una lista y una breve descripci&oacute;n de cada m&eacute;todo de dep&oacute;sito ofrecido por <strong>Apuestas B&aacute;rbaras</strong>. Para consultar las instrucciones completas sobre c&oacute;mo realizar un dep&oacute;sito con alguno de los m&eacute;todos enumerados en la lista.</p>
-        <center>
-            <table class="TableList" style="height: 741px; width: 534px; border-style: groove; border-color: TOMATO;" border="2">
-                <tbody>
-                    <tr style="height: 18px;">
-                        <th style="height: 18px; width: 522.8px;" colspan="2">M&eacute;todos de dep&oacute;sito con los que tambi&eacute;n puedes realizar retiros</th>
-                    </tr>
-                    <tr style="height: 54px;">
-                        <td style="height: 54px; width: 128.087px;">Tarjetas de cr&eacute;dito y d&eacute;bito VISA</td>
-                        <td style="height: 54px; width: 389.112px;">Un m&eacute;todo f&aacute;cil y r&aacute;pido para depositar directamente en tu cuenta. Disponible para socios de todo el mundo.</td>
-                    </tr>
-                    <tr style="height: 36px;">
-                        <td style="height: 36px; width: 128.087px;">MasterCard</td>
-                        <td style="height: 36px; width: 389.112px;">Un m&eacute;todo f&aacute;cil y r&aacute;pido para depositar directamente en tu cuenta.</td>
-                    </tr>
-                    <tr style="height: 109px;">
-                        <td style="height: 109px; width: 128.087px;">ApplePay</td>
-                        <td style="height: 109px; width: 389.112px;">Una tecnolog&iacute;a de pago y una de las funciones de los &uacute;ltimos iPhones, iPads y Apple Watch. Recoge informaci&oacute;n de tus tarjetas de cr&eacute;dito, tarjetas de d&eacute;bito y otros datos de pago confidenciales de la aplicaci&oacute;n Wallet. Esto te permite utilizar tu dispositivo como monedero para pagar en las tiendas.</td>
-                    </tr>
-                    <tr style="height: 91px;">
-                        <td style="height: 91px; width: 128.087px;">MuchBetter</td>
-                        <td style="height: 91px; width: 389.112px;">MuchBetter es una aplicaci&oacute;n m&oacute;vil de monedero electr&oacute;nico que pone a tu disposici&oacute;n una forma instant&aacute;nea, segura y sencilla de depositar fondos en tu cuenta de Apuestas B&aacute;rbaras mediante varias opciones diferentes.</td>
-                    </tr>
-                    <tr style="height: 72px;">
-                        <td style="height: 72px; width: 128.087px;">NETELLER</td>
-                        <td style="height: 72px; width: 389.112px;">Disponibles para nuestros socios en todo el mundo, los dep&oacute;sitos con NETELLER son una manera instant&aacute;nea, segura y f&aacute;cil de depositar dinero en tu cuenta, directamente desde tu cuenta de NETELLER.</td>
-                    </tr>
-                    <tr style="height: 91px;">
-                        <td style="height: 91px; width: 128.087px;">PayPal</td>
-                        <td style="height: 91px; width: 389.112px;">Los dep&oacute;sitos con PayPal est&aacute;n disponibles en Alemania, Espa&ntilde;a, el Reino Unido, Irlanda, Italia, Portugal, Finlandia, Dinamarca, Austria y Suecia y son una manera instant&aacute;nea, segura y sencilla de depositar fondos en tu cuenta.</td>
-                    </tr>
-                    <tr style="height: 54px;">
-                        <td style="height: 54px; width: 128.087px;">Skrill</td>
-                        <td style="height: 54px; width: 389.112px;">Skrill es un m&eacute;todo seguro, f&aacute;cil e instant&aacute;neo de depositar en tu cuenta, disponible para nuestros socios en todo el mundo.</td>
-                    </tr>
-                    <tr style="height: 18px;">
-                        <th style="height: 18px; width: 522.8px;" colspan="2">M&eacute;todos de dep&oacute;sito que no pueden recibir pagos</th>
-                    </tr>
-                    <tr style="height: 72px;">
-                        <td style="height: 72px; width: 128.087px;">Paysafecard</td>
-                        <td style="height: 72px; width: 389.112px;">Los dep&oacute;sitos con la tarjeta Paysafecard son una forma instant&aacute;nea, segura y f&aacute;cil de depositar fondos en tu cuenta. Se puede comprar las tarjetas Paysafe en cualquier distribidor Paysafecard.</td>
-                    </tr>
-                    <tr style="height: 72px;">
-                        <td style="height: 72px; width: 128.087px;">Klarna (Sofortbanking)</td>
-                        <td style="height: 72px; width: 389.112px;">Para nuestros socios Espa&ntilde;a, los dep&oacute;sitos con este m&eacute;todo son una manera instant&aacute;nea, segura y sencilla de depositar en tu cuenta de Apuestas B&aacute;rbaras directamente desde su cuenta bancaria.</td>
-                    </tr>
-                    <tr style="height: 18px;">
-                        <th style="height: 18px; width: 522.8px;" colspan="2">M&eacute;todos s&oacute;lo para pagos de ganancias</th>
-                    </tr>
-                    <tr style="height: 36px;">
-                        <td style="height: 36px; width: 128.087px;">Transferencia Electr&oacute;nica</td>
-                        <td style="height: 36px; width: 389.112px;">Recibe el pago de tus ganancias directamente a tu cuenta bancaria personal.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </center>
-        <p style="text-align:center"><strong>Apuestas B&aacute;rbaras</strong> utiliza las tecnolog&iacute;as de seguridad y cifrado m&aacute;s avanzadas a fin de garantizar la absoluta seguridad de tus transacciones y de toda tu informaci&oacute;n financiera.</p>
-    </div>
-
-
-</section> <br> <br>
-<footer class="banner">
-    <DIV class="FUTBOL">
-        <h1 data-shadow='FUTBOL!'></h1>
-    </DIV> 
-
-
-</footer>
-
-
-
-
-
-
-
+                   <div></div>
+        
+        <h1><span style="color: #003300; ">M&eacute;todos de Pago Aceptados</span></h1>
+<div>
+<p style="text-align:center">A continuaci&oacute;n encontrar&aacute;s una lista y una breve descripci&oacute;n de cada m&eacute;todo de dep&oacute;sito ofrecido por <strong>Apuestas B&aacute;rbaras</strong>. Para consultar las instrucciones completas sobre c&oacute;mo realizar un dep&oacute;sito con alguno de los m&eacute;todos enumerados en la lista.</p>
+<center>
+<table class="TableList" style="height: 741px; width: 534px; border-style: groove; border-color: TOMATO;" border="2">
+<tbody>
+<tr style="height: 18px;">
+<th style="height: 18px; width: 522.8px;" colspan="2">M&eacute;todos de dep&oacute;sito con los que tambi&eacute;n puedes realizar retiros</th>
+</tr>
+<tr style="height: 54px;">
+<td style="height: 54px; width: 128.087px;">Tarjetas de cr&eacute;dito y d&eacute;bito VISA</td>
+<td style="height: 54px; width: 389.112px;">Un m&eacute;todo f&aacute;cil y r&aacute;pido para depositar directamente en tu cuenta. Disponible para socios de todo el mundo.</td>
+</tr>
+<tr style="height: 36px;">
+<td style="height: 36px; width: 128.087px;">MasterCard</td>
+<td style="height: 36px; width: 389.112px;">Un m&eacute;todo f&aacute;cil y r&aacute;pido para depositar directamente en tu cuenta.</td>
+</tr>
+<tr style="height: 109px;">
+<td style="height: 109px; width: 128.087px;">ApplePay</td>
+<td style="height: 109px; width: 389.112px;">Una tecnolog&iacute;a de pago y una de las funciones de los &uacute;ltimos iPhones, iPads y Apple Watch. Recoge informaci&oacute;n de tus tarjetas de cr&eacute;dito, tarjetas de d&eacute;bito y otros datos de pago confidenciales de la aplicaci&oacute;n Wallet. Esto te permite utilizar tu dispositivo como monedero para pagar en las tiendas.</td>
+</tr>
+<tr style="height: 91px;">
+<td style="height: 91px; width: 128.087px;">MuchBetter</td>
+<td style="height: 91px; width: 389.112px;">MuchBetter es una aplicaci&oacute;n m&oacute;vil de monedero electr&oacute;nico que pone a tu disposici&oacute;n una forma instant&aacute;nea, segura y sencilla de depositar fondos en tu cuenta de Apuestas B&aacute;rbaras mediante varias opciones diferentes.</td>
+</tr>
+<tr style="height: 72px;">
+<td style="height: 72px; width: 128.087px;">NETELLER</td>
+<td style="height: 72px; width: 389.112px;">Disponibles para nuestros socios en todo el mundo, los dep&oacute;sitos con NETELLER son una manera instant&aacute;nea, segura y f&aacute;cil de depositar dinero en tu cuenta, directamente desde tu cuenta de NETELLER.</td>
+</tr>
+<tr style="height: 91px;">
+<td style="height: 91px; width: 128.087px;">PayPal</td>
+<td style="height: 91px; width: 389.112px;">Los dep&oacute;sitos con PayPal est&aacute;n disponibles en Alemania, Espa&ntilde;a, el Reino Unido, Irlanda, Italia, Portugal, Finlandia, Dinamarca, Austria y Suecia y son una manera instant&aacute;nea, segura y sencilla de depositar fondos en tu cuenta.</td>
+</tr>
+<tr style="height: 54px;">
+<td style="height: 54px; width: 128.087px;">Skrill</td>
+<td style="height: 54px; width: 389.112px;">Skrill es un m&eacute;todo seguro, f&aacute;cil e instant&aacute;neo de depositar en tu cuenta, disponible para nuestros socios en todo el mundo.</td>
+</tr>
+<tr style="height: 18px;">
+<th style="height: 18px; width: 522.8px;" colspan="2">M&eacute;todos de dep&oacute;sito que no pueden recibir pagos</th>
+</tr>
+<tr style="height: 72px;">
+<td style="height: 72px; width: 128.087px;">Paysafecard</td>
+<td style="height: 72px; width: 389.112px;">Los dep&oacute;sitos con la tarjeta Paysafecard son una forma instant&aacute;nea, segura y f&aacute;cil de depositar fondos en tu cuenta. Se puede comprar las tarjetas Paysafe en cualquier distribidor Paysafecard.</td>
+</tr>
+<tr style="height: 72px;">
+<td style="height: 72px; width: 128.087px;">Klarna (Sofortbanking)</td>
+<td style="height: 72px; width: 389.112px;">Para nuestros socios Espa&ntilde;a, los dep&oacute;sitos con este m&eacute;todo son una manera instant&aacute;nea, segura y sencilla de depositar en tu cuenta de Apuestas B&aacute;rbaras directamente desde su cuenta bancaria.</td>
+</tr>
+<tr style="height: 18px;">
+<th style="height: 18px; width: 522.8px;" colspan="2">M&eacute;todos s&oacute;lo para pagos de ganancias</th>
+</tr>
+<tr style="height: 36px;">
+<td style="height: 36px; width: 128.087px;">Transferencia Electr&oacute;nica</td>
+<td style="height: 36px; width: 389.112px;">Recibe el pago de tus ganancias directamente a tu cuenta bancaria personal.</td>
+</tr>
+</tbody>
+</table>
+    </center>
+<p style="text-align:center"><strong>Apuestas B&aacute;rbaras</strong> utiliza las tecnolog&iacute;as de seguridad y cifrado m&aacute;s avanzadas a fin de garantizar la absoluta seguridad de tus transacciones y de toda tu informaci&oacute;n financiera.</p>
+</div>
+                
+                
+            </section> <br> <br>
+                  <footer class="banner">
+                             <DIV class="FUTBOL">
+                      <h1 data-shadow='FUTBOL!'></h1>
+                  </DIV> 
+                      
+                      
+                  </footer>
 <footer>
     <p>Autor: Verónica, Javi, Noah, Mark, Patricia y Sandra<br>
 
