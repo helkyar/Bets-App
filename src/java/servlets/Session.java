@@ -56,6 +56,7 @@ public class Session extends HttpServlet {
     private void checkLogin(HttpServletRequest request, HttpServletResponse response) 
     throws IOException, ServletException {
         //Check for data        
+        System.out.println("=============================================!================================");
         DBUser usermodel = new DBUser();
         String url = "view/login.jsp";
         String user = (String) request.getParameter("username");
@@ -63,10 +64,13 @@ public class Session extends HttpServlet {
         if(user==null || passw==null){response.sendRedirect(url);}
         
         //send info to database
+        System.out.println("=============================================!!================================");
         User u = usermodel.loginUser(user, passw);
         if(u.getUserId()<0){response.sendRedirect(url);}
         
         //send response to login
+        
+        System.out.println("=============================================!!!================================");
         request.setAttribute("SESSION", u);
         RequestDispatcher dptch = request.getRequestDispatcher(url);
         dptch.forward(request, response);

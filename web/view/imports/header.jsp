@@ -14,7 +14,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+     
         <link rel="stylesheet" type="text/css" href="<%= path %>/css/normalizer.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="<%= path %>/css/.partialheader.css" media="screen" />
         <title>Apuestas Bárbara</title>    
@@ -26,16 +26,23 @@
                 <img class="logo" src="<%= path %>/img/LOGO_APUESTAS-02.png".png" alt="alt"/>
             </div>
 
-            <label><%= new Date() %></label>
+            <label class="date">     
+                <script>
+                    let datelabel = document.querySelector('.date');
+                    datelabel.innerText=new Date();
+                    setInterval(()=>{datelabel.innerText=new Date();}, 1000);
+                </script>
+            </label>  
+            
             <nav>
                 <!-- ONLY IF LOGGED -->
             <%  if((User) session.getAttribute("TOKEN")!=null){ %>
                <a  style="color:white" href="main.jsp"><button class="menu-btn-principal"><center>INICIO</center></button></a> 
                <a  style="color:white" href="iniciar.jsp"><button class="menu-btn-principal"><center>APUESTAS</center></button></a>                 
-               <a  style="color:white" href="main.jsp"><button class="menu-btn-principal"><center>LOGOUT</center></button> </a>               
+               <a  style="color:white" href="login.jsp"><button class="menu-btn-principal"><center>LOGOUT</center></button> </a>               
             <% } else {%>
-               <a style="color:white" href="login.jsp"><button class="menu-btn-principal"><center>LOGIN</center></button></a>
-               <a style="color:white" href="register.jsp"><button class="menu-btn-principal"><center>REGISTRO</center></button></a>
+               <a style="color:white" href="/betsweb/view/login.jsp"><button class="menu-btn-principal"><center>LOGIN</center></button></a>
+               <a style="color:white" href="/betsweb/view/register.jsp"><button class="menu-btn-principal"><center>REGISTRO</center></button></a>
             <% } %> 
                <a style="color:white" href="ayuda.jsp"><button class="menu-btn-principal-ayuda"><center>?</center></button> </a>   
 

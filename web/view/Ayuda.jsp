@@ -9,20 +9,13 @@
 <% String path = request.getContextPath(); %>
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Apuestas Bárbaras</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <link rel="stylesheet" type="text/css" href="../css/normalizer.css" media="screen" />
-        <link rel="stylesheet" type="text/css" href="../css/mainpage.css" media="screen" />
-
+    <head>       
+    <jsp:include page="imports/header.jsp" /> 
 
         <style>
-            .logo {
-    width: 12rem;
-    /* margin: 1rem 2rem 0 2rem; */
-}
+            .container-help{
+                margin-top: 9rem;   
+            }
             .row {
                 position:absolute;
 
@@ -172,7 +165,9 @@
                 background-size: cover;
                 background-color: #000;
                 padding-top: 20px;
+                height: fit-content;
             }
+
             .PopularFaqs h2 {
                 margin-top: 0px;
                 color: white;
@@ -190,14 +185,14 @@
                 min-height: 50px;
                 text-align: center;
 
-    background-repeat: no-repeat;
-    background-size: 35px;
-    background-position-y: 50%;
-    background-position-x: 95%;
-    border-radius: 4px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    margin-bottom: 10px;
+                background-repeat: no-repeat;
+                background-size: 35px;
+                background-position-y: 50%;
+                background-position-x: 95%;
+                border-radius: 4px;
+                -webkit-border-radius: 4px;
+                -moz-border-radius: 4px;
+                margin-bottom: 1rem;
             }
             .FAQQuestion p {
                 font-weight: normal !important;
@@ -227,49 +222,10 @@
                 color: white;
                 padding: 15px 10px;
             }
-            .menu-btn-principal{
-        
-        background-color: #1F3B34;
-        color: white;
-        border: 2px solid white;
-        
-        padding: 10px;
-        margin: 5px;
-        transition-duration: 0.4s;
-
-    }
-
-    .menu-btn-principal:hover {
-        box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.24), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
-        background-color: gray;
-   
-        color: black;
-    }
 
         </style>
-    </head>
-    <body>
-        <header>            
-            <div>
-                <img class="logo" src="<%= path %>/img/logo-apuestas2.png" alt="alt"/>
-            </div>
-            <form action="action">
-
-                <img class="search" src="<%= path %>/img/search.png" alt="alt"/>
-                <input type="text" />
-                    <label><%= new Date() %></label>
-            </form>
-
-            <nav>
-
-                <button class="menu-btn-principal"><center><img src="<%= path %>/img/user.png" alt="/" height="25" width="25"/><a  style="color:white" href="main.jsp">INICIO</a></center></button> 
-                <button class="menu-btn-principal"><center><img src="<%= path %>/img/user.png" alt="/" height="25" width="25"/><a  style="color:white" href="login.jsp">INICIAR</a></center></button> 
-                  <button class="menu-btn-principal"><center><img  src="<%= path %>/img/user_add_12818.png" alt="/" height="25" width="25"/><a style="color:white" href="register.jsp">REGISTRO</a></center></button>
-                                  <button class="menu-btn-principal"><center><img src="<%= path %>/img/help.png" alt="/" height="25" width="25"/><a style="color:white" href="Ayuda.jsp">AYUDA</a></center></button>    
-
-            </nav>
-        </header> 
-        <div class="">
+    
+        <div class="container-help">
             <div class="row">
                 <h2>FAQ:</h2>
                 <br>
@@ -1175,15 +1131,4 @@
                         </div></div></div>
             </div>
         </section>
-        <section class="ContactUs">
-            <h3 class="ContactUsMessage">¿Todavía necesitas ayuda?</h3>
-            <button class="ContactUsButton" onclick="javascript:window.location = '/app/ask/p/815';">Contáctanos</button>
-        </section>
-        <footer>
-        <p>Autor: Verónica, Javi, Noah, Mark, Patricia y Sandra<br>
-
-        </footer>                
-
-
-    </body>
-</html>
+<jsp:include page="imports/footer.html" /> 

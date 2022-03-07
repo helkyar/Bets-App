@@ -44,7 +44,7 @@
                         <input  class="btn-input" type="text" placeholder="e-mail" name="username" required />
 
                         <label class="label">Contraseña:</label>
-                        <input class="btn-input" type="Contraseña" placeholder="Introduce la contraseña" name="password" required />
+                        <input class="btn-input" type="password" onpaste="return false;" placeholder="Introduce la contraseña" name="password" required />
 
                          <input type="hidden" name="action" value="log" required>
 
