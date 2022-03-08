@@ -56,7 +56,6 @@ public class Session extends HttpServlet {
     private void checkLogin(HttpServletRequest request, HttpServletResponse response) 
     throws IOException, ServletException {
         //Check for data        
-        System.out.println("=============================================!================================");
         DBUser usermodel = new DBUser();
         String url = "view/login.jsp";
         String user = (String) request.getParameter("username");
@@ -64,13 +63,10 @@ public class Session extends HttpServlet {
         if(user==null || passw==null){response.sendRedirect(url);}
         
         //send info to database
-        System.out.println("=============================================!!================================");
         User u = usermodel.loginUser(user, passw);
         if(u.getUserId()<0){response.sendRedirect(url);}
         
         //send response to login
-        
-        System.out.println("=============================================!!!================================");
         request.setAttribute("SESSION", u);
         RequestDispatcher dptch = request.getRequestDispatcher(url);
         dptch.forward(request, response);
@@ -78,13 +74,15 @@ public class Session extends HttpServlet {
 
     private void registerUser(HttpServletRequest request, HttpServletResponse response) 
     throws IOException, ServletException {
-        //Check for data        
+        //Check for data      
+        System.out.println("==============================HERE=================================");
         DBUser usermodel = new DBUser();
         String url = "view/register.jsp";
         String user = (String) request.getParameter("username");
-        String passw = (String) request.getParameter("password");        
+        String passw = (String) request.getParameter("password");
+        String cnfpassw = (String) request.getParameter("confpassword");        
         if(user==null || passw==null){response.sendRedirect(url);}
-        
+        if(!passw.equals(cnfpassw)){response.sendRedirect(url);}
         //Register user
         if(usermodel.registerUser(user, passw)==-1){response.sendRedirect(url);}
         

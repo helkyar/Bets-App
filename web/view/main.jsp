@@ -1,29 +1,19 @@
-<%@page import="models.*"%>
-<%@page import="java.util.List"%>
+
 <!DOCTYPE html>
 <!--
 https://tomcat.apache.org/download-taglibs.cgi JSTL dowload page
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
 -->
-
+<%@page import="models.*"%>
 <% String path = request.getContextPath(); %>
 
-<%
-    List<Game> games=null; List<Bet> bets=null; List<Team> teams=null;
-    if(session.getAttribute("GAMES") == null){
-        games = (List<Game>) request.getAttribute("GAMES");
-        session.setAttribute("GAMES", games);
-        bets = (List<Bet>) request.getAttribute("BETS");
-        session.setAttribute("BETS", bets);    
-        teams = (List<Team>) request.getAttribute("TEAMS");
-        session.setAttribute("TEAMS", teams); 
-    }
-    
-    User user = (User) session.getAttribute("TOKEN");
-    if(user==null){response.sendRedirect("/betsweb/view/login.jsp");}
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var='user' value='${sessionScope["TOKEN"]}'/>
+<c:if test = "${user==null}"> 
+    <c:redirect url="/view/login.jsp"/> 
+</c:if>
 
-%>
 <html>
     <head>
         

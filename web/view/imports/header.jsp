@@ -37,14 +37,19 @@
             <nav>
                 <!-- ONLY IF LOGGED -->
             <%  if((User) session.getAttribute("TOKEN")!=null){ %>
-               <a  style="color:white" href="main.jsp"><button class="menu-btn-principal"><center>INICIO</center></button></a> 
-               <a  style="color:white" href="iniciar.jsp"><button class="menu-btn-principal"><center>APUESTAS</center></button></a>                 
-               <a  style="color:white" href="login.jsp"><button class="menu-btn-principal"><center>LOGOUT</center></button> </a>               
+               <a  style="color:white">
+                   <button class="menu-btn-principal">
+                    <center><%= ((User) session.getAttribute("TOKEN")).getMoney() %>&#36;</center>
+                   </button>
+               </a>              
+               <a  style="color:white" href="/betsweb/view/main.jsp"><button class="menu-btn-principal"><center>INICIO</center></button></a> 
+               <a  style="color:white" href="/betsweb/view/iniciar.jsp"><button class="menu-btn-principal"><center>APUESTAS</center></button></a>                 
+               <a  style="color:white" href="/betsweb/view/login.jsp"><button class="menu-btn-principal"><center>LOGOUT</center></button> </a>               
             <% } else {%>
                <a style="color:white" href="/betsweb/view/login.jsp"><button class="menu-btn-principal"><center>LOGIN</center></button></a>
                <a style="color:white" href="/betsweb/view/register.jsp"><button class="menu-btn-principal"><center>REGISTRO</center></button></a>
             <% } %> 
-               <a style="color:white" href="ayuda.jsp"><button class="menu-btn-principal-ayuda"><center>?</center></button> </a>   
+               <a style="color:white" href="/betsweb/view/ayuda.jsp"><button class="menu-btn-principal-ayuda"><center>?</center></button> </a>   
 
             </nav>
         </header> 

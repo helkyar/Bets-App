@@ -27,15 +27,15 @@
         <div class="fondo-foto">   
             <h1 class="titulo">REGISTRARSE:</h1>
 
-            <form id="form" class="topBefore caja">
+            <form method="POST" action="/betsweb/Session" id="form" class="topBefore caja">
 		
 		<input id="name" type="text" placeholder="nombre"><br><br>
-		<input id="email" type="text" placeholder="email"><br><br>
+		<input id="email" type="text" name="username" placeholder="email"><br><br>
 		<input id="telefono" type="text" placeholder="telefono"><br><br>
-                <input id="password" type="text" placeholder="password"><br><br>
-                <input id="password" type="text" placeholder="poner otra vez el password"> <br><br>
+                <input id="password" type="password" name="password" placeholder="password"><br><br>
+                <input id="password" type="password" name="confpassword" placeholder="poner otra vez el password"> <br><br>
                 <input id="submit" type="submit" value="GO!">
- 
+                 <input type="hidden" name="action" value="reg" required>
             </form>
         </div>  
         <footer class="banner">

@@ -14,8 +14,6 @@
 <!-- set msg error if notok -->
 <%
     session.removeAttribute("TOKEN");    
-    List<Team> teams = (List<Team>) session.getAttribute("TEAMS");
-    if(teams==null){response.sendRedirect("/betsweb/BetSetter");}
     
     User user = (User) request.getAttribute("SESSION");
     if(user!=null){

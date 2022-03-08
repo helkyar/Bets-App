@@ -20,7 +20,31 @@ import javax.servlet.http.HttpServletResponse;
  * @author admin
  */
 public class BetGetter extends HttpServlet {
+/**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
 
+    // check bet show and send or not 
+        try {
+            request.setAttribute("BETS", new DBBet().getBets());        
+            request.setAttribute("USERS", new DBUser().getUsers());
+            request.setAttribute("TEAMS", new DBTeam().getTeams());
+            request.setAttribute("GAMES", new DBGame().getGames());
+
+            RequestDispatcher dptch = request.getRequestDispatcher("/view/iniciar.jsp");
+            dptch.forward(request, response);
+                   
+        } catch (Exception e) {e.printStackTrace();}
+    }
+    
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -49,18 +73,29 @@ public class BetGetter extends HttpServlet {
     throws IOException, ServletException {
         //get bets posted in main or details page and insert them
         DBBet betsmodel = new DBBet("");
-        String url = request.getParameter("path");
-        Bet bet = (Bet) request.getAttribute("STOREBET");
-        
+        String url = "/view/iniciar.jsp";
+//        String url = request.getParameter("path");
+//        Bet bet = (Bet) request.getAttribute("STOREBET");
+        int user = Integer.parseInt(request.getParameter("user"));
+        int game = Integer.parseInt(request.getParameter("game"));
+        int type = Integer.parseInt(request.getParameter("type"));
+        float pay =  Float.parseFloat(request.getParameter("pay"));
+        int amount = Integer.parseInt(request.getParameter("amount"));
+
+        System.out.println("===================================================");
+        System.out.println(user+":"+game+":"+type+":"+pay+":"+amount);
+        System.out.println("===================================================");
         //Store to database
-        int resp = betsmodel.insertBet(bet.getUserId(), bet.getGameId(), 
-            bet.getBetType(), bet.getBetPay(), bet.getBetAmount());
+        int resp = betsmodel.insertBet(user, game, type, pay, amount);
         //Refresh page without sending new bets
         if(resp<0){response.sendRedirect(url);}
-        
+        System.out.println(resp);
+        System.out.println("==================================================");
         //Resend updated bets and users (account money)   
         request.setAttribute("BETS", new DBBet().getBets());        
         request.setAttribute("USERS", new DBUser().getUsers());
+        request.setAttribute("TEAMS", new DBTeam().getTeams());
+        request.setAttribute("GAMES", new DBGame().getGames());
         
         RequestDispatcher dptch = request.getRequestDispatcher(url);
         dptch.forward(request, response);
@@ -78,10 +113,12 @@ public class BetGetter extends HttpServlet {
         int resp = betsmodel.deleteBet(bet);
         //Refresh page without sending new bets
         if(resp<0){response.sendRedirect(url);}         
-        //send updated bets
-        request.setAttribute("BETS", new DBBet().getBets());  
-        
-        RequestDispatcher dptch = request.getRequestDispatcher(url);
+        //send updated bets  
+        request.setAttribute("TEAMS", new DBTeam().getTeams());
+        request.setAttribute("BETS", new DBBet().getBets());
+        request.setAttribute("GAMES", new DBGame().getGames());
+
+        RequestDispatcher dptch = request.getRequestDispatcher("/view/iniciar.jsp");
         dptch.forward(request, response);
     }
 

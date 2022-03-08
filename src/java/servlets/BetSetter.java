@@ -62,7 +62,7 @@ public class BetSetter extends HttpServlet {
             request.setAttribute("BETS", bets);
             request.setAttribute("GAMES", games);
             
-            RequestDispatcher dptch = request.getRequestDispatcher("/view/main.jsp");
+            RequestDispatcher dptch = request.getRequestDispatcher("/view/iniciar.jsp");
             dptch.forward(request, response);
             
         } catch (Exception e) {e.printStackTrace();}
