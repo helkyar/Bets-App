@@ -6,7 +6,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 <%@ page import="java.util.*, servlets.*, models.*" %>
 <% String path = request.getContextPath(); %>
 
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var='user' value='${sessionScope["TOKEN"]}'/>
 <c:if test = "${user==null}"> 
@@ -19,51 +18,53 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 <%// Obtains teams from PriceSetter controller (servlet)
     User user = (User) session.getAttribute("TOKEN");
    
-    List<Game> games=null; List<Bet> bets=null; List<Team> teams=null;    
+    List<Game> games=null; List<Bet> bets=null; List<Team> teams=null;
     games = (List<Game>) request.getAttribute("GAMES");
     bets = (List<Bet>) request.getAttribute("BETS");
     teams = (List<Team>) request.getAttribute("TEAMS");
+
 %>
 <html>
     <head>
     <jsp:include page="imports/header.jsp" /> 
     <link rel="stylesheet" type="text/css" href="<%= path %>/css/iniciar.css" media="screen" />
-
+ 
         <div class="bets-container">
             
           <div class="right">
             <div class="content">
-<!--                <div class="caja-apuestas">
-                  cajas individuales
+                <% for(Bet bet : bets){ 
+                    if(bet.getUserId()==user.getUserId() && bet.getShow()==1){
+                    Game g = null;
+                    for(Game game : games){
+                        if(game.getGameId()==bet.getGameId()){
+                            g = game;
+                        }
+                    }
+                %>
+           
+                <div class="caja-apuestas margintop">
 
-                  <div class="caja-apuestas-titulo">
-                    titulo
-                    Apuestas
+                  <div class="caja-apuestas-titulo establecida">
+                      <%= g.getLocal() %>~<%= g.getVisitor() %>
                   </div>
 
                   <div class="caja-apuestas-conjunto">
-                    <form method="POST" action="/betsweb/BetGetter">
-                    <label class="btnn conjunto-btn1 btn5">+5</label>
-                    <label class="btnn conjunto-btn2 btn10">+10</label>
-                    <label class="btnn conjunto-btn3 btn50">+50</label>
-                    <input class="conjunto-input betamt" type="number" />
-                    <input type="hidden" name="action" value="" />
-                    <button class="conjunto-btn5">Aceptar</button></form>
+                    <label class="conjunto-btn1">
+                        Cantidad: <%= bet.getBetAmount() %>
+                    </label>
+                    <label class="conjunto-btn2">
+                        Multiplicador: <%= bet.getBetPay() %>
+                    </label>
                   </div>
-                  fin del conjunto1 
-
-                  cajas contenedora 2
-                </div>-->
+                </div>
+               <% }} %>
               </div>
-
             </div>
             
-           <% for(Bet bet : bets){ %>
-               <h1><%= bet.getBetAmount() %></h1>
-           <% } %>
             <table>
                 <tr>
-                    <th>FÃšTBOL </th> 
+                    <th>FÚTBOL </th> 
                     <th></th>
                     <th></th>
                     <th></th>
@@ -95,7 +96,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                             vl = team.getVisitLost()/team.getVisitGames();
                             vw = team.getVisitWon()/team.getVisitGames();
                         }
-                    }%>
+                    }
+                    if(game.getDate()!=null){%>
                     <!-- Render HTML and calculate multiplayer -->
                     <tr>
                         <td><%= game.getDate() %> </td>
@@ -123,10 +125,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                            <button class="betting">x</button>
                         </td>
                     </tr>
-               <% }%> 
+               <% }}%> 
             </table>  
         </div>
+       
 
+    
      <div class="pay-method">
          <a class="t" href="info-pagos.jsp"><img class="paypal img1" src="<%= path %>/img/paypal.png" alt=""></a>
         <a  class="t" href="info-pagos.jsp"><img class="visa img1" src=" <%= path %>/img/visa.png" alt=""></a>
@@ -134,5 +138,4 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
     </div>
                 
     <script src="<%= path %>/js/bets.js"></script>
-
 <jsp:include page="imports/footer.html" /> 

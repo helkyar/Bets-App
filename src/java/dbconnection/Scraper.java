@@ -38,7 +38,7 @@ public class Scraper {
     private static Map<String,Integer[]> statistics = new HashMap<>();
         
     /**
-     * @param args the command line arguments
+     * MAIN METHOD
      */
     public static void executeDataBaseUpdate() {
         /**

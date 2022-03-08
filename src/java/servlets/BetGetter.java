@@ -32,6 +32,7 @@ public class BetGetter extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
 
+        String url = "/view/iniciar.jsp";
     // check bet show and send or not 
         try {
             request.setAttribute("BETS", new DBBet().getBets());        
@@ -39,7 +40,7 @@ public class BetGetter extends HttpServlet {
             request.setAttribute("TEAMS", new DBTeam().getTeams());
             request.setAttribute("GAMES", new DBGame().getGames());
 
-            RequestDispatcher dptch = request.getRequestDispatcher("/view/iniciar.jsp");
+            RequestDispatcher dptch = request.getRequestDispatcher(url);
             dptch.forward(request, response);
                    
         } catch (Exception e) {e.printStackTrace();}
@@ -73,24 +74,21 @@ public class BetGetter extends HttpServlet {
     throws IOException, ServletException {
         //get bets posted in main or details page and insert them
         DBBet betsmodel = new DBBet("");
-        String url = "/view/iniciar.jsp";
+        String url = "view/iniciar.jsp";
 //        String url = request.getParameter("path");
 //        Bet bet = (Bet) request.getAttribute("STOREBET");
+
+        if(request.getParameter("amount").equals("")){response.sendRedirect(url);}
         int user = Integer.parseInt(request.getParameter("user"));
         int game = Integer.parseInt(request.getParameter("game"));
         int type = Integer.parseInt(request.getParameter("type"));
         float pay =  Float.parseFloat(request.getParameter("pay"));
         int amount = Integer.parseInt(request.getParameter("amount"));
 
-        System.out.println("===================================================");
-        System.out.println(user+":"+game+":"+type+":"+pay+":"+amount);
-        System.out.println("===================================================");
         //Store to database
         int resp = betsmodel.insertBet(user, game, type, pay, amount);
         //Refresh page without sending new bets
-        if(resp<0){response.sendRedirect(url);}
-        System.out.println(resp);
-        System.out.println("==================================================");
+        if(resp<0){response.sendRedirect(url);}       
         //Resend updated bets and users (account money)   
         request.setAttribute("BETS", new DBBet().getBets());        
         request.setAttribute("USERS", new DBUser().getUsers());

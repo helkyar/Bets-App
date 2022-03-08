@@ -12,7 +12,8 @@ public class Bet {
 
     public Bet(){}
     
-    public Bet(int betId, int userId, int gameId, int betPay, int betType, int betAmount, int resultLocal, int resultVisit) {
+    public Bet(int betId, int userId, int gameId, float betPay, int betType, 
+            int betAmount, int resultLocal, int resultVisit, int show) {
         this.betId = betId;
         this.userId = userId;
         this.gameId = gameId;
@@ -21,8 +22,9 @@ public class Bet {
         this.betAmount = betAmount;
         this.resultLocal = resultLocal;
         this.resultVisit = resultVisit;
-        this.data = new int[]{betId, userId, gameId, betPay, betType,
-            betAmount, resultLocal, resultVisit};
+        this.show = show;
+        this.data = new int[]{betId, userId, gameId, (int)betPay, betType,
+            betAmount, resultLocal, resultVisit, show};
     }
 
     @Override
@@ -40,6 +42,10 @@ public class Bet {
         return data;
     }
 
+    public int getShow() {
+        return show;
+    }
+    
     public int getBetId() {
         return betId;
     }
@@ -52,7 +58,7 @@ public class Bet {
         return gameId;
     }
 
-    public int getBetPay() {
+    public float getBetPay() {
         return betPay;
     }
 
@@ -84,7 +90,7 @@ public class Bet {
         this.gameId = gameId;
     }
 
-    public void setBetPay(int betPay) {
+    public void setBetPay(float betPay) {
         this.betPay = betPay;
     }
 
@@ -111,9 +117,10 @@ public class Bet {
     private int betId;
     private int userId;
     private int gameId;
-    private int betPay;
+    private float betPay;
     private int betType;
     private int betAmount;
     private int resultLocal;
     private int resultVisit;
+    private int show;
 }

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 02, 2022 at 04:48 PM
+-- Generation Time: Mar 08, 2022 at 07:01 PM
 -- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
+-- PHP Version: 8.0.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,9 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `bets`
 --
-DROP DATABASE IF EXISTS `bets`;
-CREATE DATABASE `bets`;
-USE `bets`;
+
 -- --------------------------------------------------------
 
 --
@@ -33,14 +31,23 @@ CREATE TABLE `bets` (
   `bet_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `game_id` int(11) NOT NULL,
-  `bet_pay` int(11) NOT NULL,
+  `bet_pay` float NOT NULL,
   `bet_type` int(11) NOT NULL,
   `bet_amount` int(11) NOT NULL,
-  `resolved` int(1) NOT NULL,
+  `resolved` int(1) NOT NULL DEFAULT 0,
   `show` int(1) NOT NULL DEFAULT 1,
-  `result_local` int(11) NOT NULL,
-  `result_visit` int(11) NOT NULL
+  `result_local` int(11) DEFAULT NULL,
+  `result_visit` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bets`
+--
+
+INSERT INTO `bets` (`bet_id`, `user_id`, `game_id`, `bet_pay`, `bet_type`, `bet_amount`, `resolved`, `show`, `result_local`, `result_visit`) VALUES
+(5, 1, 3118, 2, 2, 150, 0, 1, NULL, NULL),
+(6, 3, 3057, 3.25, 3, 150, 0, 1, NULL, NULL),
+(7, 3, 3121, 3.25, 3, 50, 0, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -268,11 +275,11 @@ INSERT INTO `games` (`game_id`, `local`, `visitor`, `date`, `visitor_result`, `l
 (3050, 'Betis', 'Alavés', NULL, 4, 4, 202),
 (3051, 'Cádiz', 'Espanyol', NULL, 2, 2, 203),
 (3052, 'Celta', 'Osasuna', NULL, 2, 2, 204),
-(3053, 'Barcelona', 'Rayo', 'Aplazado', -1, -1, 205),
-(3054, 'Valencia', 'Sevilla', NULL, 1, 1, 206),
-(3055, 'Getafe', 'Granada', NULL, 4, 4, 207),
-(3056, 'Atlético', 'Levante', NULL, 0, 0, 208),
-(3057, 'Mallorca', 'R. Sociedad', '02/03', -1, -1, 209),
+(3053, 'Valencia', 'Sevilla', NULL, 1, 1, 205),
+(3054, 'Getafe', 'Granada', NULL, 4, 4, 206),
+(3055, 'Atlético', 'Levante', NULL, 0, 0, 207),
+(3056, 'Mallorca', 'R. Sociedad', NULL, 0, 0, 208),
+(3057, 'Barcelona', 'Rayo', '24/04', -1, -1, 209),
 (3058, 'Espanyol', 'Betis', NULL, 1, 1, 210),
 (3059, 'Levante', 'Cádiz', NULL, 0, 0, 211),
 (3060, 'Villarreal', 'Mallorca', NULL, 3, 3, 212),
@@ -303,56 +310,56 @@ INSERT INTO `games` (`game_id`, `local`, `visitor`, `date`, `visitor_result`, `l
 (3085, 'R. Sociedad', 'Granada', NULL, 2, 2, 237),
 (3086, 'Espanyol', 'Barcelona', NULL, 2, 2, 238),
 (3087, 'Mallorca', 'Athletic', NULL, 3, 3, 239),
-(3088, 'Elche', 'Rayo', '18/02', -1, -1, 240),
-(3089, 'Granada', 'Villarreal', '19/02', -1, -1, 241),
-(3090, 'Osasuna', 'Atlético', '19/02', -1, -1, 242),
-(3091, 'Cádiz', 'Getafe', '19/02', -1, -1, 243),
-(3092, 'Real Madrid', 'Alavés', '19/02', -1, -1, 244),
-(3093, 'Espanyol', 'Sevilla', '20/02', -1, -1, 245),
-(3094, 'Valencia', 'Barcelona', '20/02', -1, -1, 246),
-(3095, 'Betis', 'Mallorca', '20/02', -1, -1, 247),
-(3096, 'Athletic', 'R. Sociedad', '20/02', -1, -1, 248),
-(3097, 'Celta', 'Levante', '21/02', -1, -1, 249),
-(3098, 'Levante', 'Elche', '25/02', -1, -1, 250),
-(3099, 'Mallorca', 'Valencia', '26/02', -1, -1, 251),
-(3100, 'Getafe', 'Alavés', '26/02', -1, -1, 252),
-(3101, 'Rayo', 'Real Madrid', '26/02', -1, -1, 253),
-(3102, 'Atlético', 'Celta', '26/02', -1, -1, 254),
-(3103, 'Villarreal', 'Espanyol', '27/02', -1, -1, 255),
-(3104, 'Sevilla', 'Betis', '27/02', -1, -1, 256),
-(3105, 'R. Sociedad', 'Osasuna', '27/02', -1, -1, 257),
-(3106, 'Barcelona', 'Athletic', '27/02', -1, -1, 258),
-(3107, 'Granada', 'Cádiz', '28/02', -1, -1, 259),
-(3108, 'Alavés', 'Sevilla', '04/03', -1, -1, 260),
-(3109, 'Osasuna', 'Villarreal', '05/03', -1, -1, 261),
-(3110, 'Espanyol', 'Getafe', '05/03', -1, -1, 262),
-(3111, 'Valencia', 'Granada', '05/03', -1, -1, 263),
-(3112, 'Real Madrid', 'R. Sociedad', '05/03', -1, -1, 264),
-(3113, 'Cádiz', 'Rayo', '06/03', -1, -1, 265),
-(3114, 'Elche', 'Barcelona', '06/03', -1, -1, 266),
-(3115, 'Celta', 'Mallorca', '06/03', -1, -1, 267),
-(3116, 'Betis', 'Atlético', '06/03', -1, -1, 268),
-(3117, 'Athletic', 'Levante', '07/03', -1, -1, 269),
-(3118, 'Atlético', 'Cádiz', '13/03', -1, -1, 270),
-(3119, 'Barcelona', 'Osasuna', '13/03', -1, -1, 271),
-(3120, 'Getafe', 'Valencia', '13/03', -1, -1, 272),
-(3121, 'Granada', 'Elche', '13/03', -1, -1, 273),
-(3122, 'Levante', 'Espanyol', '13/03', -1, -1, 274),
-(3123, 'Mallorca', 'Real Madrid', '13/03', -1, -1, 275),
-(3124, 'Rayo', 'Sevilla', '13/03', -1, -1, 276),
-(3125, 'Betis', 'Athletic', '13/03', -1, -1, 277),
-(3126, 'R. Sociedad', 'Alavés', '13/03', -1, -1, 278),
-(3127, 'Villarreal', 'Celta', '13/03', -1, -1, 279),
-(3128, 'Alavés', 'Granada', '20/03', -1, -1, 280),
-(3129, 'Athletic', 'Getafe', '20/03', -1, -1, 281),
-(3130, 'Celta', 'Betis', '20/03', -1, -1, 282),
-(3131, 'Cádiz', 'Villarreal', '20/03', -1, -1, 283),
-(3132, 'Elche', 'Valencia', '20/03', -1, -1, 284),
+(3088, 'Elche', 'Rayo', NULL, 2, 2, 240),
+(3089, 'Granada', 'Villarreal', NULL, 1, 1, 241),
+(3090, 'Osasuna', 'Atlético', NULL, 0, 0, 242),
+(3091, 'Cádiz', 'Getafe', NULL, 1, 1, 243),
+(3092, 'Real Madrid', 'Alavés', NULL, 3, 3, 244),
+(3093, 'Espanyol', 'Sevilla', NULL, 1, 1, 245),
+(3094, 'Valencia', 'Barcelona', NULL, 1, 1, 246),
+(3095, 'Betis', 'Mallorca', NULL, 2, 2, 247),
+(3096, 'Athletic', 'R. Sociedad', NULL, 4, 4, 248),
+(3097, 'Celta', 'Levante', NULL, 1, 1, 249),
+(3098, 'Levante', 'Elche', NULL, 3, 3, 250),
+(3099, 'Mallorca', 'Valencia', NULL, 0, 0, 251),
+(3100, 'Getafe', 'Alavés', NULL, 2, 2, 252),
+(3101, 'Rayo', 'Real Madrid', NULL, 0, 0, 253),
+(3102, 'Atlético', 'Celta', NULL, 2, 2, 254),
+(3103, 'Villarreal', 'Espanyol', NULL, 5, 5, 255),
+(3104, 'Sevilla', 'Betis', NULL, 2, 2, 256),
+(3105, 'R. Sociedad', 'Osasuna', NULL, 1, 1, 257),
+(3106, 'Barcelona', 'Athletic', NULL, 4, 4, 258),
+(3107, 'Granada', 'Cádiz', NULL, 0, 0, 259),
+(3108, 'Alavés', 'Sevilla', NULL, 0, 0, 260),
+(3109, 'Osasuna', 'Villarreal', NULL, 1, 1, 261),
+(3110, 'Espanyol', 'Getafe', NULL, 2, 2, 262),
+(3111, 'Valencia', 'Granada', NULL, 3, 3, 263),
+(3112, 'Real Madrid', 'R. Sociedad', NULL, 4, 4, 264),
+(3113, 'Cádiz', 'Rayo', NULL, 2, 2, 265),
+(3114, 'Elche', 'Barcelona', NULL, 1, 1, 266),
+(3115, 'Celta', 'Mallorca', NULL, 4, 4, 267),
+(3116, 'Betis', 'Atlético', NULL, 1, 1, 268),
+(3117, 'Athletic', 'Levante', NULL, 3, 3, 269),
+(3118, 'Atlético', 'Cádiz', '11/03', -1, -1, 270),
+(3119, 'Levante', 'Espanyol', '12/03', -1, -1, 271),
+(3120, 'Granada', 'Elche', '12/03', -1, -1, 272),
+(3121, 'Villarreal', 'Celta', '12/03', -1, -1, 273),
+(3122, 'Getafe', 'Valencia', '12/03', -1, -1, 274),
+(3123, 'Rayo', 'Sevilla', '13/03', -1, -1, 275),
+(3124, 'Betis', 'Athletic', '13/03', -1, -1, 276),
+(3125, 'R. Sociedad', 'Alavés', '13/03', -1, -1, 277),
+(3126, 'Barcelona', 'Osasuna', '13/03', -1, -1, 278),
+(3127, 'Mallorca', 'Real Madrid', '14/03', -1, -1, 279),
+(3128, 'Athletic', 'Getafe', '18/03', -1, -1, 280),
+(3129, 'Alavés', 'Granada', '19/03', -1, -1, 281),
+(3130, 'Elche', 'Valencia', '19/03', -1, -1, 282),
+(3131, 'Osasuna', 'Levante', '19/03', -1, -1, 283),
+(3132, 'Rayo', 'Atlético', '19/03', -1, -1, 284),
 (3133, 'Espanyol', 'Mallorca', '20/03', -1, -1, 285),
-(3134, 'Osasuna', 'Levante', '20/03', -1, -1, 286),
-(3135, 'Rayo', 'Atlético', '20/03', -1, -1, 287),
-(3136, 'Real Madrid', 'Barcelona', '20/03', -1, -1, 288),
-(3137, 'Sevilla', 'R. Sociedad', '20/03', -1, -1, 289),
+(3134, 'Celta', 'Betis', '20/03', -1, -1, 286),
+(3135, 'Cádiz', 'Villarreal', '20/03', -1, -1, 287),
+(3136, 'Sevilla', 'R. Sociedad', '20/03', -1, -1, 288),
+(3137, 'Real Madrid', 'Barcelona', '20/03', -1, -1, 289),
 (3138, 'Athletic', 'Elche', '03/04', -1, -1, 290),
 (3139, 'Atlético', 'Alavés', '03/04', -1, -1, 291),
 (3140, 'Barcelona', 'Sevilla', '03/04', -1, -1, 292),
@@ -438,7 +445,7 @@ INSERT INTO `games` (`game_id`, `local`, `visitor`, `date`, `visitor_result`, `l
 (3220, 'Elche', 'Getafe', '22/05', -1, -1, 372),
 (3221, 'Granada', 'Espanyol', '22/05', -1, -1, 373),
 (3222, 'Osasuna', 'Mallorca', '22/05', -1, -1, 374),
-(3223, 'Rayo', 'Levante', '22/05', -2, -1, 375),
+(3223, 'Rayo', 'Levante', '22/05', -1, -1, 375),
 (3224, 'Real Madrid', 'Betis', '22/05', -1, -1, 376),
 (3225, 'R. Sociedad', 'Atlético', '22/05', -1, -1, 377),
 (3226, 'Sevilla', 'Athletic', '22/05', -1, -1, 378),
@@ -467,26 +474,26 @@ CREATE TABLE `teams` (
 --
 
 INSERT INTO `teams` (`team_id`, `teamname`, `visit_won`, `visit_lost`, `tendency`, `local_won`, `local_lost`, `visit_game`, `local_game`) VALUES
-(1, 'Valencia', 17, 24, '', 17, 13, 11, 11),
-(2, 'Cádiz', 11, 20, '', 7, 16, 11, 11),
-(3, 'Mallorca', 9, 25, '', 12, 10, 11, 11),
-(4, 'Alavés', 9, 24, '', 9, 11, 11, 12),
-(5, 'Osasuna', 15, 11, '', 10, 16, 12, 11),
-(6, 'Celta', 13, 10, '', 14, 13, 12, 11),
-(7, 'Barcelona', 14, 13, '', 19, 11, 11, 10),
-(8, 'Sevilla', 9, 6, '', 23, 10, 11, 11),
-(9, 'Villarreal', 9, 10, '', 29, 13, 10, 12),
-(10, 'Elche', 13, 21, '', 13, 11, 12, 10),
-(11, 'Betis', 21, 14, '', 22, 12, 11, 10),
-(12, 'Espanyol', 11, 19, '', 18, 15, 11, 11),
-(13, 'Granada', 10, 15, '', 15, 16, 11, 10),
-(14, 'Athletic', 10, 8, '', 14, 12, 12, 10),
-(15, 'R. Sociedad', 13, 11, '', 8, 6, 10, 11),
-(16, 'Atlético', 19, 21, '', 20, 12, 11, 11),
-(17, 'Levante', 10, 28, '', 10, 18, 11, 11),
-(18, 'Getafe', 6, 15, '', 17, 10, 11, 11),
-(19, 'Rayo', 7, 15, '', 16, 8, 9, 11),
-(20, 'Real Madrid', 15, 8, '', 25, 8, 9, 12);
+(1, 'Valencia', 18, 24, '', 21, 18, 12, 13),
+(2, 'Cádiz', 11, 20, '', 10, 17, 12, 13),
+(3, 'Mallorca', 13, 31, '', 12, 13, 13, 13),
+(4, 'Alavés', 11, 29, '', 9, 11, 13, 13),
+(5, 'Osasuna', 15, 12, '', 11, 19, 13, 13),
+(6, 'Celta', 13, 12, '', 19, 17, 13, 13),
+(7, 'Barcelona', 20, 15, '', 23, 11, 13, 11),
+(8, 'Sevilla', 10, 7, '', 25, 11, 13, 12),
+(9, 'Villarreal', 13, 12, '', 34, 14, 12, 13),
+(10, 'Elche', 13, 24, '', 16, 14, 13, 12),
+(11, 'Betis', 22, 16, '', 25, 16, 12, 12),
+(12, 'Espanyol', 12, 24, '', 21, 16, 12, 13),
+(13, 'Granada', 11, 18, '', 16, 20, 12, 12),
+(14, 'Athletic', 10, 12, '', 21, 13, 13, 12),
+(15, 'R. Sociedad', 16, 19, '', 9, 6, 13, 12),
+(16, 'Atlético', 25, 22, '', 22, 12, 13, 12),
+(17, 'Levante', 12, 32, '', 13, 18, 13, 12),
+(18, 'Getafe', 7, 18, '', 19, 12, 13, 12),
+(19, 'Rayo', 8, 19, '', 16, 9, 11, 12),
+(20, 'Real Madrid', 16, 8, '', 32, 9, 10, 14);
 
 -- --------------------------------------------------------
 
@@ -499,7 +506,7 @@ CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
   `password` varchar(300) NOT NULL,
   `money` int(11) NOT NULL,
-  `bets_id` int(11) NOT NULL
+  `bets_id` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -508,7 +515,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`user_id`, `username`, `password`, `money`, `bets_id`) VALUES
 (1, 't', 't', 1000, 0),
-(2, 't', 't', 1000, 0);
+(3, 'j', 'j', 1000, 0);
 
 --
 -- Indexes for dumped tables
@@ -552,7 +559,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bets`
 --
 ALTER TABLE `bets`
-  MODIFY `bet_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `bet_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `games`
@@ -570,7 +577,7 @@ ALTER TABLE `teams`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
