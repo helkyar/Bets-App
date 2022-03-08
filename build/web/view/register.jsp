@@ -7,16 +7,9 @@
 <%@page import="java.util.Date"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% String path = request.getContextPath(); %>
-
-<!-- get info from servlet -->
-<!-- start session if ok -->
-<!-- set msg error if notok -->
-<%%>
-
 <!DOCTYPE html>
 <html>
-    <head>
-       
+    <head>       
     <jsp:include page="imports/header.jsp" /> 
     <link rel="stylesheet" type="text/css" href="<%= path %>/css/login.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="<%= path %>/css/register.css" media="screen" />
@@ -44,6 +37,5 @@
            </DIV> 
         </footer>
                  
-        <jsp:include page="imports/footer.html" />     
-    </body>
-</html>
+<jsp:include page="imports/footer.html" />     
+

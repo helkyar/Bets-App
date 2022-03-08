@@ -6,54 +6,48 @@
 
 <%@page import="java.util.Date"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% String path = request.getContextPath(); %>
 <!DOCTYPE html>
 <html>
     <head>       
     <jsp:include page="imports/header.jsp" /> 
 
         <style>
+
             .container-help{
                 margin-top: 9rem;   
             }
             .row {
                 position:absolute;
 
-                width:200px;
-                background-color: #1F3B34;
-                color: white;
-                text-align: center;
-                padding: 0.5%;
-            }
-.ContactUsButton {
-    cursor: pointer;
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    color: #000;
-    background-color: white;
-    border-color: black;
-    width: 200px !important;
-    padding: 10px;
-    font-size: 20px;
-    border-width: thin;
-    position: relative;
-    background-color: #fff0e6;
-    box-shadow: 0px 2px 2px #993d00;
-    -webkit-box-shadow: 0px 2px 2px #993d00;
-    -moz-box-shadow: 0px 2px 2px #993d00;
-}
-            .row2 {
-                margin-left: 230px;
-                margin-right:20px;
-                margin-top:10px;
+            *{
+                font-family: 'Roboto', sans-serif;
 
             }
-            header div {
-                background-color: #FFBC00;
-                height: 100%;
-                width: 14.5%;
+            /* Logo del menu*/
+            .logo {
+                width: 12rem;
+                /* margin: 1rem 2rem 0 2rem; */
             }
+            /* Logo del menu*/         
+            .ContactUsButton {
+                cursor: pointer;
+                border-radius: 5px;
+                -moz-border-radius: 5px;
+                -webkit-border-radius: 5px;
+                color: #000;
+                background-color: white;
+                border-color: black;
+                width: 200px !important;
+                padding: 10px;
+                font-size: 20px;
+                border-width: thin;
+                position: relative;
+                background-color: #fff0e6;
+                box-shadow: 0px 2px 2px #993d00;
+                -webkit-box-shadow: 0px 2px 2px #993d00;
+                -moz-box-shadow: 0px 2px 2px #993d00;
+            }
+
             .ContactUs {
                 padding: 20px 0;
                 margin-left: auto;
@@ -101,7 +95,7 @@
 
             .Categories {
                 margin: auto;
-               padding-left: 250px;
+                padding-left: 250px;
                 max-width: 996px;
             }
             .search {
@@ -153,6 +147,7 @@
                 height: 40px;
                 width: 36px;
             }
+            /* seccion de Preguntas frecuentes */
             .FAQBox {
                 min-width: 500px;
                 max-width: 800px;
@@ -196,16 +191,17 @@
             }
             .FAQQuestion p {
                 font-weight: normal !important;
-         
+
                 margin-top: 5%;
                 font-size: 13px;
                 min-height: 34px;
             }
             a {
-  outline: none;
-  text-decoration: none;
-  color: black;
-}
+                outline: none;
+                text-decoration: none;
+                color: black;
+            }
+
             ul {
                 display: block;
                 list-style-type: disc;
@@ -219,7 +215,7 @@
                 float: left;
                 animation: fadein 2s;
                 background-color: #2d2d2d;
-                color: white;
+
                 padding: 15px 10px;
             }
 
@@ -265,6 +261,7 @@
                     Las apuestas deportivas seguras estás basadas en el principio financiero de arbitraje, que consiste en coger el valor de ambas variables (en este caso cuotas) por encima de 2, de tal forma que gane quien gane, se obtiene beneficio. 
                 </p>
             </div>
+
         </div>
         <section>
             <div  id="b" >
@@ -275,7 +272,7 @@
                         <div class="CategoryBox CB223">				
                             <div class="CategoryBoxImageDiv">
                                 <a href="/app/answers/list/c/223/p/815">
-                                    <img class="CategoryBoxImage" src="<%= path %>/img/2340047-box-boxes-envelope-gift-he_85574.png">
+                                    <img class="CategoryBoxImage" src="../img/2340047-box-boxes-envelope-gift-he_85574.png">
                                 </a>
                             </div>
                             <a class="CategoryLink" href="/app/answers/list/c/223/p/815"> 
@@ -285,16 +282,14 @@
                             <br>
                             <a class="ShowAll" href="/">Cómo solicitar bonus individuales</a>
                             <br>
-<!--                            <a class="ShowAll" href="/">Cómo solicitar bonus individuales</a>
-                            <br>-->
-
+                         
                             <a class="ShowAll" href="/app/answers/list/c/223/p/815">Ver todos</a>
                         </div>
 
                         <div class="CategoryBox CB226">				
                             <div class="CategoryBoxImageDiv">
                                 <a href="/app/answers/list/c/226/p/815">
-                                    <img class="CategoryBoxImage" src="<%= path %>/img/depositos.png">
+                                    <img class="CategoryBoxImage" src="../img/depositos.png">
                                 </a>
                             </div>
                             <a class="CategoryLink" href="/app/answers/list/c/226/p/815">
@@ -313,7 +308,7 @@
                         <div class="CategoryBox CB227">				
                             <div class="CategoryBoxImageDiv">
                                 <a href="/app/answers/list/c/227/p/815">
-                                    <img class="CategoryBoxImage" src="<%= path %>/img/juegos.png">
+                                    <img class="CategoryBoxImage" src="../img/juegos.png">
                                 </a>
                             </div>
                             <a class="CategoryLink" href="/app/answers/list/c/227/p/815">
@@ -326,16 +321,13 @@
                             <a class="ShowAll" href="/">Ganancias/resultado del juego</a>
                             <br>
 
-
-
-
                             <a class="ShowAll" href="/app/answers/list/c/227/p/815">Ver todos</a>
                         </div>
 
                         <div class="CategoryBox CB235">				
                             <div class="CategoryBoxImageDiv">
                                 <a href="/app/answers/list/c/235/p/815">
-                                    <img class="CategoryBoxImage" src="<%= path %>/img/llave.png">
+                                    <img class="CategoryBoxImage" src="../img/llave.png">
                                 </a>
                             </div>
                             <a class="CategoryLink" href="/app/answers/list/c/235/p/815">
@@ -354,7 +346,7 @@
                         <div class="CategoryBox CB229">				
                             <div class="CategoryBoxImageDiv">
                                 <a href="/app/answers/list/c/229/p/815">
-                                    <img class="CategoryBoxImage" src="<%= path %>/img/usuario.png">
+                                    <img class="CategoryBoxImage" src="../img/usuario.png">
                                 </a>
                             </div>
                             <a class="CategoryLink" href="/app/answers/list/c/229/p/815">
@@ -371,12 +363,10 @@
                             <a class="ShowAll" href="/app/answers/list/c/229/p/815">Ver todos</a>
                         </div>
 
-
-
                         <div class="CategoryBox CB246">				
                             <div class="CategoryBoxImageDiv">
                                 <a href="/app/answers/list/c/246/p/815">
-                                    <img class="CategoryBoxImage" src="<%= path %>/img/inscripcion.png">
+                                    <img class="CategoryBoxImage" src="../img/inscripcion.png">
                                 </a>
                             </div>
                             <a class="CategoryLink" href="/app/answers/list/c/246/p/815">
@@ -396,7 +386,7 @@
                         <div class="CategoryBox CB230">				
                             <div class="CategoryBoxImageDiv">
                                 <a href="/app/answers/list/c/230/p/815">
-                                    <img class="CategoryBoxImage" src="<%= path %>/img/mantenimiento.png">
+                                    <img class="CategoryBoxImage" src="../img/mantenimiento.png">
                                 </a>
                             </div>
                             <a class="CategoryLink" href="/app/answers/list/c/230/p/815">
@@ -416,7 +406,7 @@
                         <div class="CategoryBox CB225">				
                             <div class="CategoryBoxImageDiv">
                                 <a href="/app/answers/list/c/225/p/815">
-                                    <img class="CategoryBoxImage" src="<%= path %>/img/dinero.png">
+                                    <img class="CategoryBoxImage" src="../img/dinero.png">
                                 </a>
                             </div>
                             <a class="CategoryLink" href="/app/answers/list/c/225/p/815">

@@ -1,17 +1,14 @@
 <%-- 
     Document   : login
     Created on : 9 feb 2022, 16:37:17
-    Author     : Sandra
+    Author     : admin
 --%>
 
-<%@page import="java.util.*"%>
-<%@page import="models.*"%>
+<%@page import="java.util.Date"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% String path = request.getContextPath(); %>
+<!DOCTYPE html>
 
-<!-- get info from servlet -->
-<!-- start session if ok -->
-<!-- set msg error if notok -->
 <%
     session.removeAttribute("TOKEN");    
     
@@ -22,7 +19,7 @@
     }
 %>
 
-<!DOCTYPE html>
+
 <html>
     <head>       
     <jsp:include page="imports/header.jsp" /> 
@@ -42,15 +39,16 @@
                         <input  class="btn-input" type="text" placeholder="e-mail" name="username" required />
 
                         <label class="label">Contraseña:</label>
+
                         <input class="btn-input" type="password" onpaste="return false;" placeholder="Introduce la contraseña" name="password" required />
 
                          <input type="hidden" name="action" value="log" required>
+
 
                         <div class="btninicio">
                             <label class="log-btn" for="submit"><a><span>Aceptar</span></a></label>
                             <input id="submit" type="submit" value="Aceptar" hidden/>
                         </div>    
-
                     </form> 
                 </article>                    
             </div>          

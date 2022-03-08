@@ -6,6 +6,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 <%@ page import="java.util.*, servlets.*, models.*" %>
 <% String path = request.getContextPath(); %>
 
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var='user' value='${sessionScope["TOKEN"]}'/>
 <c:if test = "${user==null}"> 
@@ -18,32 +19,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 <%// Obtains teams from PriceSetter controller (servlet)
     User user = (User) session.getAttribute("TOKEN");
    
-//    if(request.getAttribute("GAMES")==null){response.sendRedirect("/betsweb/BetSetter");}   
-    List<Game> games=null; List<Bet> bets=null; List<Team> teams=null;
-    
-//    if(session.getAttribute("GAMES") == null){
-        games = (List<Game>) request.getAttribute("GAMES");
-//        session.setAttribute("GAMES", games);
-        bets = (List<Bet>) request.getAttribute("BETS");
-//        session.setAttribute("BETS", bets);    
-        teams = (List<Team>) request.getAttribute("TEAMS");
-//        session.setAttribute("TEAMS", teams); 
-//    }
-    
-//    games = (List<Game>) session.getAttribute("GAMES");    
-//    bets = (List<Bet>) session.getAttribute("BETS");    
-//    teams = (List<Team>) session.getAttribute("TEAMS");
-       //comparisons: 
-        //vl == ll && lw == vw equals
-        //vl > lw && vw < lw   visit loses
-        //vl < lw && vw > lw   visit wons
-   
+    List<Game> games=null; List<Bet> bets=null; List<Team> teams=null;    
+    games = (List<Game>) request.getAttribute("GAMES");
+    bets = (List<Bet>) request.getAttribute("BETS");
+    teams = (List<Team>) request.getAttribute("TEAMS");
 %>
 <html>
     <head>
     <jsp:include page="imports/header.jsp" /> 
     <link rel="stylesheet" type="text/css" href="<%= path %>/css/iniciar.css" media="screen" />
- 
+
         <div class="bets-container">
             
           <div class="right">
@@ -70,6 +55,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                   cajas contenedora 2
                 </div>-->
               </div>
+
             </div>
             
            <% for(Bet bet : bets){ %>
@@ -77,7 +63,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
            <% } %>
             <table>
                 <tr>
-                    <th>FÚTBOL </th> 
+                    <th>FÃšTBOL </th> 
                     <th></th>
                     <th></th>
                     <th></th>
@@ -140,9 +126,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                <% }%> 
             </table>  
         </div>
-       
 
-    
      <div class="pay-method">
          <a class="t" href="info-pagos.jsp"><img class="paypal img1" src="<%= path %>/img/paypal.png" alt=""></a>
         <a  class="t" href="info-pagos.jsp"><img class="visa img1" src=" <%= path %>/img/visa.png" alt=""></a>
@@ -150,4 +134,5 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
     </div>
                 
     <script src="<%= path %>/js/bets.js"></script>
+
 <jsp:include page="imports/footer.html" /> 
