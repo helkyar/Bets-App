@@ -8,16 +8,17 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Apuestas Bárbaras</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <link rel="stylesheet" type="text/css" href="../css/normalizer.css" media="screen" />
-        <link rel="stylesheet" type="text/css" href="../css/mainpage.css" media="screen" />
-
+    <head>       
+    <jsp:include page="imports/header.jsp" /> 
 
         <style>
+
+            .container-help{
+                margin-top: 9rem;   
+            }
+            .row {
+                position:absolute;
+
             *{
                 font-family: 'Roboto', sans-serif;
 
@@ -159,7 +160,9 @@
                 background-size: cover;
                 background-color: #000;
                 padding-top: 20px;
+                height: fit-content;
             }
+
             .PopularFaqs h2 {
                 margin-top: 0px;
                 color: white;
@@ -184,7 +187,7 @@
                 border-radius: 4px;
                 -webkit-border-radius: 4px;
                 -moz-border-radius: 4px;
-                margin-bottom: 10px;
+                margin-bottom: 1rem;
             }
             .FAQQuestion p {
                 font-weight: normal !important;
@@ -215,124 +218,51 @@
 
                 padding: 15px 10px;
             }
-            /* seccion de Preguntas frecuentes */
-            /* botones nav*/
-            .menu-btn-principal{
-
-                background-color: #1F3B34;
-                color: white;
-                border: 2px solid white;
-                border-radius: 20%;
-                width: 100px;
-                heigh: 100px;
-
-
-                padding: 10px;
-                margin: 5px;
-                transition-duration: 0.4s;
-
-            }
-
-            .menu-btn-principal:hover {
-                box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.24), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
-                background-color: gray;
-
-                color: black;
-            }
-            .menu-btn-principal-ayuda{
-                background-color: #1F3B34;
-                color: white;
-                border: 2px solid white;
-                font-size: 1.5rem;
-                border-radius: 1% 50%;
-
-
-
-                padding: 10px;
-                margin: 5px;
-                transition-duration: 0.4s;
-            }
-            .menu-btn-principal-ayuda:hover{
-
-                box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.24), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
-                background-color: gray;
-
-                color: black;
-
-            }
-
-            header div {
-                background-color: #FFBC00;
-                height: 100%;
-                width: 14.5%;
-            }
-
-            /*fin de estilos del nav*/
-
-            .descripcion-apuestas{
-                margin-right: 15%;
-                margin-left: 25%;
-            }
 
         </style>
-    </head>
-    <body>
-        <header>            
-            <div>
-                <img class="logo" src="../img/LOGO_APUESTAS-05.png" alt="alt"/>
+    
+        <div class="container-help">
+            <div class="row">
+                <h2>FAQ:</h2>
+                <br>
+                <h3>¿Cómo hacer apuestas deportivas?</h3>
+                <p>
+                    Es muy sencillo: entra en la página de apuestas Barbaras, regístrate y deposita aprovechando alguna de las múltiples ofertas de las paginas de apuestas y ya podrás apostar.
+                </p>
+                <h3>¿Cómo funcionan las apuestas deportivas?</h3>
+                <p>
+                    Cada participante en un evento deportivo tiene una cuota que se fija en función a la probabilidad estimada de que ello ocurra. Es decir, la cuota y por lo tanto el beneficio que se obtiene con una victoria del Real Madrid será menor si se enfrenta a un equipo de Segunda división que si juega la final de la Champions, ya que es más probable que ocurra.
+                </p>
+                <h3>¿Qué es el hándicap en las apuestas?</h3>
+                <p>
+                    El hándicap es una ventaja o desventaja que supuestamente tiene un participante o equipo frente a su oponente. En apuestas, se utiliza para igualar la cuota, dando una ventaja a un rival.
+                </p>
+
             </div>
-            <form action="action">
+            <div class="row2">
+                <h3>¿Qué es una apuesta múltiple?</h3>
+                <p>
+                    Es lo mismo que una apuesta combinada, la cuota de cada pronóstico se multiplica por las de las otras selecciones. 
+                </p>
+                <h3>¿Qué son las apuestas cruzadas?</h3>
+                <p> 
+                    Estas son apuestas en las que los apostantes definen la apuesta, y la casa de apuestas deportivas simplemente actúa como intermediario, garantizando el pago y cobrando una pequeña comisión por ello. 
+                </p>
+                <h3>¿Qué es el yield en las apuestas?</h3>
+                <p>
+                    Es el rendimiento general o beneficio medio con relación a la inversión, que tiene un apostador sobre el total de sus apuestas. 
+                </p>
+                <h3>¿Qué son las unidades en las apuestas?</h3>
+                <p>Es la cantidad que decidimos invertir en una apuesta, que suele equivaler a un 1% del dinero disponible para ello. No hay que confundirlo con el stake, que siempre se mantiene ent
+                    re el 1/10 y el 10/10, las unidades aumentan a medida que aumenta el bankroll.
+                </p>
+                <h3>¿Cómo hacer apuestas seguras?</h3>
+                <p>
+                    Las apuestas deportivas seguras estás basadas en el principio financiero de arbitraje, que consiste en coger el valor de ambas variables (en este caso cuotas) por encima de 2, de tal forma que gane quien gane, se obtiene beneficio. 
+                </p>
+            </div>
 
-
-                <label><%= new Date()%></label>
-            </form>
-
-            <nav>
-
-
-                <button class="menu-btn-principal"><center><a  style="color:white" href="main.jsp">INICIO</a></center></button> 
-                <button class="menu-btn-principal"><center><a  style="color:white" href="login.jsp">LOGIN</a></center></button> 
-                <button class="menu-btn-principal"><center><a style="color:white" href="register.jsp">REGISTRO</a></center></button>
-                <button class="menu-btn-principal"><center><a style="color:white" href="iniciar.jsp">Prueba</a></center></button>
-
-            </nav>
-        </header> 
-        <div class="descripcion-apuestas"> 
-            <h2>FAQ:</h2>
-            <br>
-            <h3>¿Cómo hacer apuestas deportivas?</h3>
-            <p>
-                Es muy sencillo: entra en la página de apuestas Barbaras, regístrate y deposita aprovechando alguna de las múltiples ofertas de las paginas de apuestas y ya podrás apostar.
-            </p>
-            <h3>¿Cómo funcionan las apuestas deportivas?</h3>
-            <p>
-                Cada participante en un evento deportivo tiene una cuota que se fija en función a la probabilidad estimada de que ello ocurra. Es decir, la cuota y por lo tanto el beneficio que se obtiene con una victoria del Real Madrid será menor si se enfrenta a un equipo de Segunda división que si juega la final de la Champions, ya que es más probable que ocurra.
-            </p>
-            <h3>¿Qué es el hándicap en las apuestas?</h3>
-            <p>
-                El hándicap es una ventaja o desventaja que supuestamente tiene un participante o equipo frente a su oponente. En apuestas, se utiliza para igualar la cuota, dando una ventaja a un rival.
-            </p>
         </div>
-        <!--        <div >
-                    <div class="row">
-                        <h2>FAQ:</h2>
-                        <br>
-                        <h3>¿Cómo hacer apuestas deportivas?</h3>
-                        <p>
-                            Es muy sencillo: entra en la página de apuestas Barbaras, regístrate y deposita aprovechando alguna de las múltiples ofertas de las paginas de apuestas y ya podrás apostar.
-                        </p>
-                        <h3>¿Cómo funcionan las apuestas deportivas?</h3>
-                        <p>
-                            Cada participante en un evento deportivo tiene una cuota que se fija en función a la probabilidad estimada de que ello ocurra. Es decir, la cuota y por lo tanto el beneficio que se obtiene con una victoria del Real Madrid será menor si se enfrenta a un equipo de Segunda división que si juega la final de la Champions, ya que es más probable que ocurra.
-                        </p>
-                        <h3>¿Qué es el hándicap en las apuestas?</h3>
-                        <p>
-                            El hándicap es una ventaja o desventaja que supuestamente tiene un participante o equipo frente a su oponente. En apuestas, se utiliza para igualar la cuota, dando una ventaja a un rival.
-                        </p>
-        
-                    </div>
-                    
-                </div>-->
         <section>
             <div  id="b" >
                 <section class="Faqs">
@@ -352,9 +282,7 @@
                             <br>
                             <a class="ShowAll" href="/">Cómo solicitar bonus individuales</a>
                             <br>
-                            <!--                            <a class="ShowAll" href="/">Cómo solicitar bonus individuales</a>
-                                                        <br>-->
-
+                         
                             <a class="ShowAll" href="/app/answers/list/c/223/p/815">Ver todos</a>
                         </div>
 
@@ -392,9 +320,6 @@
                             <br>
                             <a class="ShowAll" href="/">Ganancias/resultado del juego</a>
                             <br>
-
-
-
 
                             <a class="ShowAll" href="/app/answers/list/c/227/p/815">Ver todos</a>
                         </div>
@@ -437,8 +362,6 @@
 
                             <a class="ShowAll" href="/app/answers/list/c/229/p/815">Ver todos</a>
                         </div>
-
-
 
                         <div class="CategoryBox CB246">				
                             <div class="CategoryBoxImageDiv">
@@ -1198,12 +1121,4 @@
                         </div></div></div>
             </div>
         </section>
-
-        <footer>
-            <p>Autor: Verónica, Javi, Noah, Mark, Patricia y Sandra<br>
-
-        </footer>                
-
-
-    </body>
-</html>
+<jsp:include page="imports/footer.html" /> 

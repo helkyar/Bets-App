@@ -74,13 +74,15 @@ public class Session extends HttpServlet {
 
     private void registerUser(HttpServletRequest request, HttpServletResponse response) 
     throws IOException, ServletException {
-        //Check for data        
+        //Check for data      
+        System.out.println("==============================HERE=================================");
         DBUser usermodel = new DBUser();
         String url = "view/register.jsp";
         String user = (String) request.getParameter("username");
-        String passw = (String) request.getParameter("password");        
+        String passw = (String) request.getParameter("password");
+        String cnfpassw = (String) request.getParameter("confpassword");        
         if(user==null || passw==null){response.sendRedirect(url);}
-        
+        if(!passw.equals(cnfpassw)){response.sendRedirect(url);}
         //Register user
         if(usermodel.registerUser(user, passw)==-1){response.sendRedirect(url);}
         

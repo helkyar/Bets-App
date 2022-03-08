@@ -9,6 +9,15 @@
 <% String path = request.getContextPath(); %>
 <!DOCTYPE html>
 
+<%
+    session.removeAttribute("TOKEN");    
+    
+    User user = (User) request.getAttribute("SESSION");
+    if(user!=null){
+        session.setAttribute("TOKEN", user);      
+        response.sendRedirect("/betsweb/view/main.jsp");
+    }
+%>
 
 <html>
     <head>       
@@ -29,8 +38,10 @@
                         <input  class="btn-input" type="text" placeholder="e-mail" name="username" required />
 
                         <label class="label">Contraseña:</label>
-                        <input class="btn-input" type="Contraseña" placeholder="Introduce la contraseña" name="password" required />
-                        <input type="hidden" name="action" value="log" required>
+
+                        <input class="btn-input" type="password" onpaste="return false;" placeholder="Introduce la contraseña" name="password" required />
+                         <input type="hidden" name="action" value="log" required>
+
 
                         <div class="btninicio">
                             <label class="log-btn" for="submit"><a><span>Aceptar</span></a></label>

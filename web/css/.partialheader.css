@@ -121,7 +121,9 @@ nav{
     background-color: gray;
     color: black;
 }
-    
+.hidden{
+    display: none;
+}
 /*SESSION GENERAL STYLES*/
 .titulo{
     text-align: center;

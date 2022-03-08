@@ -62,8 +62,8 @@ public class DBBet extends Connect{
 // VARIABLES _________________________________________________________________
     private ArrayList<Bet> wagers;
 
-    public int insertBet(int user, int game, int type, int pay, int amount) {
-        String query = "INSERT INTO users (`user_id`, `game_id`, `bet_pay`,"
+    public int insertBet(int user, int game, int type, float pay, int amount) {
+        String query = "INSERT INTO bets (`user_id`, `game_id`, `bet_pay`,"
             + " `bet_type`, `bet_amount`, `resolved`) VALUES "
             + "('"+user+"','"+game+"','"+pay+"','"+type+"','"+amount+"','0')";
         
