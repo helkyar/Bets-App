@@ -7,6 +7,7 @@ package dbconnection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import log.LogGen;
 import models.Team;
 
 /**
@@ -21,9 +22,9 @@ public class DBTeam extends Connect{
         teams = new ArrayList<>();
 
         try{initTeams();} 
-        catch (SQLException e){e.printStackTrace();}
-        catch(Exception e){e.printStackTrace();}    
-        finally{try{conn.close();}catch(Exception e){e.printStackTrace();}}
+        catch (SQLException e){LogGen.error(e.getMessage());}
+        catch(Exception e){LogGen.error(e.getMessage());}    
+        finally{try{conn.close();}catch(Exception e){LogGen.error(e.getMessage());}}
     }
 
     /**

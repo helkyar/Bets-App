@@ -14,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import log.LogGen;
 
 /**
  *
@@ -43,7 +44,8 @@ public class BetGetter extends HttpServlet {
             RequestDispatcher dptch = request.getRequestDispatcher(url);
             dptch.forward(request, response);
                    
-        } catch (Exception e) {e.printStackTrace();}
+            LogGen.info("Data correctly extracted from database");
+        } catch (Exception e) {LogGen.error(e.getMessage());}
     }
     
     /**
@@ -63,10 +65,9 @@ public class BetGetter extends HttpServlet {
             switch(comand){
                 case "insert": storeBet(request, response); break;
                 case "delete": deleteBet(request, response); break;
-                case "updatedb": updateDataBase(); break;
             }
         
-        }catch (Exception e){e.printStackTrace();}
+        }catch (Exception e){LogGen.error(e.getMessage());}
 
     }
 
@@ -97,6 +98,8 @@ public class BetGetter extends HttpServlet {
         
         RequestDispatcher dptch = request.getRequestDispatcher(url);
         dptch.forward(request, response);
+        LogGen.info("Bet placed. User:"+user+"game:"+game+"type:"
+                +type+"pay:"+pay+"amount:"+amount);
     }
 
     private void deleteBet(HttpServletRequest request, HttpServletResponse response) 
@@ -118,6 +121,7 @@ public class BetGetter extends HttpServlet {
 
         RequestDispatcher dptch = request.getRequestDispatcher("/view/iniciar.jsp");
         dptch.forward(request, response);
+        LogGen.info("Bet deleted");
     }
 
     /**
@@ -129,9 +133,4 @@ public class BetGetter extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-    private void updateDataBase() {
-        Scraper.executeDataBaseUpdate();
-    }
-
 }

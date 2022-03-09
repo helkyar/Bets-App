@@ -85,16 +85,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                //To optimize save teams as key-value pairs
                List<int[]> results = new ArrayList<>();
                for(Game game : games){
-                    int ll=0, lw=0, vl=0, vw=0;
+                    float ll=0, lw=0, vl=0, vw=0;
                     for(Team team : teams){
                         if(game.getLocal().equals(team.getTeamName())){
-                            ll = team.getLocalLost()/team.getLocalGames();
-                            lw = team.getLocalWon()/team.getLocalGames();
+                            ll = (float)team.getLocalLost()/team.getLocalGames();
+                            lw = (float)team.getLocalWon()/team.getLocalGames();
                         }
 
                         if(game.getVisitor().equals(team.getTeamName())){            
-                            vl = team.getVisitLost()/team.getVisitGames();
-                            vw = team.getVisitWon()/team.getVisitGames();
+                            vl = (float)team.getVisitLost()/team.getVisitGames();
+                            vw = (float)team.getVisitWon()/team.getVisitGames();
                         }
                     }
                     if(game.getDate()!=null){%>
@@ -104,24 +104,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                         <td><%= game.getLocal() %>  </br> <%= game.getVisitor() %> </td>
                         <td ></td>
                         <td info="user:<%= user.getUserId() %>;game:<%= game.getGameId() %>;
-                            type:1;pay:<%= ((vl + lw)/2 - (vw + ll)/2)*(-0.375) + 2.875 %>;
+                            type:1;pay:<%= Math.round((((vl + lw) - (vw + ll))*(-0.90769) + 4.05)*100.0)/100.0  %>;
                             title:<%= game.getLocal() %>~<%= game.getVisitor() %>;
-                            date:<%= game.getDate() %>">
-                            <p><%= ((vl + lw)/2 - (vw + ll)/2)*(-0.375) + 2.875 %></p>
+                            date:<%= game.getDate() %>">   
+                            <p><%= Math.round((((vl + lw) - (vw + ll))*(-0.90769) + 4.05)*100.0)/100.0 %></p>
                             <button class="betting">x</button>
                         </td>
                         <td info="user:<%= user.getUserId() %>;game:<%= game.getGameId() %>;
-                            type:2;pay:<%= Math.abs(((vl + lw)/2 - (vw + ll)/2))*0.75 + 1.25 %>;
+                            type:2;pay:<%= Math.round((Math.abs(((vl + lw) - (vw + ll)))*0.75 + 1.25)*100.0)/100.0 %>
                             title:<%= game.getLocal() %>~<%= game.getVisitor() %>;
                             date:<%= game.getDate() %>">
-                            <p><%= Math.abs(((vl + lw)/2 - (vw + ll)/2))*0.75 + 1.25 %></p>
+                            <p><%= Math.round((Math.abs(((vl + lw) - (vw + ll)))*0.75 + 1.25)*100.0)/100.0 %></p>
                             <button class="betting">x</button>
                         </td>
                         <td info="user:<%= user.getUserId() %>;game:<%= game.getGameId() %>;
-                            type:3;pay:<%= ((vw + ll)/2 - (vl + lw)/2)*(-0.375) + 2.875 %>;
+                            type:3;pay:<%= Math.round((((vw + ll) - (vl + lw))*(-0.90769) +  4.05)*100.0)/100.0 %>;
                             title:<%= game.getLocal() %>~<%= game.getVisitor() %>;
                             date:<%= game.getDate() %>">
-                           <p><%= ((vw + ll)/2 - (vl + lw)/2)*(-0.375) + 2.875 %></p>
+                           <p><%= Math.round((((vw + ll) - (vl + lw))*(-0.90769) +  4.05)*100.0)/100.0 %></p>
                            <button class="betting">x</button>
                         </td>
                     </tr>

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import log.LogGen;
 import models.Bet;
 
 /**
@@ -25,9 +26,9 @@ public class DBBet extends Connect{
         wagers = new ArrayList<>();
         
         try{initWagers();}
-        catch (SQLException e){e.printStackTrace();}
-        catch(Exception e){e.printStackTrace();}    
-        finally{try{conn.close();}catch(Exception e){e.printStackTrace();}}
+        catch (SQLException e){LogGen.error(e.getMessage());}
+        catch(Exception e){LogGen.error(e.getMessage());}    
+        finally{try{conn.close();}catch(Exception e){LogGen.error(e.getMessage());}}
     }
 
     /**
@@ -119,9 +120,9 @@ public class DBBet extends Connect{
                 userId = rs.getInt(9);
             }
         
-        } catch (SQLException ex) {} 
-        catch(Exception e){e.printStackTrace();}    
-        finally{try{conn.close();} catch(Exception e){}}
+        } catch (SQLException e) {LogGen.error(e.getMessage());} 
+        catch(Exception e){LogGen.error(e.getMessage());}    
+        finally{try{conn.close();} catch(Exception e){LogGen.error(e.getMessage());}}
         
         boolean yujuu = false;
         switch(type){
@@ -142,9 +143,9 @@ public class DBBet extends Connect{
             ps = conn.prepareStatement(res);      
             ps.executeUpdate();
 
-        } catch (SQLException e){e.printStackTrace();}
-        catch(Exception e){e.printStackTrace();}    
-        finally{try{conn.close();} catch(Exception e){}}
+        } catch (SQLException e){LogGen.error(e.getMessage());}
+        catch(Exception e){LogGen.error(e.getMessage());}    
+        finally{try{conn.close();} catch(Exception e){LogGen.error(e.getMessage());}}
 
     }
 }

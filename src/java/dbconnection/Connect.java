@@ -7,6 +7,7 @@ package dbconnection;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import log.LogGen;
 /**
  *
  * @author javip
@@ -17,15 +18,15 @@ public class Connect {
         catch(ClassNotFoundException e){e.printStackTrace();} 
         
         try {conn = DriverManager.getConnection(url, user, pwd);}
-        catch (SQLException e){e.printStackTrace();}
+        catch (SQLException e){LogGen.error(e.getMessage());}
     }
     
     public void connect(){
         try{ Class.forName(driver);}
-        catch(ClassNotFoundException e){e.printStackTrace();} 
+        catch(ClassNotFoundException e){LogGen.error(e.getMessage());} 
         
         try {conn = DriverManager.getConnection(url, user, pwd);}
-        catch (SQLException e){e.printStackTrace();}
+        catch (SQLException e){LogGen.error(e.getMessage());}
     }
     
 // VARIABLES __________________________________________________________________

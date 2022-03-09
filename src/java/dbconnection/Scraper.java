@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import log.LogGen;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -68,7 +69,7 @@ public class Scraper {
                 }           
             }            
             executeUpdateGoals();   
-        } catch (Exception ex) {ex.printStackTrace();}
+        } catch (Exception e) {LogGen.error(e.getMessage());}
         
     }
 // =============================================================================
@@ -110,8 +111,8 @@ public class Scraper {
             ps.setString(6, date);
             ps.executeUpdate();                
                          
-        } catch (SQLException ex) {ex.printStackTrace();}      
-        finally { try {conn.close();} catch (SQLException ex) {ex.printStackTrace();}}         
+        } catch (SQLException e) {LogGen.error(e.getMessage());}      
+        finally { try {conn.close();} catch (SQLException e) {LogGen.error(e.getMessage());}}         
     }    
     
     private static void storeInDatabaseTeams(String team){
@@ -131,8 +132,8 @@ public class Scraper {
                 ps.setString(1, team);
                 ps.executeUpdate();                
             }            
-        } catch (SQLException ex) {ex.printStackTrace();}      
-        finally { try {conn.close();} catch (SQLException ex) {ex.printStackTrace();}}   
+        } catch (SQLException e) {LogGen.error(e.getMessage());}      
+        finally { try {conn.close();} catch (SQLException e) {LogGen.error(e.getMessage());}}   
     }
 
     private static void updateTeamsGoals(String loc, String vis, String res) {
@@ -176,8 +177,8 @@ public class Scraper {
                 ps = conn.prepareStatement(query);      
                 ps.executeUpdate();
                          
-        } catch (SQLException ex) {ex.printStackTrace();}      
-        finally { try {conn.close();} catch (SQLException ex) {ex.printStackTrace();}} 
+        } catch (SQLException e) {LogGen.error(e.getMessage());}      
+        finally { try {conn.close();} catch (SQLException e) {LogGen.error(e.getMessage());}} 
         
         }
     }
@@ -196,10 +197,11 @@ public class Scraper {
                 ps.executeUpdate();
             }
                          
-        } catch (SQLException ex) {ex.printStackTrace();}      
-        finally { try {conn.close();} catch (SQLException ex) {ex.printStackTrace();}}
+        } catch (SQLException e) {LogGen.error(e.getMessage());}      
+        finally { try {conn.close();} catch (SQLException e) {LogGen.error(e.getMessage());}}
     }
-        private static void updateDatabaseGames(int id, String loc, String vis, String res) {
+    
+    private static void updateDatabaseGames(int id, String loc, String vis, String res) {
         
         final String query = "UPDATE `games` SET `local`=?, `visitor`=?, "
                 + "`local_result`=?, `visitor_result`=?, `date`=? "
@@ -233,7 +235,7 @@ public class Scraper {
             ps.setString(5, date);
             ps.executeUpdate();                
                          
-        } catch (SQLException ex) {ex.printStackTrace();}      
-        finally { try {conn.close();} catch (SQLException ex) {ex.printStackTrace();}}         
+        } catch (SQLException e) {LogGen.error(e.getMessage());}      
+        finally { try {conn.close();} catch (SQLException e) {LogGen.error(e.getMessage());}}         
     }   
 }

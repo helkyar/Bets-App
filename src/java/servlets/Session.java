@@ -5,6 +5,7 @@
 package servlets;
 
 import dbconnection.DBUser;
+import dbconnection.Scraper;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -12,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import log.LogGen;
 import models.User;
 
 /**
@@ -32,6 +34,7 @@ public class Session extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         try{
+            Scraper.executeDataBaseUpdate();
             
             String comand = request.getParameter("action");
             switch(comand){
@@ -55,6 +58,7 @@ public class Session extends HttpServlet {
 
     private void checkLogin(HttpServletRequest request, HttpServletResponse response) 
     throws IOException, ServletException {
+        LogGen.start("Session login atempt");
         //Check for data        
         DBUser usermodel = new DBUser();
         String url = "view/login.jsp";
@@ -70,12 +74,13 @@ public class Session extends HttpServlet {
         request.setAttribute("SESSION", u);
         RequestDispatcher dptch = request.getRequestDispatcher(url);
         dptch.forward(request, response);
+        LogGen.info("Session start");
     }
 
     private void registerUser(HttpServletRequest request, HttpServletResponse response) 
-    throws IOException, ServletException {
+    throws IOException, ServletException {        
+        LogGen.start("Session register atempt");
         //Check for data      
-        System.out.println("==============================HERE=================================");
         DBUser usermodel = new DBUser();
         String url = "view/register.jsp";
         String user = (String) request.getParameter("username");
@@ -93,6 +98,7 @@ public class Session extends HttpServlet {
         //send response to login
         request.setAttribute("SESSION", u);
         RequestDispatcher dptch = request.getRequestDispatcher(url);
-        dptch.forward(request, response);
+        dptch.forward(request, response);        
+        LogGen.info("Session start");
     }
 }

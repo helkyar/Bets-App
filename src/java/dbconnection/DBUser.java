@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import log.LogGen;
 import models.User;
 
 /**
@@ -25,9 +26,9 @@ public class DBUser  extends Connect{
         users = new ArrayList<>();
 
         try{initUsers();} 
-        catch (SQLException e){e.printStackTrace();}
-        catch(Exception e){e.printStackTrace();}    
-        finally{try{conn.close();}catch(Exception e){e.printStackTrace();}}
+        catch (SQLException e){LogGen.error(e.getMessage());}
+        catch(Exception e){LogGen.error(e.getMessage());}    
+        finally{try{conn.close();}catch(Exception e){LogGen.error(e.getMessage());}}
     }
 
     /**
@@ -104,9 +105,9 @@ public class DBUser  extends Connect{
             ps = conn.prepareStatement(resolve);      
             ps.executeUpdate();
 
-        } catch (SQLException e){e.printStackTrace();}
-        catch(Exception e){e.printStackTrace();}    
-        finally{try{conn.close();} catch(Exception e){}}
+        } catch (SQLException e){LogGen.error(e.getMessage());}
+        catch(Exception e){LogGen.error(e.getMessage());}    
+        finally{try{conn.close();} catch(Exception e){LogGen.error(e.getMessage());}}
     }
     
     // GETTERS & SETTERS _________________________________________________________
