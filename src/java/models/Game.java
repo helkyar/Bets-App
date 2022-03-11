@@ -6,12 +6,12 @@ package models;
 
 /**
  *
- * @author admin
+ * @author Vero, Javi, Noah, Sandra, Mark y Patri
  */
 public class Game {
 
     public Game(){}
-    
+    //creacion de objetos 
     public Game(int gameId, String local, String visitor, String date, int visitorResult, int localResult, int scraperId) {
         this.gameId = gameId;
         this.local = local;
