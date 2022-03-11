@@ -17,7 +17,7 @@ import models.User;
  * @author javier
  */
 
-// Clase creada para acceder a la base de datos y añadir los datos de la tabla de "usuario"
+// Clase creada para acceder a la base de datos de "Usuario"
 public class DBUser  extends Connect{
 
   
@@ -41,7 +41,7 @@ public class DBUser  extends Connect{
     * @throws Exception 
     */
     
-    // Método creado para añadir datos de la tabla de "usuarios", concretamente "nombre, contraseña, saldo, apuestas" 
+    // Método creado para acceder a los datos de la tabla "Usuarios"
     private void initUsers() throws SQLException, Exception{ 
         String query = "SELECT `user_id`, `username`, `password`, `money`, "
             + "`bets_id` FROM users";
@@ -55,7 +55,7 @@ public class DBUser  extends Connect{
         }
     }
     
-    // Método creado para acceder a los datos de la tabla de "login" del usuario, concretamente "nombre, saldo y contraseña"
+    // Método creado para acceder a los datos de la tabla de "Login"
     public User loginUser(String username, String password) {
         User user = new User(-1);
         String query = "SELECT `user_id`, `money`  FROM users WHERE "
@@ -79,7 +79,7 @@ public class DBUser  extends Connect{
         finally{try{conn.close();} catch(Exception e){return user;}}
     }
 
-    // Método creado para acceder a los datos de la tabla de "registro" de usuarios, concretamente "nombre, contraseña y saldo"
+    // Método creado para acceder a los datos de la tabla de "Registro de Usuario"
     public int registerUser(String username, String password) {
         String query = "INSERT INTO users (`username`, `password`, `money`)"
             + " VALUES ('"+username+"','"+password+"','1000')";
@@ -95,7 +95,7 @@ public class DBUser  extends Connect{
         finally{try{conn.close();} catch(Exception e){return -1;}}
     }
     
-    // Método creado para acceder a la tabla de "cuenta de usuario" 
+    // Método creado para acceder a la tabla de "Cuenta de Usuario" 
     public void setUserAmount(int id, int amount) {
         String money = "SELECT money FROM users WHERE  user_id='"+id+"'";
         //Pass user_id
