@@ -18,13 +18,13 @@ import javax.servlet.http.HttpServletResponse;
 import log.LogGen;
 
 /**
- *
- * @author admin
+ * Stores the bets to database (post) and updates the data in the views (get)
+ * @author Javi, Vero, Noah, Mark, Sandra, Patricia
  */
 public class BetGetter extends HttpServlet {
 /**
-     * Handles the HTTP <code>GET</code> method.
-     *
+     * Handles the HTTP get method. Calls each manager to get the current data
+     * of each table
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -50,8 +50,8 @@ public class BetGetter extends HttpServlet {
     }
     
     /**
-     * Handles the HTTP <code>POST</code> method.
-     *
+     * Handles the HTTP POST method. Manages insertions and deletions based
+     * on "action" parameter in the body request
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -72,6 +72,13 @@ public class BetGetter extends HttpServlet {
 
     }
 
+    /**
+     * Method to store bets in the database
+     * @param request
+     * @param response
+     * @throws IOException
+     * @throws ServletException 
+     */
     private void storeBet(HttpServletRequest request, HttpServletResponse response) 
     throws IOException, ServletException {
         //get bets posted in main or details page and insert them
@@ -103,6 +110,13 @@ public class BetGetter extends HttpServlet {
                 +type+"pay:"+pay+"amount:"+amount);
     }
 
+    /**
+     * Method to delete bets form the database
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException 
+     */
     private void deleteBet(HttpServletRequest request, HttpServletResponse response) 
     throws ServletException, IOException {  
 //      request.setParameter("path", request.getRequestURI())
