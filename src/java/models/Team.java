@@ -6,12 +6,12 @@ package models;
 
 /**
  *
- * @author admin
+ * @author Vero, Javi, Noah, Sandra, Mark y Patri
  */
 public class Team {
           
     public Team(){}
-    
+          // creacion de objetos    
     public Team(int teamId, String teamName, String tendency, int visitWon,
     int visitLost, int visitGames, int localWon, int localLost, int localGames){
         this.teamId = teamId;
@@ -30,6 +30,7 @@ public class Team {
     }
     
     @Override
+          // operacion para la informacion de los equipos. 
     public String toString() {
         return "Team{" + "teamId=" + teamId + ", teamName=" + teamName + ", "
             + "tendency=" + tendency + ", visitWon=" + visitWon + ", "

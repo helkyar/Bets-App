@@ -1,4 +1,4 @@
-/*
+/* 
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -6,12 +6,12 @@ package models;
 
 /**
  *
- * @author admin
+ * @author Vero, Javi, Noah, Sandra, Mark y Patri
  */
 public class Bet {
 
     public Bet(){}
-    
+    // metodo creado para llamar objetos
     public Bet(int betId, int userId, int gameId, float betPay, int betType, 
             int betAmount, int resultLocal, int resultVisit, int show) {
         this.betId = betId;

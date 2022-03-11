@@ -6,12 +6,12 @@ package models;
 
 /**
  *
- * @author javip
+ * @author Vero, Javi, Noah, Sandra, Mark y Patri
  */
 public class User {
     
     public User(int id){this.userId = id;}
-    
+    // creacion de objetos
     public User(int userid, String username, String password, int money ,int betsId) {
         this.userId = userid;
         this.username = username;

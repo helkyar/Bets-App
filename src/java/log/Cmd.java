@@ -6,9 +6,10 @@ import java.io.InputStreamReader;
 
 /**
  *
- * @author Javier Palacios
+ * @author  Vero, Javi, Noah, Sandra, Mark y Patri
  */
 class Cmd {
+    
     /**
      * Runs command line commands and returns the response in string format
      * @param comand command to be executed
@@ -22,6 +23,7 @@ class Cmd {
         try{
             Process p = Runtime.getRuntime().exec(comand);  //IOEx
 
+           // prueba
             // if(comand.contains("powershell")){p.getOutputStream().close();}
 
             BufferedReader br = new BufferedReader(
@@ -43,7 +45,7 @@ class Cmd {
 
         return msg;
     }
-    
+  
     /**
      * Runs command line commands and returns the response in string format
      * @param comand command to be executed
@@ -113,7 +115,7 @@ class Cmd {
 
         return msg;
     }
-    
+
     /**
      * Runs command line commands in a separate thread
      * and returns the response in string format
@@ -122,7 +124,8 @@ class Cmd {
      * @return String with the result of the command execution
      */
     public static String runThr(String comand, String sep){
-        //Redeclare to implement getResult method
+       
+        //Redeclarar para implementar el método getResult
         class ParalelReader extends Thread{public String getResult(){return "";}};
         String msg = "";
         
