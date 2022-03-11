@@ -6,15 +6,18 @@ import java.io.InputStreamReader;
 
 /**
  *
- * @author Javier Palacios
+ * @author  Vero, Javi, Noah, Sandra, Mark y Patri
  */
 class Cmd {
-    //Testing methods for commands
+   
+    ///Métodos de prueba para comandos
+    
     public static String ran(String comand, int i, int j, String sep){
         String s, msg = "";
         try{
             Process p = Runtime.getRuntime().exec(comand);  //IOEx
 
+           // prueba
             // if(comand.contains("powershell")){p.getOutputStream().close();}
 
             BufferedReader br = new BufferedReader(
@@ -36,7 +39,7 @@ class Cmd {
 
         return msg;
     }
-    //Default commands processor. numbers specify lines showed and sep the separation
+       ////Procesador de comandos por defecto. los números especifican las líneas mostradas y separan la separación
     public static String run(String comand, int i, int j, String sep){
         String s, msg = "";
         try{
@@ -64,7 +67,7 @@ class Cmd {
         return msg;
     }
     
-    //Execute command arrays (used for Linux commands)
+   // Ejecutar conjuntos de comandos (utilizados para comandos de Linux)
     public static String run(String[] comand, int i, int j, String sep){
         String s, msg = "";
         try{
@@ -90,9 +93,10 @@ class Cmd {
 
         return msg;
     }
-    // Execute on thread
+    // Ejecutar en hilo
     public static String runThr(String comand, String sep){
-        //Redeclare to implement getResult method
+       
+        //Redeclarar para implementar el método getResult
         class ParalelReader extends Thread{public String getResult(){return "";}};
         String msg = "";
         
