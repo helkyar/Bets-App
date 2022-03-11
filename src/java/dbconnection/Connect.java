@@ -26,7 +26,9 @@ import log.LogGen;
 //import java.util.logging.Logger;  = se utiliza para registrar mensajes para un componente de aplicación o sistema específico. 
 //Los registradores normalmente se nombran utilizando un espacio de nombres jerárquico separado por puntos.
 
-//import log.LogGen; = HACE REGISTROS 
+//import log.LogGen; = ALAMACENA LA INFORMACION EN UN REGISTRO.
+
+// LA CLASE CONNECT : SE CONECTA A LA BASE DE DATOS
 
 public class Connect {
     public Connect(){  
