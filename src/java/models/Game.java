@@ -5,7 +5,8 @@
 package models;
 
 /**
- *
+ * Esta clase se utiliza para dar informacion sobre los partidos, lugar, equipo, fecha,
+ * resultado del visitante, resultando del local, etc. 
  * @author Vero, Javi, Noah, Sandra, Mark y Patri
  */
 public class Game {
