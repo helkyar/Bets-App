@@ -12,3 +12,5 @@ de clases de Java, y es necesario un navegador web para poder ver el programa
 en ejecución.
 
 Para acceder al programa, pincha en el siguiente URL: <http://192.168.1.143:8080/betsweb>
+
+¡Un saludito!
