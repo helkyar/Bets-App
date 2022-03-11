@@ -14,7 +14,11 @@ import models.Game;
  *
  * @author javier
  */
+
+// Clase creada para acceder a la base de datos de "Juego"
 public class DBGame  extends Connect{
+        
+        
         public DBGame(){        
         super();//call to parent to access database and set connection
 
@@ -32,6 +36,7 @@ public class DBGame  extends Connect{
      * @throws SQLException
      * @throws Exception 
      */
+        // Método creado para acceder a los datos de la tabla "Juego"
     private void initGame() throws SQLException, Exception{ 
         String query = "SELECT `game_id`, `local`, `visitor`, `date`, "
             + "`visitor_result`, `local_result`, `scraper_id` FROM games";
