@@ -23,11 +23,15 @@ import org.jsoup.nodes.Element;
  * @author admin
  */
 public class Scraper {   
+    
+    //Declaración de variables globales para la conexión con SQL
     static final String driver = "com.mysql.cj.jdbc.Driver";
     static final String url = "jdbc:mysql://localhost:3306/bets";
     static final String user = "root";
     static final String pass = "";
-        
+    
+    
+    //  Declaración de variables para la ejecución de querys a SQL    
     private static PreparedStatement ps = null;
     private static Connection conn = null;
     private static Statement st = null;
@@ -35,9 +39,19 @@ public class Scraper {
     
     private static int id = 0;
     
+    
+
+    //Lista de arrays para guardar los nombres de los equipos
+
     private static ArrayList<String> teams = new ArrayList<>();
+
+    //Variable para guardar una clave por cada valor asignado
+
     private static Map<String,Integer[]> statistics = new HashMap<>();
         
+    
+    
+    
     /**
      * MAIN METHOD
      */
@@ -46,6 +60,11 @@ public class Scraper {
          * check by order tot track results and due payment (asign id:ref)
          * check if date still exists or there is a new one (!=int-int->update)
          */
+        
+        /*
+            Recorre los elementos de la página antes extraída en URL que
+            contengan las clases de CSS expuestas en "select"
+        */
  
         final String URL = "https://www.marca.com/futbol/primera-division/calendario.html";
     
@@ -54,6 +73,7 @@ public class Scraper {
             
 //            System.out.println(document.outerHtml());
             id = 0;
+            
             for (Element table : document.select(".jor")) {
                 for(Element tr:table.select("tr")){
                     if(tr.select(".local").text().equals("")){continue;}
@@ -73,8 +93,9 @@ public class Scraper {
         
     }
 // =============================================================================
-//                             DBCONNECTION 
-//                                INSERT
+//                             INSERCIÓN EN LA 
+//                              BASE DE DATOS
+//                                 DE GAMES
 // =============================================================================
     private static void storeInDatabaseGames(int id, String loc, String vis, String res) {
         
@@ -114,6 +135,11 @@ public class Scraper {
         } catch (SQLException e) {LogGen.error(e.getMessage());}      
         finally { try {conn.close();} catch (SQLException e) {LogGen.error(e.getMessage());}}         
     }    
+// =============================================================================
+//                             INSERCIÓN EN LA 
+//                              BASE DE DATOS
+//                                 DE TEAMS
+// =============================================================================
     
     private static void storeInDatabaseTeams(String team){
         
@@ -135,7 +161,10 @@ public class Scraper {
         } catch (SQLException e) {LogGen.error(e.getMessage());}      
         finally { try {conn.close();} catch (SQLException e) {LogGen.error(e.getMessage());}}   
     }
-
+    /*
+        RECOGER RESULTADOS (GOLES) DE LOS PARTIDOS PARA SU
+        POSTERIOR ACTUALIZACIÓN EN LA DB
+    */
     private static void updateTeamsGoals(String loc, String vis, String res) {
         if(res.contains("-")){  
             int locg = Integer.parseInt(res.split("-")[0]);
@@ -157,7 +186,9 @@ public class Scraper {
             }         
         }
     }
-
+    /*
+        ACTUALIZA LOS RESULTADOS DE LOS GOLES EN LA DB
+    */
     private static void executeUpdateGoals() {
         for(String team : statistics.keySet()){
             try {
@@ -182,7 +213,9 @@ public class Scraper {
         
         }
     }
-
+    /*
+        MÉTODO QUE RECOGE LOS RESULTADOS DE LOS PARTIDOS
+    */
     private static void updateGameResults(int id, String res) {
         try {
                 
@@ -200,7 +233,9 @@ public class Scraper {
         } catch (SQLException e) {LogGen.error(e.getMessage());}      
         finally { try {conn.close();} catch (SQLException e) {LogGen.error(e.getMessage());}}
     }
-    
+    /*
+        MÉTODO QUE ORGANIZA LOS RESULTADOS POR EQUIPOS Y JUEGOS
+    */
     private static void updateDatabaseGames(int id, String loc, String vis, String res) {
         
         final String query = "UPDATE `games` SET `local`=?, `visitor`=?, "
