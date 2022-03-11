@@ -14,6 +14,8 @@ import models.Team;
  * Conection to database and asignation of values of the model variables
  * @author javier
  */
+
+// Clase creada para aceeder a la base da datos de "Equipos"
 public class DBTeam extends Connect{
 
     public DBTeam(){        
@@ -33,6 +35,8 @@ public class DBTeam extends Connect{
      * @throws SQLException
      * @throws Exception 
      */
+    
+    // Método creado para acceder a los datos de la tabla de equipos 
     private void initTeams() throws SQLException, Exception{ 
         String query = "SELECT `team_id`, `teamname`, `tendency`, "
             + "`visit_won`, `visit_lost`, `visit_game`, "
