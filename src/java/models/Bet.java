@@ -5,7 +5,7 @@
 package models;
 
 /**
- *
+ * Esta clase es para calcular las apuestas
  * @author Vero, Javi, Noah, Sandra, Mark y Patri
  */
 public class Bet {
