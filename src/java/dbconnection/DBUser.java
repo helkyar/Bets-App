@@ -55,7 +55,7 @@ public class DBUser  extends Connect{
         }
     }
     
-    // Método creado para acceder a los datos de la tabla de "login" del usuario, concretamente "nombre y contraseña"
+    // Método creado para acceder a los datos de la tabla de "login" del usuario, concretamente "nombre, saldo y contraseña"
     public User loginUser(String username, String password) {
         User user = new User(-1);
         String query = "SELECT `user_id`, `money`  FROM users WHERE "
