@@ -16,6 +16,8 @@ import models.Bet;
  *
  * @author javier
  */
+
+// Clase creada para acceder a la base de datos de "Apuestas"
 public class DBBet extends Connect{
         
     public DBBet(String s){}
@@ -37,6 +39,7 @@ public class DBBet extends Connect{
      * @throws SQLException
      * @throws Exception 
      */
+        // Método creado para acceder a los datos de la tabla "Apuestas"
     private void initWagers()  throws SQLException, Exception{ 
         String query = "SELECT `bet_id`, `user_id`, `game_id`, `bet_pay`, "
             + "`bet_type`, `bet_amount`, `result_local`, `result_visit`, `show` "
@@ -63,6 +66,7 @@ public class DBBet extends Connect{
 // VARIABLES _________________________________________________________________
     private ArrayList<Bet> wagers;
 
+        // Método creado para acceder a los datos de la tabla "Apuestas"
     public int insertBet(int user, int game, int type, float pay, int amount) {
         String query = "INSERT INTO bets (`user_id`, `game_id`, `bet_pay`,"
             + " `bet_type`, `bet_amount`, `resolved`) VALUES "
@@ -78,7 +82,7 @@ public class DBBet extends Connect{
         catch(Exception e){e.printStackTrace(); return -1;}    
         finally{try{conn.close();} catch(Exception e){return -1;}}
     }
-
+// Método creado para marcar una apuesta para que no se muestre al usuario 
     public int deleteBet(String betid) {
         String query = "UPDATE bets SET show= '0' WHERE bet_id='"+betid+"'";
         
@@ -93,6 +97,7 @@ public class DBBet extends Connect{
         finally{try{conn.close();} catch(Exception e){return -1;}}
     }
 
+        // Método creado para acceder a los datos de la tabla "resultados de apuestas pasadas"
     public void resolvePassedBets() {
         String query = "SELECT bets.bets_id, games.visitor_result, "
           + "games.local_result, bets.bet_pay, bets.bet_amount, "
