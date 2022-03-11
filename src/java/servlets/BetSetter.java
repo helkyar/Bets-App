@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import models.*;
 
 /**
- *
- * @author admin
+ * Starting point of the project gets database data and redirects to the views
+ * @author Javi, Vero, Noah, Sandra, Mark, Patricia
  */
 public class BetSetter extends HttpServlet {
     private DBTeam teamsmodel;
@@ -75,7 +75,8 @@ public class BetSetter extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "Starting point of the project gets database data and redirects "
+                + "to main.jsp";
     }// </editor-fold>
 
 }

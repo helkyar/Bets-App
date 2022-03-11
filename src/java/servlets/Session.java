@@ -17,8 +17,8 @@ import log.LogGen;
 import models.User;
 
 /**
- *
- * @author admin
+ * Manages the login and register functionality
+ * @author Javi, Vero, Noah, Sandra, Mark, Patricia
  */
 public class Session extends HttpServlet {
     
