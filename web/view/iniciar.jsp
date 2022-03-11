@@ -5,17 +5,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 -->
 <%@ page import="java.util.*, servlets.*, models.*" %>
 <% String path = request.getContextPath(); %>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!-- Reditections if user is not loged -->
 <c:set var='user' value='${sessionScope["TOKEN"]}'/>
 <c:if test = "${user==null}"> 
     <c:redirect url="/view/login.jsp"/> 
 </c:if>
+<!-- Redirecs to the servlet BetGetter if the request is empty to update with database data -->
 <c:set var='game' value='${requestScope["GAMES"]}'/>
 <c:if test = "${game==null}"> 
     <c:redirect url="/BetGetter"/> 
 </c:if>
-<%// Obtains teams from PriceSetter controller (servlet)
+<%// Obtains teams from BetGetter controller (servlet)
     User user = (User) session.getAttribute("TOKEN");
    
     List<Game> games=null; List<Bet> bets=null; List<Team> teams=null;
@@ -33,6 +34,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
             
           <div class="right">
             <div class="content">
+                <!-- Generates divs with bets already placed by the user -->
                 <% for(Bet bet : bets){ 
                     if(bet.getUserId()==user.getUserId() && bet.getShow()==1){
                     Game g = null;
@@ -80,9 +82,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                     <th style = "text-align: left">x</th>
                     <th style = "text-align: left">2</th>
                 </tr>
-            <!--<c:forEach var="res" items="${RESUlTS}">${res}</c:forEach>-->
+            <%--<c:forEach var="res" items="${RESUlTS}">${res}</c:forEach>--%>
             <% 
-               //To optimize save teams as key-value pairs
+               //Generates the multiplayers for each game result
                List<int[]> results = new ArrayList<>();
                for(Game game : games){
                     float ll=0, lw=0, vl=0, vw=0;

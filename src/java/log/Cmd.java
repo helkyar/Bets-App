@@ -9,7 +9,14 @@ import java.io.InputStreamReader;
  * @author Javier Palacios
  */
 class Cmd {
-    //Testing methods for commands
+    /**
+     * Runs command line commands and returns the response in string format
+     * @param comand command to be executed
+     * @param i line at witch start "recording" the result
+     * @param j line at witch stop "recording" the result
+     * @param sep separation between lines
+     * @return String with the result of the command execution
+     */
     public static String ran(String comand, int i, int j, String sep){
         String s, msg = "";
         try{
@@ -36,7 +43,15 @@ class Cmd {
 
         return msg;
     }
-    //Default commands processor. numbers specify lines showed and sep the separation
+    
+    /**
+     * Runs command line commands and returns the response in string format
+     * @param comand command to be executed
+     * @param i line at witch start "recording" the result
+     * @param j line at witch stop "recording" the result
+     * @param sep separation between lines
+     * @return String with the result of the command execution
+     */
     public static String run(String comand, int i, int j, String sep){
         String s, msg = "";
         try{
@@ -64,7 +79,15 @@ class Cmd {
         return msg;
     }
     
-    //Execute command arrays (used for Linux commands)
+    /**
+     * Runs command line commands passed as array 
+     * and returns the response in string format
+     * @param comand command to be executed
+     * @param i line at witch start "recording" the result
+     * @param j line at witch stop "recording" the result
+     * @param sep separation between lines
+     * @return String with the result of the command execution
+     */
     public static String run(String[] comand, int i, int j, String sep){
         String s, msg = "";
         try{
@@ -90,7 +113,14 @@ class Cmd {
 
         return msg;
     }
-    // Execute on thread
+    
+    /**
+     * Runs command line commands in a separate thread
+     * and returns the response in string format
+     * @param comand command to be executed
+     * @param sep separation between lines
+     * @return String with the result of the command execution
+     */
     public static String runThr(String comand, String sep){
         //Redeclare to implement getResult method
         class ParalelReader extends Thread{public String getResult(){return "";}};

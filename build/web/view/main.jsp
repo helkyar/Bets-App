@@ -7,8 +7,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 -->
 <%@page import="models.*"%>
 <% String path = request.getContextPath(); %>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!-- Reditections if user is not loged -->
 <c:set var='user' value='${sessionScope["TOKEN"]}'/>
 <c:if test = "${user==null}"> 
     <c:redirect url="/view/login.jsp"/> 
